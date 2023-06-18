@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "image_cover_144_203.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

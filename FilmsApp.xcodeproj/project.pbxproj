@@ -18,6 +18,7 @@
 		4DDCAD462A3D476600CC845C /* FullPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD452A3D476600CC845C /* FullPictureViewController.swift */; };
 		4DDCAD492A3D478100CC845C /* FavouriteMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD482A3D478100CC845C /* FavouriteMoviesViewController.swift */; };
 		4DDCAD4B2A3D4C4400CC845C /* JSON_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD4A2A3D4C4400CC845C /* JSON_Model.swift */; };
+		4DDCAD4F2A3E7F6200CC845C /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD4E2A3E7F6200CC845C /* MovieCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		4DDCAD452A3D476600CC845C /* FullPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullPictureViewController.swift; sourceTree = "<group>"; };
 		4DDCAD482A3D478100CC845C /* FavouriteMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteMoviesViewController.swift; sourceTree = "<group>"; };
 		4DDCAD4A2A3D4C4400CC845C /* JSON_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON_Model.swift; sourceTree = "<group>"; };
+		4DDCAD4E2A3E7F6200CC845C /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +91,8 @@
 		4DDCAD3B2A3D468F00CC845C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4DDCAD2C2A3D444600CC845C /* Main.storyboard */,
+				4DDCAD4D2A3E7F3600CC845C /* MainMovieCell */,
+				4DDCAD4C2A3E7F2800CC845C /* MainStoryboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -144,6 +147,22 @@
 				4DDCAD482A3D478100CC845C /* FavouriteMoviesViewController.swift */,
 			);
 			path = FavouriteMoviesViewController;
+			sourceTree = "<group>";
+		};
+		4DDCAD4C2A3E7F2800CC845C /* MainStoryboard */ = {
+			isa = PBXGroup;
+			children = (
+				4DDCAD2C2A3D444600CC845C /* Main.storyboard */,
+			);
+			path = MainStoryboard;
+			sourceTree = "<group>";
+		};
+		4DDCAD4D2A3E7F3600CC845C /* MainMovieCell */ = {
+			isa = PBXGroup;
+			children = (
+				4DDCAD4E2A3E7F6200CC845C /* MovieCollectionViewCell.swift */,
+			);
+			path = MainMovieCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +242,7 @@
 				4DDCAD432A3D474500CC845C /* MoviePicturesViewController.swift in Sources */,
 				4DDCAD272A3D444600CC845C /* AppDelegate.swift in Sources */,
 				4DDCAD4B2A3D4C4400CC845C /* JSON_Model.swift in Sources */,
+				4DDCAD4F2A3E7F6200CC845C /* MovieCollectionViewCell.swift in Sources */,
 				4DDCAD292A3D444600CC845C /* SceneDelegate.swift in Sources */,
 				4DDCAD492A3D478100CC845C /* FavouriteMoviesViewController.swift in Sources */,
 			);

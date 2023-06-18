@@ -9,6 +9,9 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    // Test
+    var testArray: [TestModel] = TestMethods().returnTestArray()
+    
     // Outlets
     @IBOutlet weak var moviesSearchBar: UISearchBar!
     @IBOutlet weak var mainCollectionView: UICollectionView!
@@ -35,11 +38,22 @@ class MainViewController: UIViewController {
 extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return testArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        cell.fillDataIntoCell(testArray[indexPath.row].testPic,
+                              testArray[indexPath.row].testTitle,
+                              testArray[indexPath.row].testYear,
+                              testArray[indexPath.row].testRating)
+        
+        return cell
+        
     }
     
 }
