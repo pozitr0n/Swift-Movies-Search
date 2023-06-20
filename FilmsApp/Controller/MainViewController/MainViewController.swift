@@ -30,6 +30,7 @@ class MainViewController: UIViewController {
     func registerXIBCell() {
         
         let customXIBCell = UINib(nibName: "MovieCollectionViewCell", bundle: nil)
+        
         mainCollectionView.register(customXIBCell, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
         mainCollectionView.reloadData()
         
