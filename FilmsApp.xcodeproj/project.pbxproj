@@ -19,6 +19,7 @@
 		4DDCAD492A3D478100CC845C /* FavouriteMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD482A3D478100CC845C /* FavouriteMoviesViewController.swift */; };
 		4DDCAD4B2A3D4C4400CC845C /* JSON_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD4A2A3D4C4400CC845C /* JSON_Model.swift */; };
 		4DDCAD4F2A3E7F6200CC845C /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD4E2A3E7F6200CC845C /* MovieCollectionViewCell.swift */; };
+		4DDCAD522A4127F200CC845C /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DDCAD512A4127F200CC845C /* MovieCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		4DDCAD482A3D478100CC845C /* FavouriteMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteMoviesViewController.swift; sourceTree = "<group>"; };
 		4DDCAD4A2A3D4C4400CC845C /* JSON_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON_Model.swift; sourceTree = "<group>"; };
 		4DDCAD4E2A3E7F6200CC845C /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		4DDCAD512A4127F200CC845C /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 		4DDCAD3B2A3D468F00CC845C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4DDCAD502A4127BD00CC845C /* XIB */,
 				4DDCAD4D2A3E7F3600CC845C /* MainMovieCell */,
 				4DDCAD4C2A3E7F2800CC845C /* MainStoryboard */,
 			);
@@ -165,6 +168,14 @@
 			path = MainMovieCell;
 			sourceTree = "<group>";
 		};
+		4DDCAD502A4127BD00CC845C /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				4DDCAD512A4127F200CC845C /* MovieCollectionViewCell.xib */,
+			);
+			path = XIB;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -226,6 +237,7 @@
 				4DDCAD332A3D444700CC845C /* LaunchScreen.storyboard in Resources */,
 				4DDCAD302A3D444700CC845C /* Assets.xcassets in Resources */,
 				4DDCAD2E2A3D444600CC845C /* Main.storyboard in Resources */,
+				4DDCAD522A4127F200CC845C /* MovieCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
