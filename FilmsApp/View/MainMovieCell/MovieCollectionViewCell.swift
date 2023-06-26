@@ -32,6 +32,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     }
     
     // Outlets
+    //
     @IBOutlet weak var moviePreviewImageView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var releaseYearLabel: UILabel!
