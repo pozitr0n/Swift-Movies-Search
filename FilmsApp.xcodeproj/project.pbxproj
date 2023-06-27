@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4D52803D2A4B1CD800991CBB /* DetailsPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D52803C2A4B1CD800991CBB /* DetailsPreviewCollectionViewCell.swift */; };
+		4D5280412A4B46DE00991CBB /* FullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5280402A4B46DE00991CBB /* FullScreenViewController.swift */; };
 		4DDCAD272A3D444600CC845C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD262A3D444600CC845C /* AppDelegate.swift */; };
 		4DDCAD292A3D444600CC845C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD282A3D444600CC845C /* SceneDelegate.swift */; };
 		4DDCAD2B2A3D444600CC845C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD2A2A3D444600CC845C /* MainViewController.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		4D52803C2A4B1CD800991CBB /* DetailsPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		4D5280402A4B46DE00991CBB /* FullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenViewController.swift; sourceTree = "<group>"; };
 		4DDCAD232A3D444600CC845C /* FilmsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DDCAD262A3D444600CC845C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DDCAD282A3D444600CC845C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +55,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D52803E2A4B41F100991CBB /* DetailsPreviewCell */ = {
+			isa = PBXGroup;
+			children = (
+				4D52803C2A4B1CD800991CBB /* DetailsPreviewCollectionViewCell.swift */,
+			);
+			path = DetailsPreviewCell;
+			sourceTree = "<group>";
+		};
+		4D52803F2A4B465400991CBB /* FullScreenViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4D5280402A4B46DE00991CBB /* FullScreenViewController.swift */,
+			);
+			path = FullScreenViewController;
+			sourceTree = "<group>";
+		};
 		4DDCAD1A2A3D444600CC845C = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +113,7 @@
 		4DDCAD3B2A3D468F00CC845C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4D52803E2A4B41F100991CBB /* DetailsPreviewCell */,
 				4DDCAD502A4127BD00CC845C /* XIB */,
 				4DDCAD4D2A3E7F3600CC845C /* MainMovieCell */,
 				4DDCAD4C2A3E7F2800CC845C /* MainStoryboard */,
@@ -105,6 +124,7 @@
 		4DDCAD3C2A3D469300CC845C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4D52803F2A4B465400991CBB /* FullScreenViewController */,
 				4DDCAD472A3D477100CC845C /* FavouriteMoviesViewController */,
 				4DDCAD442A3D474E00CC845C /* FullPictureViewController */,
 				4DDCAD412A3D470800CC845C /* MoviePicturesViewController */,
@@ -126,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				4DDCAD3F2A3D46EB00CC845C /* MovieDetailsViewController.swift */,
-				4D52803C2A4B1CD800991CBB /* DetailsPreviewCollectionViewCell.swift */,
 			);
 			path = MovieDetailsViewController;
 			sourceTree = "<group>";
@@ -260,6 +279,7 @@
 				4DDCAD4F2A3E7F6200CC845C /* MovieCollectionViewCell.swift in Sources */,
 				4D52803D2A4B1CD800991CBB /* DetailsPreviewCollectionViewCell.swift in Sources */,
 				4DDCAD292A3D444600CC845C /* SceneDelegate.swift in Sources */,
+				4D5280412A4B46DE00991CBB /* FullScreenViewController.swift in Sources */,
 				4DDCAD492A3D478100CC845C /* FavouriteMoviesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
