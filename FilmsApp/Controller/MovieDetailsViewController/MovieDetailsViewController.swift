@@ -24,13 +24,15 @@ class MovieDetailsViewController: UIViewController {
     
     @IBOutlet weak var movieDescriptionTextView: UITextView!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         setupLayout()
         
         // Tests (for branch scrollview_labels)
-        movieTitleLabel.text = "This Is The Favourite Movie!"
+        movieTitleLabel.text = "This Is My Favourite Movie!"
         releaseYearLabel.text = "2017"
         ratingLabel.text = "9.5"
         
