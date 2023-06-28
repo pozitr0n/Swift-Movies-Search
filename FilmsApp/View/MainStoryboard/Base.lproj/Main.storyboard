@@ -145,7 +145,7 @@
                                 </connections>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1LZ-u3-dPb">
-                                <rect key="frame" x="16" y="364.66666666666669" width="361" height="95.333333333333314"/>
+                                <rect key="frame" x="16" y="365" width="361" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2zJ-Nx-TcG">
                                     <size key="itemSize" width="100" height="100"/>
@@ -271,7 +271,7 @@
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="trailing" secondItem="JnJ-NA-nla" secondAttribute="trailing" constant="11" id="AZ9-9C-kfX"/>
                             <constraint firstItem="YRl-sj-rUj" firstAttribute="top" secondItem="uWI-jh-Mso" secondAttribute="top" constant="50" id="BoK-Ne-hV3"/>
                             <constraint firstItem="ssR-oX-vlP" firstAttribute="leading" secondItem="VI0-ud-yrq" secondAttribute="leading" id="E0K-g6-rXd"/>
-                            <constraint firstItem="ssR-oX-vlP" firstAttribute="top" secondItem="1LZ-u3-dPb" secondAttribute="bottom" constant="17" id="Fgc-et-tOU"/>
+                            <constraint firstItem="ssR-oX-vlP" firstAttribute="top" secondItem="1LZ-u3-dPb" secondAttribute="bottom" constant="12" id="Fgc-et-tOU"/>
                             <constraint firstItem="JnJ-NA-nla" firstAttribute="leading" secondItem="uWI-jh-Mso" secondAttribute="leading" constant="168" id="Jez-WK-sis"/>
                             <constraint firstItem="ssR-oX-vlP" firstAttribute="trailing" secondItem="VI0-ud-yrq" secondAttribute="trailing" id="Nuw-qF-03W"/>
                             <constraint firstItem="d9N-dz-1VO" firstAttribute="top" secondItem="JnJ-NA-nla" secondAttribute="bottom" constant="46.666666666666629" id="QVs-Rd-iiy"/>
@@ -296,7 +296,6 @@
                         <outlet property="movieTitleLabel" destination="nmT-vM-sO8" id="lSU-j1-n6l"/>
                         <outlet property="ratingLabel" destination="daK-TT-xy7" id="xn8-9e-VBt"/>
                         <outlet property="releaseYearLabel" destination="asf-b0-o1T" id="PaZ-Fz-FFa"/>
-                        <outlet property="scrollView" destination="m1W-Oh-P8a" id="Ld6-Vb-FHe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XjX-BQ-Xoa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
