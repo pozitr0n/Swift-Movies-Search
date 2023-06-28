@@ -29,7 +29,7 @@ class MovieDetailsViewController: UIViewController {
         super.viewDidLoad()
         setupLayout()
         
-        // Tests
+        // Tests (for branch scrollview_labels)
         movieTitleLabel.text = "This Is The Favourite Movie!"
         releaseYearLabel.text = "2017"
         ratingLabel.text = "9.5"
