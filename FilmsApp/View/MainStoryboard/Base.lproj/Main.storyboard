@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -144,71 +145,6 @@
                                     <outletCollection property="gestureRecognizers" destination="kVr-XV-274" appends="YES" id="2ne-Br-1PX"/>
                                 </connections>
                             </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1LZ-u3-dPb">
-                                <rect key="frame" x="16" y="364.66666666666669" width="361" height="100.33333333333331"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2zJ-Nx-TcG">
-                                    <size key="itemSize" width="100" height="100"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DetailsPreviewCell" id="cl2-q8-rH9" customClass="DetailsPreviewCollectionViewCell" customModule="FilmsApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hi0-8C-m2u">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jqK-E3-X0F">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="ciM-7z-FKh"/>
-                                                        <constraint firstAttribute="height" constant="100" id="csj-lC-1pv"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="jqK-E3-X0F" secondAttribute="trailing" id="EdY-6j-xsO"/>
-                                                <constraint firstAttribute="bottom" secondItem="jqK-E3-X0F" secondAttribute="bottom" id="HjU-JK-jNl"/>
-                                                <constraint firstItem="jqK-E3-X0F" firstAttribute="leading" secondItem="hi0-8C-m2u" secondAttribute="leading" id="NrX-ag-fO3"/>
-                                                <constraint firstItem="jqK-E3-X0F" firstAttribute="top" secondItem="hi0-8C-m2u" secondAttribute="top" id="zZM-zk-RZx"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <connections>
-                                            <outlet property="imageDetailsImageView" destination="jqK-E3-X0F" id="fFW-LY-dLU"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="i5U-SE-vjq" id="OP5-BV-DHP"/>
-                                    <outlet property="delegate" destination="i5U-SE-vjq" id="Gfk-Uy-Jgi"/>
-                                </connections>
-                            </collectionView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VI0-ud-yrq">
-                                <rect key="frame" x="16" y="509" width="361" height="309"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssR-oX-vlP">
-                                <rect key="frame" x="16" y="477" width="361" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="Ld6-It-T4R"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frames, shooting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9N-dz-1VO">
-                                <rect key="frame" x="16" y="328" width="361" height="26.333333333333314"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1W-Oh-P8a">
                                 <rect key="frame" x="168" y="130" width="214" height="83"/>
                                 <subviews>
@@ -262,23 +198,113 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frames, shooting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9N-dz-1VO">
+                                <rect key="frame" x="16" y="328" width="177" height="26.333333333333314"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OIU-iu-vI2">
+                                <rect key="frame" x="356" y="330" width="26" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="26" id="791-v9-3kt"/>
+                                    <constraint firstAttribute="height" constant="26" id="Df0-Mh-hWw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <color key="tintColor" red="0.4646070175" green="0.4646070175" blue="0.4646070175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="chevron.right.circle.fill" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="allThePreviewImages:" destination="i5U-SE-vjq" eventType="touchUpInside" id="SxX-wq-7pO"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1LZ-u3-dPb">
+                                <rect key="frame" x="16" y="364.66666666666669" width="361" height="100.33333333333331"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2zJ-Nx-TcG">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DetailsPreviewCell" id="cl2-q8-rH9" customClass="DetailsPreviewCollectionViewCell" customModule="FilmsApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hi0-8C-m2u">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jqK-E3-X0F">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="ciM-7z-FKh"/>
+                                                        <constraint firstAttribute="height" constant="100" id="csj-lC-1pv"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="jqK-E3-X0F" secondAttribute="trailing" id="EdY-6j-xsO"/>
+                                                <constraint firstAttribute="bottom" secondItem="jqK-E3-X0F" secondAttribute="bottom" id="HjU-JK-jNl"/>
+                                                <constraint firstItem="jqK-E3-X0F" firstAttribute="leading" secondItem="hi0-8C-m2u" secondAttribute="leading" id="NrX-ag-fO3"/>
+                                                <constraint firstItem="jqK-E3-X0F" firstAttribute="top" secondItem="hi0-8C-m2u" secondAttribute="top" id="zZM-zk-RZx"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageDetailsImageView" destination="jqK-E3-X0F" id="fFW-LY-dLU"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="i5U-SE-vjq" id="OP5-BV-DHP"/>
+                                    <outlet property="delegate" destination="i5U-SE-vjq" id="Gfk-Uy-Jgi"/>
+                                </connections>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssR-oX-vlP">
+                                <rect key="frame" x="16" y="477" width="361" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="Ld6-It-T4R"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VI0-ud-yrq">
+                                <rect key="frame" x="16" y="509" width="361" height="309"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1h-C2-g8Y">
+                                <rect key="frame" x="324" y="332" width="28.333333333333314" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.4646070175" green="0.4646070175" blue="0.4646070175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="uWI-jh-Mso"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="uWI-jh-Mso" firstAttribute="trailing" secondItem="d9N-dz-1VO" secondAttribute="trailing" constant="16" id="2uZ-em-cAx"/>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="bottom" secondItem="m1W-Oh-P8a" secondAttribute="bottom" constant="605" id="3a6-qa-asi"/>
                             <constraint firstItem="YRl-sj-rUj" firstAttribute="leading" secondItem="uWI-jh-Mso" secondAttribute="leading" constant="16" id="4Tf-Oc-EBV"/>
+                            <constraint firstItem="U1h-C2-g8Y" firstAttribute="top" secondItem="uWI-jh-Mso" secondAttribute="top" constant="273" id="6Ls-dB-l3F"/>
                             <constraint firstItem="VI0-ud-yrq" firstAttribute="top" secondItem="ssR-oX-vlP" secondAttribute="bottom" constant="8" symbolic="YES" id="6RZ-6D-4BH"/>
                             <constraint firstItem="VI0-ud-yrq" firstAttribute="bottom" secondItem="uWI-jh-Mso" secondAttribute="bottom" id="96r-cp-DXw"/>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="trailing" secondItem="m1W-Oh-P8a" secondAttribute="trailing" constant="11" id="A4d-QD-emf"/>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="trailing" secondItem="JnJ-NA-nla" secondAttribute="trailing" constant="11" id="AZ9-9C-kfX"/>
+                            <constraint firstItem="OIU-iu-vI2" firstAttribute="leading" secondItem="U1h-C2-g8Y" secondAttribute="trailing" constant="3.6666666666666856" id="AeG-7D-Xg9"/>
                             <constraint firstItem="YRl-sj-rUj" firstAttribute="top" secondItem="uWI-jh-Mso" secondAttribute="top" constant="50" id="BoK-Ne-hV3"/>
                             <constraint firstItem="ssR-oX-vlP" firstAttribute="leading" secondItem="VI0-ud-yrq" secondAttribute="leading" id="E0K-g6-rXd"/>
                             <constraint firstItem="ssR-oX-vlP" firstAttribute="top" secondItem="1LZ-u3-dPb" secondAttribute="bottom" constant="12" id="Fgc-et-tOU"/>
                             <constraint firstItem="JnJ-NA-nla" firstAttribute="leading" secondItem="uWI-jh-Mso" secondAttribute="leading" constant="168" id="Jez-WK-sis"/>
                             <constraint firstItem="ssR-oX-vlP" firstAttribute="trailing" secondItem="VI0-ud-yrq" secondAttribute="trailing" id="Nuw-qF-03W"/>
                             <constraint firstItem="d9N-dz-1VO" firstAttribute="top" secondItem="JnJ-NA-nla" secondAttribute="bottom" constant="52.666666666666686" id="QVs-Rd-iiy"/>
+                            <constraint firstItem="uWI-jh-Mso" firstAttribute="trailing" secondItem="OIU-iu-vI2" secondAttribute="trailing" constant="11" id="RUg-ij-HtA"/>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="trailing" secondItem="YRl-sj-rUj" secondAttribute="trailing" constant="233" id="Rus-P4-okP"/>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="trailing" secondItem="1LZ-u3-dPb" secondAttribute="trailing" constant="16" id="SsJ-8H-nR9"/>
                             <constraint firstItem="JnJ-NA-nla" firstAttribute="top" secondItem="m1W-Oh-P8a" secondAttribute="bottom" constant="2" id="axj-g2-jGA"/>
@@ -286,7 +312,9 @@
                             <constraint firstItem="ssR-oX-vlP" firstAttribute="trailing" secondItem="1LZ-u3-dPb" secondAttribute="trailing" id="dol-YR-sUB"/>
                             <constraint firstItem="d9N-dz-1VO" firstAttribute="leading" secondItem="uWI-jh-Mso" secondAttribute="leading" constant="16" id="gMn-qH-TO6"/>
                             <constraint firstItem="ssR-oX-vlP" firstAttribute="leading" secondItem="1LZ-u3-dPb" secondAttribute="leading" id="ggb-rm-MqK"/>
+                            <constraint firstItem="OIU-iu-vI2" firstAttribute="top" secondItem="uWI-jh-Mso" secondAttribute="top" constant="271" id="lSf-VB-Obu"/>
                             <constraint firstItem="m1W-Oh-P8a" firstAttribute="top" secondItem="uWI-jh-Mso" secondAttribute="top" constant="71" id="lVm-YZ-grc"/>
+                            <constraint firstItem="U1h-C2-g8Y" firstAttribute="leading" secondItem="d9N-dz-1VO" secondAttribute="trailing" constant="131" id="m87-jp-h4o"/>
                             <constraint firstItem="1LZ-u3-dPb" firstAttribute="leading" secondItem="uWI-jh-Mso" secondAttribute="leading" constant="16" id="rba-iw-58h"/>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="bottom" secondItem="YRl-sj-rUj" secondAttribute="bottom" constant="506" id="uDq-jY-l8p"/>
                             <constraint firstAttribute="bottom" secondItem="ssR-oX-vlP" secondAttribute="bottom" constant="351" id="xQf-9s-XK0"/>
@@ -294,11 +322,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="allThePreviewImagesButton" destination="OIU-iu-vI2" id="gJk-3S-m54"/>
                         <outlet property="imageGalleryCollection" destination="1LZ-u3-dPb" id="WyF-el-RIP"/>
                         <outlet property="movieDescriptionTextView" destination="VI0-ud-yrq" id="Z3U-2e-ovR"/>
                         <outlet property="moviePosterImageView" destination="YRl-sj-rUj" id="vhN-jW-8YX"/>
                         <outlet property="movieTitleLabel" destination="nmT-vM-sO8" id="lSU-j1-n6l"/>
                         <outlet property="moviewPreviewCollectionView" destination="1LZ-u3-dPb" id="Jqq-ua-fIN"/>
+                        <outlet property="previewCountLabel" destination="U1h-C2-g8Y" id="3Ed-BY-n5V"/>
                         <outlet property="ratingLabel" destination="daK-TT-xy7" id="xn8-9e-VBt"/>
                         <outlet property="releaseYearLabel" destination="asf-b0-o1T" id="PaZ-Fz-FFa"/>
                     </connections>
@@ -364,6 +394,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.right.circle.fill" catalog="system" width="128" height="123"/>
         <image name="image16" width="980" height="1482"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
