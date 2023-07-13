@@ -13,8 +13,28 @@ class FullScreenViewController: UIViewController {
     
     @IBOutlet weak var closeButton: UIButton!
     
+    var indexPathFromParentViewController: Int = Int()
+    
+    // Test
+    var testArray: [TestModel] = TestMethods().returnTestArray()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        getFullMoviePoster()
+    }
+    
+    @IBAction func closeButtonPressed(_ sender: Any) {
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    // Getting full movie poster from parent view controller
+    //
+    func getFullMoviePoster() {
+    
+        fullScreenImageView.image = UIImage(named: testArray[indexPathFromParentViewController].testPic ?? "image_cover_144_203")
+        
     }
 
 }

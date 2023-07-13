@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="i5U-SE-vjq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xrN-22-Mnj">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
@@ -107,6 +107,9 @@
                                 </constraints>
                                 <color key="tintColor" red="0.4646070175" green="0.4646070175" blue="0.4646070175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="closeButtonPressed:" destination="NEo-n6-gYi" eventType="touchUpInside" id="2f2-5m-Zjt"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bl6-IM-STV"/>
@@ -133,7 +136,7 @@
         <!--Movie Details View Controller-->
         <scene sceneID="I7X-ea-NHS">
             <objects>
-                <viewController id="i5U-SE-vjq" customClass="MovieDetailsViewController" customModule="FilmsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieDetailsViewControllerID" id="i5U-SE-vjq" customClass="MovieDetailsViewController" customModule="FilmsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rPV-DD-0Ve">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -292,13 +295,13 @@
                         <constraints>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="bottom" secondItem="m1W-Oh-P8a" secondAttribute="bottom" constant="605" id="3a6-qa-asi"/>
                             <constraint firstItem="YRl-sj-rUj" firstAttribute="leading" secondItem="uWI-jh-Mso" secondAttribute="leading" constant="16" id="4Tf-Oc-EBV"/>
-                            <constraint firstItem="U1h-C2-g8Y" firstAttribute="top" secondItem="uWI-jh-Mso" secondAttribute="top" constant="273" id="6Ls-dB-l3F"/>
+                            <constraint firstItem="U1h-C2-g8Y" firstAttribute="top" secondItem="rPV-DD-0Ve" secondAttribute="top" constant="332" id="6Ls-dB-l3F"/>
                             <constraint firstItem="VI0-ud-yrq" firstAttribute="top" secondItem="ssR-oX-vlP" secondAttribute="bottom" constant="8" symbolic="YES" id="6RZ-6D-4BH"/>
                             <constraint firstItem="VI0-ud-yrq" firstAttribute="bottom" secondItem="uWI-jh-Mso" secondAttribute="bottom" id="96r-cp-DXw"/>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="trailing" secondItem="m1W-Oh-P8a" secondAttribute="trailing" constant="11" id="A4d-QD-emf"/>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="trailing" secondItem="JnJ-NA-nla" secondAttribute="trailing" constant="11" id="AZ9-9C-kfX"/>
                             <constraint firstItem="OIU-iu-vI2" firstAttribute="leading" secondItem="U1h-C2-g8Y" secondAttribute="trailing" constant="3.6666666666666856" id="AeG-7D-Xg9"/>
-                            <constraint firstItem="YRl-sj-rUj" firstAttribute="top" secondItem="uWI-jh-Mso" secondAttribute="top" constant="50" id="BoK-Ne-hV3"/>
+                            <constraint firstItem="YRl-sj-rUj" firstAttribute="top" secondItem="rPV-DD-0Ve" secondAttribute="top" constant="109" id="BoK-Ne-hV3"/>
                             <constraint firstItem="ssR-oX-vlP" firstAttribute="leading" secondItem="VI0-ud-yrq" secondAttribute="leading" id="E0K-g6-rXd"/>
                             <constraint firstItem="ssR-oX-vlP" firstAttribute="top" secondItem="1LZ-u3-dPb" secondAttribute="bottom" constant="12" id="Fgc-et-tOU"/>
                             <constraint firstItem="JnJ-NA-nla" firstAttribute="leading" secondItem="uWI-jh-Mso" secondAttribute="leading" constant="168" id="Jez-WK-sis"/>
@@ -312,8 +315,8 @@
                             <constraint firstItem="ssR-oX-vlP" firstAttribute="trailing" secondItem="1LZ-u3-dPb" secondAttribute="trailing" id="dol-YR-sUB"/>
                             <constraint firstItem="d9N-dz-1VO" firstAttribute="leading" secondItem="uWI-jh-Mso" secondAttribute="leading" constant="16" id="gMn-qH-TO6"/>
                             <constraint firstItem="ssR-oX-vlP" firstAttribute="leading" secondItem="1LZ-u3-dPb" secondAttribute="leading" id="ggb-rm-MqK"/>
-                            <constraint firstItem="OIU-iu-vI2" firstAttribute="top" secondItem="uWI-jh-Mso" secondAttribute="top" constant="271" id="lSf-VB-Obu"/>
-                            <constraint firstItem="m1W-Oh-P8a" firstAttribute="top" secondItem="uWI-jh-Mso" secondAttribute="top" constant="71" id="lVm-YZ-grc"/>
+                            <constraint firstItem="OIU-iu-vI2" firstAttribute="top" secondItem="rPV-DD-0Ve" secondAttribute="top" constant="330" id="lSf-VB-Obu"/>
+                            <constraint firstItem="m1W-Oh-P8a" firstAttribute="top" secondItem="rPV-DD-0Ve" secondAttribute="top" constant="130" id="lVm-YZ-grc"/>
                             <constraint firstItem="U1h-C2-g8Y" firstAttribute="leading" secondItem="d9N-dz-1VO" secondAttribute="trailing" constant="131" id="m87-jp-h4o"/>
                             <constraint firstItem="1LZ-u3-dPb" firstAttribute="leading" secondItem="uWI-jh-Mso" secondAttribute="leading" constant="16" id="rba-iw-58h"/>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="bottom" secondItem="YRl-sj-rUj" secondAttribute="bottom" constant="506" id="uDq-jY-l8p"/>

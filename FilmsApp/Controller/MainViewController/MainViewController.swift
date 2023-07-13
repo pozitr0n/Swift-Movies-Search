@@ -69,5 +69,16 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let destinationViewController = storyboard?.instantiateViewController(withIdentifier: "MovieDetailsViewControllerID") as? MovieDetailsViewController else {
+            return
+        }
+        
+        destinationViewController.receivedIndex = indexPath.row
+        navigationController?.pushViewController(destinationViewController, animated: true)
+        
+    }
+    
 }
 
