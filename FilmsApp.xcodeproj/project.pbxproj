@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4D52803D2A4B1CD800991CBB /* DetailsPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D52803C2A4B1CD800991CBB /* DetailsPreviewCollectionViewCell.swift */; };
 		4D5280412A4B46DE00991CBB /* FullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5280402A4B46DE00991CBB /* FullScreenViewController.swift */; };
+		4D7ABF2C2A615DBA00D3F885 /* RoundingTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7ABF2B2A615DBA00D3F885 /* RoundingTransition.swift */; };
 		4DDCAD272A3D444600CC845C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD262A3D444600CC845C /* AppDelegate.swift */; };
 		4DDCAD292A3D444600CC845C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD282A3D444600CC845C /* SceneDelegate.swift */; };
 		4DDCAD2B2A3D444600CC845C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD2A2A3D444600CC845C /* MainViewController.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		4D52803C2A4B1CD800991CBB /* DetailsPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		4D5280402A4B46DE00991CBB /* FullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenViewController.swift; sourceTree = "<group>"; };
+		4D7ABF2B2A615DBA00D3F885 /* RoundingTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundingTransition.swift; sourceTree = "<group>"; };
 		4DDCAD232A3D444600CC845C /* FilmsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DDCAD262A3D444600CC845C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DDCAD282A3D444600CC845C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,14 @@
 			path = FullScreenViewController;
 			sourceTree = "<group>";
 		};
+		4D7ABF2A2A615DA300D3F885 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				4D7ABF2B2A615DBA00D3F885 /* RoundingTransition.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		4DDCAD1A2A3D444600CC845C = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +123,7 @@
 		4DDCAD3B2A3D468F00CC845C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4D7ABF2A2A615DA300D3F885 /* Animation */,
 				4D52803E2A4B41F100991CBB /* DetailsPreviewCell */,
 				4DDCAD502A4127BD00CC845C /* XIB */,
 				4DDCAD4D2A3E7F3600CC845C /* MainMovieCell */,
@@ -274,6 +285,7 @@
 				4DDCAD2B2A3D444600CC845C /* MainViewController.swift in Sources */,
 				4DDCAD462A3D476600CC845C /* FullPictureViewController.swift in Sources */,
 				4DDCAD432A3D474500CC845C /* MoviePicturesViewController.swift in Sources */,
+				4D7ABF2C2A615DBA00D3F885 /* RoundingTransition.swift in Sources */,
 				4DDCAD272A3D444600CC845C /* AppDelegate.swift in Sources */,
 				4DDCAD4B2A3D4C4400CC845C /* JSON_Model.swift in Sources */,
 				4DDCAD4F2A3E7F6200CC845C /* MovieCollectionViewCell.swift in Sources */,

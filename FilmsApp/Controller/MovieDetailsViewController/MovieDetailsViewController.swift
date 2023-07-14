@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieDetailsViewController: UIViewController {
+class MovieDetailsViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
     // Test
     var testArrayPreview: [TestDetailPreviewModel] = TestDetailPreviewMethods().returnTestArray()
@@ -15,6 +15,9 @@ class MovieDetailsViewController: UIViewController {
     
     // Setting the parameters
     private let moviePosterImageViewCornerRadius: CGFloat = 10
+    
+    // Parameter for animation
+    var transition: RoundingTransition = RoundingTransition()
     
     @IBOutlet weak var moviePosterImageView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
@@ -44,6 +47,9 @@ class MovieDetailsViewController: UIViewController {
             return
         }
         
+        // Moving to full screen (using animation)
+        destinationViewController.transitioningDelegate = self
+        destinationViewController.modalPresentationStyle = .custom
         destinationViewController.indexPathFromParentViewController = receivedIndex
         
     }
@@ -92,6 +98,30 @@ class MovieDetailsViewController: UIViewController {
     @IBAction func allThePreviewImages(_ sender: Any) {
         
         
+        
+    }
+    
+    // Method for presenting view
+    //
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        transition.transitionProfile = .show
+        transition.start = moviePosterImageView.center
+        transition.roundColor = UIColor.white
+        
+        return transition
+        
+    }
+    
+    // Method for closing view
+    //
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        transition.transitionProfile = .cancel
+        transition.start = moviePosterImageView.center
+        transition.roundColor = UIColor.white
+        
+        return transition
         
     }
     

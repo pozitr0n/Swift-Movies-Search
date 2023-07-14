@@ -24,9 +24,7 @@ class FullScreenViewController: UIViewController {
     }
     
     @IBAction func closeButtonPressed(_ sender: Any) {
-        
         dismiss(animated: true, completion: nil)
-        
     }
     
     // Getting full movie poster from parent view controller
