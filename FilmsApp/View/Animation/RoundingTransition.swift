@@ -42,10 +42,14 @@ class RoundingTransition: NSObject {
 
 extension RoundingTransition: UIViewControllerAnimatedTransitioning {
     
+    // Method for getting duration
+    //
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return time
     }
     
+    // Method for transition
+    //
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
         let container = transitionContext.containerView
@@ -129,6 +133,8 @@ extension RoundingTransition: UIViewControllerAnimatedTransitioning {
         
     }
     
+    // Method for round frame
+    //
     func roundFrame(withViewCenter viewCenter: CGPoint, size viewSize: CGSize, startPoint: CGPoint) -> CGRect {
         
         let xLength = fmax(startPoint.x, viewSize.width - startPoint.x)
