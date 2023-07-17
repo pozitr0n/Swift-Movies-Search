@@ -78,6 +78,7 @@ extension RoundingTransition: UIViewControllerAnimatedTransitioning {
                 UIView.animate(withDuration: time, animations: {
                     
                     self.round.transform = CGAffineTransform.identity
+                    
                     showedView.transform = CGAffineTransform.identity
                     showedView.alpha = 1
                     showedView.center = viewCenter
@@ -105,6 +106,7 @@ extension RoundingTransition: UIViewControllerAnimatedTransitioning {
                 UIView.animate(withDuration: time, animations: {
                     
                     self.round.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+                    
                     returnableView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
                     returnableView.center = self.start
                     returnableView.alpha = 0
