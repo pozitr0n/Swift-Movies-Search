@@ -80,13 +80,44 @@
                     <view key="view" contentMode="scaleToFill" id="DnU-Jd-cKo">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MXb-Bw-H4M">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hgy-SH-d4Y">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FavouriteMovieCell" id="yqO-OL-vXD" customClass="FavouriteMovieCell" customModule="FilmsApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="YGj-mH-3p2">
+                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="POx-hz-CFt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MXb-Bw-H4M" firstAttribute="top" secondItem="POx-hz-CFt" secondAttribute="top" id="A1h-Lq-Cb2"/>
+                            <constraint firstItem="MXb-Bw-H4M" firstAttribute="leading" secondItem="POx-hz-CFt" secondAttribute="leading" id="FS9-kn-2s5"/>
+                            <constraint firstItem="MXb-Bw-H4M" firstAttribute="bottom" secondItem="POx-hz-CFt" secondAttribute="bottom" id="O7S-pQ-rub"/>
+                            <constraint firstItem="POx-hz-CFt" firstAttribute="trailing" secondItem="MXb-Bw-H4M" secondAttribute="trailing" id="xk0-MO-cfO"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="favouriteMoviesCollectionView" destination="MXb-Bw-H4M" id="IOV-Sf-vSu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E8t-GW-jrJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="963" y="801"/>
+            <point key="canvasLocation" x="962.59541984732823" y="800.70422535211276"/>
         </scene>
         <!--Full Screen View Controller-->
         <scene sceneID="u4Z-Tq-bq1">
