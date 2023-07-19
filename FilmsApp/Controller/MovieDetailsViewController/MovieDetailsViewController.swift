@@ -11,13 +11,17 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     
     // Test
     var testArrayPreview: [TestDetailPreviewModel] = TestDetailPreviewMethods().returnTestArray()
-    var testArray: [TestModel] = TestMethods().returnTestArray()
+    var testArray: [Item] = Model().testArray
+    var testFavouriteArray: [Item] = Model().showMoviesLiked()
     
     // Setting the parameters
     private let moviePosterImageViewCornerRadius: CGFloat = 10
     
     // Parameter for animation
     var transition: RoundingTransition = RoundingTransition()
+    
+    // Parameter from favourite view controller
+    var cameFromFavourite: Bool = Bool()
     
     @IBOutlet weak var moviePosterImageView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
@@ -76,10 +80,21 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     //
     func getMovieInformationFromMainController() {
         
-        moviePosterImageView.image = UIImage(named: testArray[receivedIndex].testPic ?? "image_cover_144_203")
-        movieTitleLabel.text = testArray[receivedIndex].testTitle
-        releaseYearLabel.text = testArray[receivedIndex].testYear
-        ratingLabel.text = testArray[receivedIndex].testRating
+        if cameFromFavourite {
+            
+            moviePosterImageView.image = UIImage(named: testFavouriteArray[receivedIndex].testPic ?? "image_cover_144_203")
+            movieTitleLabel.text = testFavouriteArray[receivedIndex].testTitle
+            releaseYearLabel.text = testFavouriteArray[receivedIndex].testYear
+            ratingLabel.text = testFavouriteArray[receivedIndex].testRating
+            
+        } else {
+         
+            moviePosterImageView.image = UIImage(named: testArray[receivedIndex].testPic ?? "image_cover_144_203")
+            movieTitleLabel.text = testArray[receivedIndex].testTitle
+            releaseYearLabel.text = testArray[receivedIndex].testYear
+            ratingLabel.text = testArray[receivedIndex].testRating
+            
+        }
         
         // Test
         movieDescriptionTextView.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."

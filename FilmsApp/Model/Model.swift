@@ -9,6 +9,7 @@ import Foundation
 
 class Model {
     
+    // Array with liked movies
     var likedMoviesArray: [Item] = []
     var testArray: [Item] = [
         

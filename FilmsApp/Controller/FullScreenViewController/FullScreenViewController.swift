@@ -16,7 +16,7 @@ class FullScreenViewController: UIViewController {
     var indexPathFromParentViewController: Int = Int()
     
     // Test
-    var testArray: [TestModel] = TestMethods().returnTestArray()
+    var testArray: [Item] = Model().testArray
     
     override func viewDidLoad() {
         super.viewDidLoad()

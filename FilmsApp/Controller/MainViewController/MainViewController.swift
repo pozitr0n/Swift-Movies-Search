@@ -10,16 +10,23 @@ import UIKit
 class MainViewController: UIViewController {
 
     // Test
-    var testArray: [TestModel] = TestMethods().returnTestArray()
+    var testArray: [Item] = Model().testArray
+    
+    // Parameters
+    private var sideMenuViewController: SideMenuViewController!
     
     // Outlets
     @IBOutlet weak var moviesSearchBar: UISearchBar!
     @IBOutlet weak var mainCollectionView: UICollectionView!
+    @IBOutlet weak var mainMenuButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
+        initializeSideMenu()
+        addChildViewControllers()
+        configureGestures()
         initializeDataSourceDelegates()
         registerXIBCell()
         
@@ -40,10 +47,71 @@ class MainViewController: UIViewController {
     //
     func initializeDataSourceDelegates() {
         
+        sideMenuViewController.delegate = self
+        
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
         moviesSearchBar.delegate = self
         
+    }
+    
+    // Method for initialize menu
+    //
+    func initializeSideMenu() {
+        
+        guard let favouriteMoviesViewController = storyboard?.instantiateViewController(withIdentifier: "FavouriteMoviesViewControllerID") as? FavouriteMoviesViewController else {
+            return
+        }
+        
+        let sideMenuItems = [
+            SideMenuItem(icon: UIImage(systemName: "house.circle"),
+                         name: "Home",
+                         viewController: .embed(self)),
+            SideMenuItem(icon: UIImage(systemName: "heart.circle"),
+                         name: "Favourite",
+                         viewController: .push(favouriteMoviesViewController))
+        ]
+        
+        sideMenuViewController = SideMenuViewController(sideMenuItems: sideMenuItems)
+        
+    }
+    
+    // Method for adding child elements on the view controller
+    //
+    private func addChildViewControllers() {
+        
+        addChild(sideMenuViewController)
+        view.addSubview(sideMenuViewController.view)
+        sideMenuViewController.didMove(toParent: self)
+        
+    }
+    
+    // Method for configuring swipes
+    //
+    private func configureGestures() {
+       
+        let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft))
+        swipeLeftGesture.direction = .left
+        swipeLeftGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(swipeLeftGesture)
+
+        let rightSwipeGesture = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(swipedRight))
+        rightSwipeGesture.cancelsTouchesInView = false
+        rightSwipeGesture.edges = .left
+        view.addGestureRecognizer(rightSwipeGesture)
+        
+    }
+    
+    @objc private func swipedLeft() {
+        sideMenuViewController.hide()
+    }
+
+    @objc private func swipedRight() {
+        sideMenuViewController.show()
+    }
+    
+    @IBAction func mainMenuButton(_ sender: Any) {
+        menuButtonTapped()
     }
 
 }
@@ -77,6 +145,37 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         
         destinationViewController.receivedIndex = indexPath.row
         navigationController?.pushViewController(destinationViewController, animated: true)
+        
+    }
+    
+}
+
+extension MainViewController: SideMenuDelegate {
+    
+    // Method for button menu tapping
+    //
+    func menuButtonTapped() {
+        
+        mainMenuButton.tintColor = .darkGray
+        sideMenuViewController.show()
+        
+    }
+
+    // Method: event after selecting menu-element
+    //
+    func itemSelected(item: ContentViewControllerPresentation) {
+        
+        switch item {
+        case .embed(_):
+            
+            sideMenuViewController.hide()
+
+        case let .push(viewController):
+            
+            sideMenuViewController.hide()
+            navigationController?.pushViewController(viewController, animated: true)
+            
+        }
         
     }
     
