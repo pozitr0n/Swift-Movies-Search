@@ -84,15 +84,35 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
             
             moviePosterImageView.image = UIImage(named: testFavouriteArray[receivedIndex].testPic ?? "image_cover_144_203")
             movieTitleLabel.text = testFavouriteArray[receivedIndex].testTitle
-            releaseYearLabel.text = testFavouriteArray[receivedIndex].testYear
-            ratingLabel.text = testFavouriteArray[receivedIndex].testRating
+            
+            if let testYear = testFavouriteArray[receivedIndex].testYear {
+                releaseYearLabel.text = String(testYear)
+            } else {
+                releaseYearLabel.text = "0000"
+            }
+            
+            if let testRating = testFavouriteArray[receivedIndex].testRating {
+                releaseYearLabel.text = String(testRating)
+            } else {
+                releaseYearLabel.text = "0000"
+            }
             
         } else {
          
             moviePosterImageView.image = UIImage(named: testArray[receivedIndex].testPic ?? "image_cover_144_203")
             movieTitleLabel.text = testArray[receivedIndex].testTitle
-            releaseYearLabel.text = testArray[receivedIndex].testYear
-            ratingLabel.text = testArray[receivedIndex].testRating
+            
+            if let testYear = testArray[receivedIndex].testYear {
+                releaseYearLabel.text = String(testYear)
+            } else {
+                releaseYearLabel.text = "0000"
+            }
+            
+            if let testRating = testArray[receivedIndex].testRating {
+                releaseYearLabel.text = String(testRating)
+            } else {
+                releaseYearLabel.text = "0000"
+            }
             
         }
         

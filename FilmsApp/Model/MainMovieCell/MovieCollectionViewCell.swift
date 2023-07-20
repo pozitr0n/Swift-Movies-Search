@@ -41,7 +41,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     // Filling all the information into preview cell
     //
-    func fillDataIntoCell(_ pictureName: String?, _ titleName: String?, _ yearName: String?, _ ratingName: String?) {
+    func fillDataIntoCell(_ pictureName: String?, _ titleName: String?, _ yearName: Int?, _ ratingName: Double?) {
      
         if let pictureName = pictureName {
             moviePreviewImageView.image = UIImage(named: pictureName)
@@ -56,13 +56,13 @@ class MovieCollectionViewCell: UICollectionViewCell {
         }
         
         if let yearName = yearName {
-            releaseYearLabel.text = yearName
+            releaseYearLabel.text = String(yearName)
         } else {
             releaseYearLabel.text = "0000"
         }
         
         if let ratingName = ratingName {
-            ratingLabel.text = ratingName
+            ratingLabel.text = String(ratingName)
         } else {
             ratingLabel.text = "0.0"
         }

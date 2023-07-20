@@ -11,15 +11,15 @@ final class SideMenuViewController: UIViewController {
    
     private var headerView: UIView = {
         
-        let view = UIView()
+        let headerView = UIView()
         
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .darkGray
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        headerView.backgroundColor = .darkGray
         
-        return view
+        return headerView
         
     }()
-
+    
     private var tableView: UITableView = {
         
         let tableView = UITableView()
@@ -94,21 +94,26 @@ final class SideMenuViewController: UIViewController {
     //
     private func configureConstraints() {
         
-        sideMenuView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        NSLayoutConstraint.activate([
+        
+            sideMenuView.topAnchor.constraint(equalTo: view.topAnchor),
+            sideMenuView.widthAnchor.constraint(equalToConstant: view.frame.size.width * 0.72),
+            sideMenuView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+            headerView.topAnchor.constraint(equalTo: sideMenuView.topAnchor),
+            headerView.leadingAnchor.constraint(equalTo: sideMenuView.leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: sideMenuView.trailingAnchor),
+            headerView.heightAnchor.constraint(equalToConstant: 108),
+            
+            tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: sideMenuView.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: sideMenuView.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: sideMenuView.bottomAnchor)
+            
+        ])
+        
         leadingConstraint = sideMenuView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -view.frame.size.width)
         leadingConstraint.isActive = true
-        sideMenuView.widthAnchor.constraint(equalToConstant: view.frame.size.width * 0.72).isActive = true
-        sideMenuView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-
-        headerView.topAnchor.constraint(equalTo: sideMenuView.topAnchor).isActive = true
-        headerView.leadingAnchor.constraint(equalTo: sideMenuView.leadingAnchor).isActive = true
-        headerView.trailingAnchor.constraint(equalTo: sideMenuView.trailingAnchor).isActive = true
-        headerView.heightAnchor.constraint(equalToConstant: 130).isActive = true
-
-        tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: sideMenuView.leadingAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: sideMenuView.trailingAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: sideMenuView.bottomAnchor).isActive = true
         
     }
 
@@ -148,7 +153,7 @@ final class SideMenuViewController: UIViewController {
         self.view.frame.origin.x = 0
         self.view.backgroundColor = self.shadowColor
         
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.7) {
             self.leadingConstraint.constant = 0
             self.view.layoutIfNeeded()
         }
@@ -161,7 +166,7 @@ final class SideMenuViewController: UIViewController {
         
         self.view.backgroundColor = .clear
         
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.7) {
             self.leadingConstraint.constant = -self.screenWidth
             self.view.layoutIfNeeded()
         } completion: { _ in
