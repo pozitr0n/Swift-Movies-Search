@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kqs-kc-YHm">
-                                <rect key="frame" x="20" y="179" width="353" height="639"/>
+                                <rect key="frame" x="20" y="103" width="353" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Sun-HF-FTj">
                                     <size key="itemSize" width="160" height="300"/>
@@ -43,24 +43,14 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="exF-7Z-XuI"/>
                                 </connections>
                             </collectionView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="REg-MQ-ELM">
-                                <rect key="frame" x="0.0" y="103" width="393" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="cua-YZ-QIy"/>
-                                </connections>
-                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kqs-kc-YHm" secondAttribute="trailing" constant="20" id="48e-MV-D5g"/>
                             <constraint firstItem="kqs-kc-YHm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="5wG-yV-oyp"/>
-                            <constraint firstItem="REg-MQ-ELM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="GZx-tJ-Szz"/>
-                            <constraint firstItem="REg-MQ-ELM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="S9T-9N-Dbb"/>
+                            <constraint firstItem="kqs-kc-YHm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bvw-3D-cAo"/>
                             <constraint firstItem="kqs-kc-YHm" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="sfa-dB-Z26"/>
-                            <constraint firstItem="REg-MQ-ELM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vxh-lS-peZ"/>
-                            <constraint firstItem="kqs-kc-YHm" firstAttribute="top" secondItem="REg-MQ-ELM" secondAttribute="bottom" constant="20" id="zXl-0t-qph"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Movies Search" id="g7e-wt-xb7">
@@ -74,7 +64,6 @@
                     <connections>
                         <outlet property="mainCollectionView" destination="kqs-kc-YHm" id="NiI-Kn-2G1"/>
                         <outlet property="mainMenuButton" destination="Ux3-Cs-UOb" id="U0d-8C-Oz9"/>
-                        <outlet property="moviesSearchBar" destination="REg-MQ-ELM" id="poA-sK-iAF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

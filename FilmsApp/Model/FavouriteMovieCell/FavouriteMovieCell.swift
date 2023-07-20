@@ -56,13 +56,13 @@ class FavouriteMovieCell: UICollectionViewCell {
         }
         
         if let yearName = item.testYear {
-            releaseYearLabel.text = yearName
+            releaseYearLabel.text = String(yearName)
         } else {
             releaseYearLabel.text = "0000"
         }
         
         if let ratingName = item.testRating {
-            ratingLabel.text = ratingName
+            ratingLabel.text = String(ratingName)
         } else {
             ratingLabel.text = "0.0"
         }

@@ -14,9 +14,9 @@ class MainViewController: UIViewController {
     
     // Parameters
     private var sideMenuViewController: SideMenuViewController!
+    private var searchController = UISearchController()
     
     // Outlets
-    @IBOutlet weak var moviesSearchBar: UISearchBar!
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var mainMenuButton: UIBarButtonItem!
     
@@ -25,6 +25,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         initializeSideMenu()
+        initializeSearchController()
         addChildViewControllers()
         configureGestures()
         initializeDataSourceDelegates()
@@ -51,7 +52,6 @@ class MainViewController: UIViewController {
         
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
-        moviesSearchBar.delegate = self
         
     }
     
@@ -73,6 +73,18 @@ class MainViewController: UIViewController {
         ]
         
         sideMenuViewController = SideMenuViewController(sideMenuItems: sideMenuItems)
+        
+    }
+    
+    // Method for initialize UISearchController
+    //
+    func initializeSearchController() {
+      
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Find your movie..."
+        
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
         
     }
     
