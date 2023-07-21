@@ -23,7 +23,7 @@
                             <constraint firstAttribute="width" constant="144" id="QsJ-Ff-eWv"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjJ-uh-9Mr">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjJ-uh-9Mr">
                         <rect key="frame" x="8" y="225" width="144" height="23"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                         <nil key="textColor"/>
