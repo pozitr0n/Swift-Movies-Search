@@ -11,6 +11,8 @@ class Model {
     
     // Array with liked movies
     var likedMoviesArray: [Item] = []
+    
+    // Final array with data
     var testArray: [Item] = [
         
         Item(id: 0, testPic: "image1", testTitle: "This is the test movie 1", testYear: 2001, testRating: 4.7, isLiked: true),
@@ -31,6 +33,10 @@ class Model {
         
     ]
     
+    // Sorted array
+    var sortedTestArray: [Item] = []
+    var sortAscending: Bool = false
+    
     var testPic: String?
     var testTitle: String?
     var testYear: String?
@@ -45,15 +51,57 @@ class Model {
     
     // Method for getting liked movies
     //
-    func showMoviesLiked() -> [Item] {
+    func showMoviesLiked() {
         
         for currMovie in testArray {
             if currMovie.isLiked {
-                likedMoviesArray.append(currMovie)
+                self.likedMoviesArray.append(currMovie)
             }
         }
         
-        return likedMoviesArray
+    }
+    
+    // Rating method (using closure)
+    //
+    func ratingSort() {
+        
+        // closure-sorting
+        self.testArray.sort {
+            sortAscending ? ($0.testRating ?? 0)  < ($1.testRating ?? 0) : ($0.testRating ?? 0)  > ($1.testRating ?? 0)
+        }
+        
+        // putting sorted testArray into sortedTestArray
+        sortedTestArray = testArray
+        
+    }
+    
+    // Method for searching data (search field)
+    //
+    func search(_ searchTextValue: String) {
+    
+        sortedTestArray = []
+        
+        if searchTextValue.isEmpty {
+            sortedTestArray = testArray
+        } else {
+            
+            for item in testArray {
+                
+                guard let unwrItem = item.testTitle else {
+                    return
+                }
+                
+                if unwrItem.contains(searchTextValue) {
+                    sortedTestArray.append(item)
+                }
+                
+            }
+            
+        }
+        
+        sortedTestArray = testArray.filter({
+            $0.testTitle?.range(of: searchTextValue, options: .caseInsensitive) != nil
+        })
         
     }
 

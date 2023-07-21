@@ -9,16 +9,16 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    // Test
-    var testArray: [Item] = Model().testArray
-    
-    // Parameters
+    // Setting the parameters
     private var sideMenuViewController: SideMenuViewController!
     private var searchController = UISearchController()
+    let model = Model()
+    var testArray: [Item] = Model().testArray
     
     // Outlets
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var mainMenuButton: UIBarButtonItem!
+    @IBOutlet weak var sortingButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         
@@ -39,7 +39,13 @@ class MainViewController: UIViewController {
         
         let customXIBCell = UINib(nibName: "MovieCollectionViewCell", bundle: nil)
         
+        // registering xib-cell
         mainCollectionView.register(customXIBCell, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
+        
+        // sorting data
+        model.ratingSort()
+        
+        // reloading data
         mainCollectionView.reloadData()
         
     }
@@ -47,6 +53,8 @@ class MainViewController: UIViewController {
     // Initialization of standard properties: dataSource and delegate
     //
     func initializeDataSourceDelegates() {
+        
+        model.sortedTestArray = model.testArray
         
         sideMenuViewController.delegate = self
         
@@ -59,17 +67,13 @@ class MainViewController: UIViewController {
     //
     func initializeSideMenu() {
         
-        guard let favouriteMoviesViewController = storyboard?.instantiateViewController(withIdentifier: "FavouriteMoviesViewControllerID") as? FavouriteMoviesViewController else {
-            return
-        }
-        
         let sideMenuItems = [
             SideMenuItem(icon: UIImage(systemName: "house.circle"),
                          name: "Home",
                          viewController: .embed(self)),
             SideMenuItem(icon: UIImage(systemName: "heart.circle"),
                          name: "Favourite",
-                         viewController: .push(favouriteMoviesViewController))
+                         viewController: .push)
         ]
         
         sideMenuViewController = SideMenuViewController(sideMenuItems: sideMenuItems)
@@ -115,15 +119,34 @@ class MainViewController: UIViewController {
     }
     
     @objc private func swipedLeft() {
+        
+        openNavigationBar()
         sideMenuViewController.hide()
+        
     }
 
     @objc private func swipedRight() {
+        
+        closeNavigationBar()
         sideMenuViewController.show()
+        
     }
     
     @IBAction func mainMenuButton(_ sender: Any) {
         menuButtonTapped()
+    }
+    
+    @IBAction func sortData(_ sender: Any) {
+    
+        let sortingUp = UIImage(systemName: "arrow.up.circle")
+        let sortingDown = UIImage(systemName: "arrow.down.circle")
+            
+        model.sortAscending = !model.sortAscending
+        sortingButton.image = model.sortAscending ? sortingUp : sortingDown
+        model.ratingSort()
+        
+        mainCollectionView.reloadData()
+        
     }
 
 }
@@ -131,7 +154,7 @@ class MainViewController: UIViewController {
 extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return testArray.count
+        return model.sortedTestArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -140,10 +163,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             return UICollectionViewCell()
         }
         
-        cell.fillDataIntoCell(testArray[indexPath.row].testPic,
-                              testArray[indexPath.row].testTitle,
-                              testArray[indexPath.row].testYear,
-                              testArray[indexPath.row].testRating)
+        cell.data = self.model.sortedTestArray[indexPath.item]
         
         return cell
         
@@ -155,10 +175,29 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             return
         }
         
-        destinationViewController.receivedIndex = indexPath.row
+        destinationViewController.receivedIndex = model.sortedTestArray[indexPath.row].id ?? 0
         navigationController?.pushViewController(destinationViewController, animated: true)
         
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchText.isEmpty {
+            model.sortedTestArray = model.testArray
+            mainCollectionView.reloadData()
+        } else {
+            model.search(searchText)
+            mainCollectionView.reloadData()
+        }
+
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        model.sortedTestArray = model.testArray
+        mainCollectionView.reloadData()
+    }
+    
+    
     
 }
 
@@ -168,7 +207,7 @@ extension MainViewController: SideMenuDelegate {
     //
     func menuButtonTapped() {
         
-        mainMenuButton.tintColor = .darkGray
+        closeNavigationBar()
         sideMenuViewController.show()
         
     }
@@ -180,13 +219,35 @@ extension MainViewController: SideMenuDelegate {
         switch item {
         case .embed(_):
             
+            openNavigationBar()
             sideMenuViewController.hide()
 
-        case let .push(viewController):
+        case .push:
             
+            guard let favouriteMoviesViewController = storyboard?.instantiateViewController(withIdentifier: "FavouriteMoviesViewControllerID") as? FavouriteMoviesViewController else {
+                return
+            }
+            
+            openNavigationBar()
             sideMenuViewController.hide()
-            navigationController?.pushViewController(viewController, animated: true)
+            navigationController?.pushViewController(favouriteMoviesViewController, animated: true)
             
+        }
+        
+    }
+    
+    func openNavigationBar() {
+        
+        UIView.animate(withDuration: 0.3) {
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
+        
+    }
+    
+    func closeNavigationBar() {
+        
+        UIView.animate(withDuration: 0.3) {
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
         }
         
     }

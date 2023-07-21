@@ -11,12 +11,13 @@ class FavouriteMoviesViewController: UIViewController {
 
     @IBOutlet weak var favouriteMoviesCollectionView: UICollectionView!
     
-    // Test
-    var testFavouriteArray: [Item] = Model().showMoviesLiked()
+    // Setting the parameters
+    let model = Model()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         initializeDataSourceDelegates()
         registerXIBCell()
         
@@ -26,6 +27,8 @@ class FavouriteMoviesViewController: UIViewController {
     //
     func initializeDataSourceDelegates() {
         	
+        model.showMoviesLiked()
+        
         favouriteMoviesCollectionView.dataSource = self
         favouriteMoviesCollectionView.delegate = self
                
@@ -37,7 +40,10 @@ class FavouriteMoviesViewController: UIViewController {
         
         let customXIBCell = UINib(nibName: "FavouriteMovieCell", bundle: nil)
         
+        // registering xib-cell
         favouriteMoviesCollectionView.register(customXIBCell, forCellWithReuseIdentifier: FavouriteMovieCell.identifier)
+        
+        // reloading data
         favouriteMoviesCollectionView.reloadData()
         
     }
@@ -47,7 +53,7 @@ class FavouriteMoviesViewController: UIViewController {
 extension FavouriteMoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return testFavouriteArray.count
+        return model.likedMoviesArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -56,9 +62,20 @@ extension FavouriteMoviesViewController: UICollectionViewDelegate, UICollectionV
             return UICollectionViewCell()
         }
         
-        cell.fillDataIntoFavouriteCell(testFavouriteArray[indexPath.item])
+        cell.data = self.model.likedMoviesArray[indexPath.item]
         
         return cell
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let destinationViewController = storyboard?.instantiateViewController(withIdentifier: "MovieDetailsViewControllerID") as? MovieDetailsViewController else {
+            return
+        }
+        
+        destinationViewController.receivedIndex = model.likedMoviesArray[indexPath.row].id ?? 0
+        navigationController?.pushViewController(destinationViewController, animated: true)
         
     }
     

@@ -13,6 +13,41 @@ class MovieCollectionViewCell: UICollectionViewCell {
     static let identifier = "MovieCell"
     private let moviePreviewImageViewCornerRadius: CGFloat = 10
     
+    var data: Item? {
+        
+        didSet {
+            guard data != nil else {
+                return
+            }
+            
+            if let pictureName = data?.testPic {
+                moviePreviewImageView.image = UIImage(named: pictureName)
+            } else {
+                moviePreviewImageView.image = UIImage(named: "image_cover_144_203")
+            }
+            
+            if let titleName = data?.testTitle {
+                movieTitleLabel.text = titleName
+            } else {
+                movieTitleLabel.text = "No movie name"
+            }
+            
+            if let yearName = data?.testYear {
+                releaseYearLabel.text = String(yearName)
+            } else {
+                releaseYearLabel.text = "0000"
+            }
+            
+            if let ratingName = data?.testRating {
+                ratingLabel.text = String(ratingName)
+            } else {
+                ratingLabel.text = "0.0"
+            }
+            
+        }
+        
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -37,36 +72,5 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var releaseYearLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
-    
-    
-    // Filling all the information into preview cell
-    //
-    func fillDataIntoCell(_ pictureName: String?, _ titleName: String?, _ yearName: Int?, _ ratingName: Double?) {
-     
-        if let pictureName = pictureName {
-            moviePreviewImageView.image = UIImage(named: pictureName)
-        } else {
-            moviePreviewImageView.image = UIImage(named: "image_cover_144_203")
-        }
-        
-        if let titleName = titleName {
-            movieTitleLabel.text = titleName
-        } else {
-            movieTitleLabel.text = "No movie name"
-        }
-        
-        if let yearName = yearName {
-            releaseYearLabel.text = String(yearName)
-        } else {
-            releaseYearLabel.text = "0000"
-        }
-        
-        if let ratingName = ratingName {
-            ratingLabel.text = String(ratingName)
-        } else {
-            ratingLabel.text = "0.0"
-        }
-        
-    }
     
 }

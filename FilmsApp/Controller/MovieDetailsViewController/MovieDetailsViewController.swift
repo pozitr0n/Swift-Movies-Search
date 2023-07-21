@@ -9,19 +9,15 @@ import UIKit
 
 class MovieDetailsViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
-    // Test
+    // Setting the parameters
     var testArrayPreview: [TestDetailPreviewModel] = TestDetailPreviewMethods().returnTestArray()
-    var testArray: [Item] = Model().testArray
-    var testFavouriteArray: [Item] = Model().showMoviesLiked()
+    var model = Model()
     
     // Setting the parameters
     private let moviePosterImageViewCornerRadius: CGFloat = 10
     
     // Parameter for animation
     var transition: RoundingTransition = RoundingTransition()
-    
-    // Parameter from favourite view controller
-    var cameFromFavourite: Bool = Bool()
     
     @IBOutlet weak var moviePosterImageView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
@@ -32,6 +28,7 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     @IBOutlet weak var moviewPreviewCollectionView: UICollectionView!
     @IBOutlet weak var previewCountLabel: UILabel!
     @IBOutlet weak var allThePreviewImagesButton: UIButton!
+    @IBOutlet weak var likeButton: UIButton!
     
     var receivedIndex: Int = Int()
     
@@ -65,6 +62,20 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
         moviePosterImageView.layer.cornerRadius = moviePosterImageViewCornerRadius
         moviePosterImageView.clipsToBounds = true
         
+        setLikeButton()
+        
+    }
+    
+    // Setting "like button" when view controller opening
+    //
+    func setLikeButton() {
+        
+        if model.testArray[receivedIndex].isLiked {
+            likeButton.imageView?.image = UIImage(systemName: "heart.fill")
+        } else {
+            likeButton.imageView?.image = UIImage(systemName: "heart")
+        }
+        
     }
     
     // Initialization of standard properties: dataSource and delegate
@@ -80,40 +91,19 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     //
     func getMovieInformationFromMainController() {
         
-        if cameFromFavourite {
-            
-            moviePosterImageView.image = UIImage(named: testFavouriteArray[receivedIndex].testPic ?? "image_cover_144_203")
-            movieTitleLabel.text = testFavouriteArray[receivedIndex].testTitle
-            
-            if let testYear = testFavouriteArray[receivedIndex].testYear {
-                releaseYearLabel.text = String(testYear)
-            } else {
-                releaseYearLabel.text = "0000"
-            }
-            
-            if let testRating = testFavouriteArray[receivedIndex].testRating {
-                releaseYearLabel.text = String(testRating)
-            } else {
-                releaseYearLabel.text = "0000"
-            }
-            
+        moviePosterImageView.image = UIImage(named: model.testArray[receivedIndex].testPic ?? "image_cover_144_203")
+        movieTitleLabel.text = model.testArray[receivedIndex].testTitle
+        
+        if let testYear = model.testArray[receivedIndex].testYear {
+            releaseYearLabel.text = String(testYear)
         } else {
-         
-            moviePosterImageView.image = UIImage(named: testArray[receivedIndex].testPic ?? "image_cover_144_203")
-            movieTitleLabel.text = testArray[receivedIndex].testTitle
-            
-            if let testYear = testArray[receivedIndex].testYear {
-                releaseYearLabel.text = String(testYear)
-            } else {
-                releaseYearLabel.text = "0000"
-            }
-            
-            if let testRating = testArray[receivedIndex].testRating {
-                releaseYearLabel.text = String(testRating)
-            } else {
-                releaseYearLabel.text = "0000"
-            }
-            
+            releaseYearLabel.text = "0000"
+        }
+        
+        if let testRating = model.testArray[receivedIndex].testRating {
+            releaseYearLabel.text = String(testRating)
+        } else {
+            releaseYearLabel.text = "0000"
         }
         
         // Test
@@ -125,15 +115,15 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     }
     
     @IBAction func tapGestureAction(_ sender: UITapGestureRecognizer) {
-        
-        
-        
+        // Later
     }
     
     @IBAction func allThePreviewImages(_ sender: Any) {
-        
-        
-        
+        // Later
+    }
+    
+    @IBAction func likeButtonAction(_ sender: Any) {
+        // Later
     }
     
     // Method for presenting view

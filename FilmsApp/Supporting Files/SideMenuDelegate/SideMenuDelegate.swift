@@ -13,5 +13,7 @@ protocol SideMenuDelegate: AnyObject {
     
     func menuButtonTapped()
     func itemSelected(item: ContentViewControllerPresentation)
+    func openNavigationBar()
+    func closeNavigationBar()
     
 }

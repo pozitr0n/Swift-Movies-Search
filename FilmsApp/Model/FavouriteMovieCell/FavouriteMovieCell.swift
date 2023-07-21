@@ -13,6 +13,41 @@ class FavouriteMovieCell: UICollectionViewCell {
     static let identifier = "FavouriteMovieCell"
     private let moviePreviewImageViewCornerRadius: CGFloat = 10
     
+    var data: Item? {
+        
+        didSet {
+            guard data != nil else {
+                return
+            }
+            
+            if let pictureName = data?.testPic {
+                moviePreviewImageView.image = UIImage(named: pictureName)
+            } else {
+                moviePreviewImageView.image = UIImage(named: "image_cover_144_203")
+            }
+            
+            if let titleName = data?.testTitle {
+                movieTitleLabel.text = titleName
+            } else {
+                movieTitleLabel.text = "No movie name"
+            }
+            
+            if let yearName = data?.testYear {
+                releaseYearLabel.text = String(yearName)
+            } else {
+                releaseYearLabel.text = "0000"
+            }
+            
+            if let ratingName = data?.testRating {
+                ratingLabel.text = String(ratingName)
+            } else {
+                ratingLabel.text = "0.0"
+            }
+            
+        }
+        
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -39,40 +74,8 @@ class FavouriteMovieCell: UICollectionViewCell {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var deleteFromFavouriteButton: UIButton!
     
-    // Filling all the information into preview favourite cell
-    //
-    func fillDataIntoFavouriteCell(_ item: Item) {
-     
-        if let pictureName = item.testPic {
-            moviePreviewImageView.image = UIImage(named: pictureName)
-        } else {
-            moviePreviewImageView.image = UIImage(named: "image_cover_144_203")
-        }
-        
-        if let titleName = item.testTitle {
-            movieTitleLabel.text = titleName
-        } else {
-            movieTitleLabel.text = "No movie name"
-        }
-        
-        if let yearName = item.testYear {
-            releaseYearLabel.text = String(yearName)
-        } else {
-            releaseYearLabel.text = "0000"
-        }
-        
-        if let ratingName = item.testRating {
-            ratingLabel.text = String(ratingName)
-        } else {
-            ratingLabel.text = "0.0"
-        }
-        
-    }
-    
     @IBAction func deleteFromFavouriteMovies(_ sender: Any) {
-        
-        print("Test")
-        
+        // Later
     }
 
 }

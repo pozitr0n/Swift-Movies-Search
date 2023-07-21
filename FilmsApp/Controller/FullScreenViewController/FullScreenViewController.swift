@@ -13,9 +13,8 @@ class FullScreenViewController: UIViewController {
     
     @IBOutlet weak var closeButton: UIButton!
     
+    // Setting the parameters
     var indexPathFromParentViewController: Int = Int()
-    
-    // Test
     var testArray: [Item] = Model().testArray
     
     override func viewDidLoad() {

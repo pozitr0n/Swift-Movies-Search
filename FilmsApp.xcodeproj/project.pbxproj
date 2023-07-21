@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D1B64DA2A69FA7200A5CA61 /* TestPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1B64D92A69FA7200A5CA61 /* TestPreview.swift */; };
 		4D52803D2A4B1CD800991CBB /* DetailsPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D52803C2A4B1CD800991CBB /* DetailsPreviewCollectionViewCell.swift */; };
 		4D5280412A4B46DE00991CBB /* FullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5280402A4B46DE00991CBB /* FullScreenViewController.swift */; };
 		4D7ABF2C2A615DBA00D3F885 /* RoundingTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7ABF2B2A615DBA00D3F885 /* RoundingTransition.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D1B64D92A69FA7200A5CA61 /* TestPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPreview.swift; sourceTree = "<group>"; };
 		4D52803C2A4B1CD800991CBB /* DetailsPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		4D5280402A4B46DE00991CBB /* FullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenViewController.swift; sourceTree = "<group>"; };
 		4D7ABF2B2A615DBA00D3F885 /* RoundingTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundingTransition.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				4DDCAD4D2A3E7F3600CC845C /* MainMovieCell */,
 				4DDCAD4A2A3D4C4400CC845C /* JSON_Model.swift */,
 				4D7ABF2D2A65FDAB00D3F885 /* Model.swift */,
+				4D1B64D92A69FA7200A5CA61 /* TestPreview.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 			files = (
 				4DDCAD402A3D46EB00CC845C /* MovieDetailsViewController.swift in Sources */,
 				4DDCAD2B2A3D444600CC845C /* MainViewController.swift in Sources */,
+				4D1B64DA2A69FA7200A5CA61 /* TestPreview.swift in Sources */,
 				4D7ABF432A6864D800D3F885 /* SideMenuItemCell.swift in Sources */,
 				4DDCAD462A3D476600CC845C /* FullPictureViewController.swift in Sources */,
 				4DDCAD432A3D474500CC845C /* MoviePicturesViewController.swift in Sources */,

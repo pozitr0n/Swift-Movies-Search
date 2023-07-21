@@ -14,7 +14,7 @@ final class SideMenuViewController: UIViewController {
         let headerView = UIView()
         
         headerView.translatesAutoresizingMaskIntoConstraints = false
-        headerView.backgroundColor = .darkGray
+        headerView.backgroundColor = .white
         
         return headerView
         
@@ -103,7 +103,7 @@ final class SideMenuViewController: UIViewController {
             headerView.topAnchor.constraint(equalTo: sideMenuView.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: sideMenuView.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: sideMenuView.trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 108),
+            headerView.heightAnchor.constraint(equalToConstant: 300),
             
             tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: sideMenuView.leadingAnchor),
@@ -143,6 +143,8 @@ final class SideMenuViewController: UIViewController {
     }
 
     @objc private func tapped() {
+        
+        delegate?.openNavigationBar()
         hide()
     }
 
@@ -153,7 +155,7 @@ final class SideMenuViewController: UIViewController {
         self.view.frame.origin.x = 0
         self.view.backgroundColor = self.shadowColor
         
-        UIView.animate(withDuration: 0.7) {
+        UIView.animate(withDuration: 0.6) {
             self.leadingConstraint.constant = 0
             self.view.layoutIfNeeded()
         }
@@ -166,7 +168,7 @@ final class SideMenuViewController: UIViewController {
         
         self.view.backgroundColor = .clear
         
-        UIView.animate(withDuration: 0.7) {
+        UIView.animate(withDuration: 0.6) {
             self.leadingConstraint.constant = -self.screenWidth
             self.view.layoutIfNeeded()
         } completion: { _ in

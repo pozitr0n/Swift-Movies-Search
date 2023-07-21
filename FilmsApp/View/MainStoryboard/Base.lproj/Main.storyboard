@@ -47,10 +47,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kqs-kc-YHm" secondAttribute="trailing" constant="20" id="48e-MV-D5g"/>
-                            <constraint firstItem="kqs-kc-YHm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="5wG-yV-oyp"/>
-                            <constraint firstItem="kqs-kc-YHm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bvw-3D-cAo"/>
-                            <constraint firstItem="kqs-kc-YHm" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="sfa-dB-Z26"/>
+                            <constraint firstItem="kqs-kc-YHm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="DGw-kD-4e4"/>
+                            <constraint firstItem="kqs-kc-YHm" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="RaQ-vP-Q3B"/>
+                            <constraint firstItem="kqs-kc-YHm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="aXv-PB-Ucc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kqs-kc-YHm" secondAttribute="trailing" constant="20" id="myV-Us-sAe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Movies Search" id="g7e-wt-xb7">
@@ -60,10 +60,17 @@
                                 <action selector="mainMenuButton:" destination="BYZ-38-t0r" id="l75-fl-6UE"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Sorting" image="arrow.down.circle" catalog="system" id="Pyb-Sb-aZc">
+                            <color key="tintColor" red="0.4646070175" green="0.4646070175" blue="0.4646070175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="sortData:" destination="BYZ-38-t0r" id="YhE-VI-yzl"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mainCollectionView" destination="kqs-kc-YHm" id="NiI-Kn-2G1"/>
                         <outlet property="mainMenuButton" destination="Ux3-Cs-UOb" id="U0d-8C-Oz9"/>
+                        <outlet property="sortingButton" destination="Pyb-Sb-aZc" id="Sfg-BD-jov"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -251,7 +258,7 @@
                                 <color key="tintColor" red="0.4646070175" green="0.4646070175" blue="0.4646070175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal">
-                                    <imageReference key="image" image="chevron.right.circle.fill" catalog="system" symbolScale="large"/>
+                                    <imageReference key="image" image="chevron.right.circle" catalog="system" symbolScale="large"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
                                 <connections>
@@ -323,6 +330,15 @@
                                 <color key="textColor" red="0.4646070175" green="0.4646070175" blue="0.4646070175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60T-5M-Y1g">
+                                <rect key="frame" x="168" y="287" width="25" height="25"/>
+                                <color key="tintColor" red="0.4646070175" green="0.4646070175" blue="0.4646070175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
+                                <connections>
+                                    <action selector="likeButtonAction:" destination="i5U-SE-vjq" eventType="touchUpInside" id="Apx-VE-cog"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="uWI-jh-Mso"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -331,6 +347,7 @@
                             <constraint firstItem="YRl-sj-rUj" firstAttribute="leading" secondItem="uWI-jh-Mso" secondAttribute="leading" constant="16" id="4Tf-Oc-EBV"/>
                             <constraint firstItem="U1h-C2-g8Y" firstAttribute="top" secondItem="rPV-DD-0Ve" secondAttribute="top" constant="332" id="6Ls-dB-l3F"/>
                             <constraint firstItem="VI0-ud-yrq" firstAttribute="top" secondItem="ssR-oX-vlP" secondAttribute="bottom" constant="8" symbolic="YES" id="6RZ-6D-4BH"/>
+                            <constraint firstItem="uWI-jh-Mso" firstAttribute="bottom" secondItem="60T-5M-Y1g" secondAttribute="bottom" constant="506" id="8oZ-VZ-h99"/>
                             <constraint firstItem="VI0-ud-yrq" firstAttribute="bottom" secondItem="uWI-jh-Mso" secondAttribute="bottom" id="96r-cp-DXw"/>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="trailing" secondItem="m1W-Oh-P8a" secondAttribute="trailing" constant="11" id="A4d-QD-emf"/>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="trailing" secondItem="JnJ-NA-nla" secondAttribute="trailing" constant="11" id="AZ9-9C-kfX"/>
@@ -344,6 +361,7 @@
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="trailing" secondItem="OIU-iu-vI2" secondAttribute="trailing" constant="11" id="RUg-ij-HtA"/>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="trailing" secondItem="YRl-sj-rUj" secondAttribute="trailing" constant="233" id="Rus-P4-okP"/>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="trailing" secondItem="1LZ-u3-dPb" secondAttribute="trailing" constant="16" id="SsJ-8H-nR9"/>
+                            <constraint firstItem="60T-5M-Y1g" firstAttribute="top" secondItem="m1W-Oh-P8a" secondAttribute="bottom" constant="74" id="TbR-Yv-5zW"/>
                             <constraint firstItem="JnJ-NA-nla" firstAttribute="top" secondItem="m1W-Oh-P8a" secondAttribute="bottom" constant="2" id="axj-g2-jGA"/>
                             <constraint firstItem="m1W-Oh-P8a" firstAttribute="leading" secondItem="uWI-jh-Mso" secondAttribute="leading" constant="168" id="bch-oJ-n4S"/>
                             <constraint firstItem="ssR-oX-vlP" firstAttribute="trailing" secondItem="1LZ-u3-dPb" secondAttribute="trailing" id="dol-YR-sUB"/>
@@ -354,13 +372,16 @@
                             <constraint firstItem="U1h-C2-g8Y" firstAttribute="leading" secondItem="d9N-dz-1VO" secondAttribute="trailing" constant="131" id="m87-jp-h4o"/>
                             <constraint firstItem="1LZ-u3-dPb" firstAttribute="leading" secondItem="uWI-jh-Mso" secondAttribute="leading" constant="16" id="rba-iw-58h"/>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="bottom" secondItem="YRl-sj-rUj" secondAttribute="bottom" constant="506" id="uDq-jY-l8p"/>
+                            <constraint firstItem="60T-5M-Y1g" firstAttribute="leading" secondItem="YRl-sj-rUj" secondAttribute="trailing" constant="8" symbolic="YES" id="wBX-HL-o5S"/>
                             <constraint firstAttribute="bottom" secondItem="ssR-oX-vlP" secondAttribute="bottom" constant="351" id="xQf-9s-XK0"/>
                             <constraint firstItem="1LZ-u3-dPb" firstAttribute="top" secondItem="d9N-dz-1VO" secondAttribute="bottom" constant="10.333333333333314" id="yBA-NM-gxC"/>
+                            <constraint firstItem="uWI-jh-Mso" firstAttribute="trailing" secondItem="60T-5M-Y1g" secondAttribute="trailing" constant="200" id="yFy-If-3HQ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="allThePreviewImagesButton" destination="OIU-iu-vI2" id="gJk-3S-m54"/>
                         <outlet property="imageGalleryCollection" destination="1LZ-u3-dPb" id="WyF-el-RIP"/>
+                        <outlet property="likeButton" destination="60T-5M-Y1g" id="3YU-o5-rvk"/>
                         <outlet property="movieDescriptionTextView" destination="VI0-ud-yrq" id="Z3U-2e-ovR"/>
                         <outlet property="moviePosterImageView" destination="YRl-sj-rUj" id="vhN-jW-8YX"/>
                         <outlet property="movieTitleLabel" destination="nmT-vM-sO8" id="lSU-j1-n6l"/>
@@ -431,7 +452,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="chevron.right.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="arrow.down.circle" catalog="system" width="128" height="123"/>
+        <image name="chevron.right.circle" catalog="system" width="128" height="123"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="image16" width="980" height="1482"/>
         <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
         <systemColor name="labelColor">

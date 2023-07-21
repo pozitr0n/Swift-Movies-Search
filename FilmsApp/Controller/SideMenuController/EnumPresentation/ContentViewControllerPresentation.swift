@@ -10,6 +10,6 @@ import UIKit
 enum ContentViewControllerPresentation {
     
     case embed(MainViewController)
-    case push(UIViewController)
+    case push
     
 }
