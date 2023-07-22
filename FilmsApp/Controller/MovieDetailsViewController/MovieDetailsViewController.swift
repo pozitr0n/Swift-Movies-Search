@@ -119,7 +119,13 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     }
     
     @IBAction func allThePreviewImages(_ sender: Any) {
-        // Later
+        
+        guard let destinationViewController = storyboard?.instantiateViewController(withIdentifier: "MoviePicturesViewControllerID") as? MoviePicturesViewController else {
+            return
+        }
+        
+        navigationController?.pushViewController(destinationViewController, animated: true)
+        
     }
     
     @IBAction func likeButtonAction(_ sender: Any) {
