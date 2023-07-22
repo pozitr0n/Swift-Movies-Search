@@ -15,7 +15,7 @@ class FullScreenViewController: UIViewController {
     
     // Setting the parameters
     var indexPathFromParentViewController: Int = Int()
-    var testArray: [Item] = Model().testArray
+    let model = Model()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class FullScreenViewController: UIViewController {
     //
     func getFullMoviePoster() {
     
-        fullScreenImageView.image = UIImage(named: testArray[indexPathFromParentViewController].testPic ?? "image_cover_144_203")
+        fullScreenImageView.image = UIImage(named: model.moviesObject?[indexPathFromParentViewController].moviePicture ?? "image_cover_144_203")
         
     }
 

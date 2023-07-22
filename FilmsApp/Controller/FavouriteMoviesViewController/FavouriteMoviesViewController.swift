@@ -53,16 +53,21 @@ class FavouriteMoviesViewController: UIViewController {
 extension FavouriteMoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.likedMoviesArray.count
+        return model.likedMoviesObjects?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = favouriteMoviesCollectionView.dequeueReusableCell(withReuseIdentifier: FavouriteMovieCell.identifier, for: indexPath) as? FavouriteMovieCell else {
-            return UICollectionViewCell()
+        guard let cell = favouriteMoviesCollectionView.dequeueReusableCell(withReuseIdentifier: FavouriteMovieCell.identifier, for: indexPath) as? FavouriteMovieCell,
+            
+                let likedMovieItem = model.likedMoviesObjects?[indexPath.item] else {
+            
+                return UICollectionViewCell()
+            
         }
         
-        cell.data = self.model.likedMoviesArray[indexPath.item]
+        cell.data = likedMovieItem
+        cell.delegateFavourite = self
         
         return cell
         
@@ -74,9 +79,19 @@ extension FavouriteMoviesViewController: UICollectionViewDelegate, UICollectionV
             return
         }
         
-        destinationViewController.receivedIndex = model.likedMoviesArray[indexPath.row].id ?? 0
+        destinationViewController.receivedIndex = model.likedMoviesObjects?[indexPath.row].id ?? 0
+        destinationViewController.delegateFavourite = self
+        
         navigationController?.pushViewController(destinationViewController, animated: true)
         
+    }
+    
+}
+
+extension FavouriteMoviesViewController: FavouriteMoviesViewControllerDelegate {
+    
+    func updateFavouriteMoviesViewController() {
+        favouriteMoviesCollectionView.reloadData()
     }
     
 }

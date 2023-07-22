@@ -11,6 +11,9 @@ class MoviePicturesViewController: UIViewController {
 
     @IBOutlet weak var moviePicturesCollectionView: UICollectionView!
     
+    // Setting the parameters
+    let model = Model()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

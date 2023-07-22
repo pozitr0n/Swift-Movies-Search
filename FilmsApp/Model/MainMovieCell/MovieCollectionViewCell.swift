@@ -13,32 +13,32 @@ class MovieCollectionViewCell: UICollectionViewCell {
     static let identifier = "MovieCell"
     private let moviePreviewImageViewCornerRadius: CGFloat = 10
     
-    var data: Item? {
+    var data: MovieObject? {
         
         didSet {
             guard data != nil else {
                 return
             }
             
-            if let pictureName = data?.testPic {
+            if let pictureName = data?.moviePicture {
                 moviePreviewImageView.image = UIImage(named: pictureName)
             } else {
                 moviePreviewImageView.image = UIImage(named: "image_cover_144_203")
             }
             
-            if let titleName = data?.testTitle {
+            if let titleName = data?.movieTitle {
                 movieTitleLabel.text = titleName
             } else {
                 movieTitleLabel.text = "No movie name"
             }
             
-            if let yearName = data?.testYear {
+            if let yearName = data?.movieYear {
                 releaseYearLabel.text = String(yearName)
             } else {
                 releaseYearLabel.text = "0000"
             }
             
-            if let ratingName = data?.testRating {
+            if let ratingName = data?.movieRating {
                 ratingLabel.text = String(ratingName)
             } else {
                 ratingLabel.text = "0.0"

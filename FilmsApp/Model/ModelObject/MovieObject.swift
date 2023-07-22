@@ -13,11 +13,11 @@ import RealmSwift
 class MovieObject: Object {
         
     @objc dynamic var id: Int = 0
-    @objc dynamic var testPic: String = ""
-    @objc dynamic var testTitle: String = ""
-    @objc dynamic var testYear: Int = 0
-    @objc dynamic var testRating: Double = 0
-    @objc dynamic var isLiked: Bool = false
+    @objc dynamic var moviePicture: String = ""
+    @objc dynamic var movieTitle: String = ""
+    @objc dynamic var movieYear: Int = 0
+    @objc dynamic var movieRating: Double = 0
+    @objc dynamic var isLikedByUser: Bool = false
     
     override class func primaryKey() -> String? {
         return "id"

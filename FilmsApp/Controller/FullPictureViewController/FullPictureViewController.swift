@@ -11,6 +11,9 @@ class FullPictureViewController: UIViewController {
 
     @IBOutlet weak var fullPictureCollectionView: UICollectionView!
     
+    // Setting the parameters
+    let model = Model()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

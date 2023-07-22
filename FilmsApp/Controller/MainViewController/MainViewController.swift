@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MainViewController: UIViewController {
 
     // Setting the parameters
     private var sideMenuViewController: SideMenuViewController!
     private var searchController = UISearchController()
+    
     let model = Model()
-    var testArray: [Item] = Model().testArray
+    let realm = try? Realm()
     
     // Outlets
     @IBOutlet weak var mainCollectionView: UICollectionView!
@@ -24,12 +26,20 @@ class MainViewController: UIViewController {
         
         super.viewDidLoad()
         
+        initializeSideMenuComponents()
+        initializeDataSourceDelegates()
+        registerXIBCell()
+        
+    }
+    
+    // Function of initialization all the components of side menu
+    //
+    func initializeSideMenuComponents() {
+        
         initializeSideMenu()
         initializeSearchController()
         addChildViewControllers()
         configureGestures()
-        initializeDataSourceDelegates()
-        registerXIBCell()
         
     }
     
@@ -53,8 +63,6 @@ class MainViewController: UIViewController {
     // Initialization of standard properties: dataSource and delegate
     //
     func initializeDataSourceDelegates() {
-        
-        model.sortedTestArray = model.testArray
         
         sideMenuViewController.delegate = self
         
@@ -154,16 +162,20 @@ class MainViewController: UIViewController {
 extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.sortedTestArray.count
+        return model.arrayHelper?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell,
+              
+            let item = model.arrayHelper?[indexPath.row] else {
+            
             return UICollectionViewCell()
+            
         }
         
-        cell.data = self.model.sortedTestArray[indexPath.item]
+        cell.data = item
         
         return cell
         
@@ -175,29 +187,38 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             return
         }
         
-        destinationViewController.receivedIndex = model.sortedTestArray[indexPath.row].id ?? 0
+        destinationViewController.receivedIndex = model.arrayHelper?[indexPath.row].id ?? 0
         navigationController?.pushViewController(destinationViewController, animated: true)
         
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        if searchText.isEmpty {
-            model.sortedTestArray = model.testArray
-            mainCollectionView.reloadData()
-        } else {
-            model.search(searchText)
-            mainCollectionView.reloadData()
+        model.arrayHelper = model.moviesObject
+        model.search(searchText)
+        
+        if searchBar.text?.count == 0 {
+            model.arrayHelper = model.moviesObject
+            model.ratingSort()
         }
-
+        
+        mainCollectionView.reloadData()
+        
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        model.sortedTestArray = model.testArray
+        
+        model.arrayHelper = model.moviesObject
+        
+        if searchBar.text?.count == 0 {
+            model.arrayHelper = model.moviesObject
+            model.ratingSort()
+        }
+        
+        model.ratingSort()
         mainCollectionView.reloadData()
+        
     }
-    
-    
     
 }
 
@@ -253,4 +274,5 @@ extension MainViewController: SideMenuDelegate {
     }
     
 }
+
 

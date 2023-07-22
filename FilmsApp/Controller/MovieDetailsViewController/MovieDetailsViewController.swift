@@ -19,6 +19,8 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     // Parameter for animation
     var transition: RoundingTransition = RoundingTransition()
     
+    weak var delegateFavourite: FavouriteMoviesViewControllerDelegate?
+    
     @IBOutlet weak var moviePosterImageView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var releaseYearLabel: UILabel!
@@ -70,10 +72,12 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     //
     func setLikeButton() {
         
-        if model.testArray[receivedIndex].isLiked {
-            likeButton.imageView?.image = UIImage(systemName: "heart.fill")
+        if model.moviesObject?[receivedIndex].isLikedByUser == false {
+            likeButton.alpha = 0.5
+            likeButton.tintColor = .lightGray
         } else {
-            likeButton.imageView?.image = UIImage(systemName: "heart")
+            likeButton.alpha = 1
+            likeButton.tintColor = .darkGray
         }
         
     }
@@ -91,16 +95,16 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     //
     func getMovieInformationFromMainController() {
         
-        moviePosterImageView.image = UIImage(named: model.testArray[receivedIndex].testPic ?? "image_cover_144_203")
-        movieTitleLabel.text = model.testArray[receivedIndex].testTitle
+        moviePosterImageView.image = UIImage(named: model.moviesObject?[receivedIndex].moviePicture ?? "image_cover_144_203")
+        movieTitleLabel.text = model.moviesObject?[receivedIndex].movieTitle
         
-        if let testYear = model.testArray[receivedIndex].testYear {
+        if let testYear = model.moviesObject?[receivedIndex].movieYear {
             releaseYearLabel.text = String(testYear)
         } else {
             releaseYearLabel.text = "0000"
         }
         
-        if let testRating = model.testArray[receivedIndex].testRating {
+        if let testRating = model.moviesObject?[receivedIndex].movieRating {
             releaseYearLabel.text = String(testRating)
         } else {
             releaseYearLabel.text = "0000"
@@ -129,7 +133,9 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     }
     
     @IBAction func likeButtonAction(_ sender: Any) {
-        // Later
+        model.updateFavouriteMovie(at: receivedIndex)
+        setLikeButton()
+        delegateFavourite?.updateFavouriteMoviesViewController()
     }
     
     // Method for presenting view

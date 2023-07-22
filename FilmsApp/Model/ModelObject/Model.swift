@@ -6,123 +6,61 @@
 //
 
 import Foundation
+import RealmSwift
 
 class Model {
     
-    // Array with liked movies
-    var likedMoviesArray: [Item] = []
+    // Realm object
+    let realm = try? Realm()
     
-    // Final array with data
-    var testArray: [Item] = [
-        
-        Item(id: 0, testPic: "image1", testTitle: "This is the test movie 1", testYear: 2001, testRating: 4.7, isLiked: true),
-        Item(id: 1, testPic: "image2", testTitle: "And this is the test movie 2", testYear: 2001, testRating: 5.7, isLiked: false),
-        Item(id: 2, testPic: "image3", testTitle: "Movie 3", testYear: 2003, testRating: 8.7, isLiked: true),
-        Item(id: 3, testPic: "image4", testTitle: "Movie 4", testYear: 2001, testRating: 4.7, isLiked: false),
-        Item(id: 4, testPic: "image5", testTitle: "Movie 5", testYear: 2005, testRating: 6.7, isLiked: false),
-        Item(id: 5, testPic: "image6", testTitle: "Movie 6", testYear: 2001, testRating: 3.7, isLiked: false),
-        Item(id: 6, testPic: "image7", testTitle: "Movie 7", testYear: 2007, testRating: 4.7, isLiked: true),
-        Item(id: 7, testPic: "image8", testTitle: "Movie 8", testYear: 2001, testRating: 1.7, isLiked: false),
-        Item(id: 8, testPic: "image9", testTitle: "Movie 9", testYear: 2009, testRating: 5.7, isLiked: false),
-        Item(id: 9, testPic: "image10", testTitle: "Movie 10", testYear: 2012, testRating: 6.7, isLiked: true),
-        Item(id: 10, testPic: "image11", testTitle: "Movie 11", testYear: 2015, testRating: 9.7, isLiked: false),
-        Item(id: 11, testPic: "image12", testTitle: "Movie 12", testYear: 2017, testRating: 9.7, isLiked: false),
-        Item(id: 12, testPic: "image13", testTitle: "Movie 13", testYear: 2019, testRating: 8.7, isLiked: true),
-        Item(id: 13, testPic: "image14", testTitle: "Movie 14", testYear: 2021, testRating: 6.7, isLiked: false),
-        Item(id: 14, testPic: "image15", testTitle: "Movie 15", testYear: 2022, testRating: 5.7, isLiked: true),
-        
-    ]
+    // Realm movies object
+    var moviesObject: Results<MovieObject>? {
+        return realm?.objects(MovieObject.self)
+    }
     
     // Sorted array
-    var sortedTestArray: [Item] = []
+    //
+    var arrayHelper: Results<MovieObject>?
     var sortAscending: Bool = false
     
-    var testPic: String?
-    var testTitle: String?
-    var testYear: String?
-    var testRating: String?
-    
-    init(testPic: String? = nil, testTitle: String? = nil, testYear: String? = nil, testRating: String? = nil) {
-        self.testPic = testPic
-        self.testTitle = testTitle
-        self.testYear = testYear
-        self.testRating = testRating
-    }
+    var likedMoviesObjects: Results<MovieObject>?
     
     // Method for getting liked movies
     //
     func showMoviesLiked() {
-        
-        for currMovie in testArray {
-            if currMovie.isLiked {
-                self.likedMoviesArray.append(currMovie)
-            }
-        }
-        
+        let likeMoviesFilter = NSPredicate(format: "isLikedByUser = true")
+        likedMoviesObjects = moviesObject?.filter(likeMoviesFilter)
     }
     
     // Rating method (using closure)
     //
     func ratingSort() {
-        
-        // closure-sorting
-        self.testArray.sort {
-            sortAscending ? ($0.testRating ?? 0)  < ($1.testRating ?? 0) : ($0.testRating ?? 0)  > ($1.testRating ?? 0)
-        }
-        
-        // putting sorted testArray into sortedTestArray
-        sortedTestArray = testArray
-        
+        arrayHelper = moviesObject?.sorted(byKeyPath: "movieRating", ascending: sortAscending)
     }
     
     // Method for searching data (search field)
     //
     func search(_ searchTextValue: String) {
+        let predicate = NSPredicate(format: "movieTitle CONTAINS [c]%@", searchTextValue)
+        arrayHelper = moviesObject?.filter(predicate)
+    }
     
-        sortedTestArray = []
+    // Method for updating liked data
+    //
+    func updateFavouriteMovie(at item: Int) {
         
-        if searchTextValue.isEmpty {
-            sortedTestArray = testArray
-        } else {
+        if let movie = moviesObject?[item] {
             
-            for item in testArray {
-                
-                guard let unwrItem = item.testTitle else {
-                    return
+            do {
+                try realm?.write {
+                    movie.isLikedByUser = !movie.isLikedByUser
                 }
-                
-                if unwrItem.contains(searchTextValue) {
-                    sortedTestArray.append(item)
-                }
-                
+            } catch {
+                print("Error after trying to update done status, \(error)")
             }
             
         }
         
-        sortedTestArray = testArray.filter({
-            $0.testTitle?.range(of: searchTextValue, options: .caseInsensitive) != nil
-        })
-        
     }
 
-}
-
-class Item {
-    
-    var id: Int?
-    var testPic: String?
-    var testTitle: String?
-    var testYear: Int?
-    var testRating: Double?
-    var isLiked: Bool
-    
-    init(id: Int?, testPic: String?, testTitle: String?, testYear: Int?, testRating: Double?, isLiked: Bool) {
-        self.id = id
-        self.testPic = testPic
-        self.testTitle = testTitle
-        self.testYear = testYear
-        self.testRating = testRating
-        self.isLiked = isLiked
-    }
-    
 }
