@@ -127,7 +127,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E8t-GW-jrJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="900" y="677"/>
+            <point key="canvasLocation" x="900" y="744"/>
         </scene>
         <!--Full Screen View Controller-->
         <scene sceneID="u4Z-Tq-bq1">
@@ -172,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W97-ny-3Pm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1685" y="677"/>
+            <point key="canvasLocation" x="1685" y="744"/>
         </scene>
         <!--Movie Details View Controller-->
         <scene sceneID="I7X-ea-NHS">
