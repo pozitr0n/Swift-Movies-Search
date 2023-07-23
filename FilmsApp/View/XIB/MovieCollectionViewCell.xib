@@ -58,7 +58,6 @@
                     <constraint firstItem="Wm4-Vs-QMM" firstAttribute="leading" secondItem="YWJ-dI-GJw" secondAttribute="leading" constant="8" id="xzb-Ti-T2P"/>
                 </constraints>
             </collectionViewCellContentView>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="moviePreviewImageView" destination="Vna-Z2-2Tp" id="dpk-wx-Ltq"/>
                 <outlet property="movieTitleLabel" destination="vjJ-uh-9Mr" id="rWj-BM-juk"/>

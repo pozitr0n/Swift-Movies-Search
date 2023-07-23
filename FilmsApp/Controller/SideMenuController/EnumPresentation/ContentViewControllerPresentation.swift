@@ -11,5 +11,6 @@ enum ContentViewControllerPresentation {
     
     case embed(MainViewController)
     case push
+    case pushInfo
     
 }

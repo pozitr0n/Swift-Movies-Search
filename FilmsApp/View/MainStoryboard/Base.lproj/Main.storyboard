@@ -10,6 +10,61 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Application Info View Controller-->
+        <scene sceneID="Avs-FI-QxY">
+            <objects>
+                <viewController storyboardIdentifier="ApplicationInfoViewControllerID" id="36w-uw-OeZ" customClass="ApplicationInfoViewController" customModule="FilmsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kdS-Qv-llQ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Caj-2E-Lhc">
+                                <rect key="frame" x="76" y="566" width="240" height="60"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="author" translatesAutoresizingMaskIntoConstraints="NO" id="n5W-Ru-8Uk">
+                                <rect key="frame" x="76" y="318.33333333333331" width="240" height="239.99999999999994"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="32j-Pr-slu"/>
+                                    <constraint firstAttribute="height" constant="240" id="zVy-b1-g6b"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Main information" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fv0-Qb-dPN">
+                                <rect key="frame" x="16" y="190" width="361" height="120"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7V5-TE-Xq2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7V5-TE-Xq2" firstAttribute="trailing" secondItem="n5W-Ru-8Uk" secondAttribute="trailing" constant="77" id="Arj-JG-Kfp"/>
+                            <constraint firstItem="n5W-Ru-8Uk" firstAttribute="leading" secondItem="7V5-TE-Xq2" secondAttribute="leading" constant="76" id="Bkb-jP-Ce2"/>
+                            <constraint firstItem="7V5-TE-Xq2" firstAttribute="bottom" secondItem="fv0-Qb-dPN" secondAttribute="bottom" constant="508" id="DD8-dM-fyz"/>
+                            <constraint firstItem="fv0-Qb-dPN" firstAttribute="top" secondItem="7V5-TE-Xq2" secondAttribute="top" constant="131" id="Ei3-4Q-OOJ"/>
+                            <constraint firstItem="7V5-TE-Xq2" firstAttribute="trailing" secondItem="fv0-Qb-dPN" secondAttribute="trailing" constant="16" id="HNY-ZB-qVC"/>
+                            <constraint firstItem="Caj-2E-Lhc" firstAttribute="leading" secondItem="7V5-TE-Xq2" secondAttribute="leading" constant="76" id="Rwb-ka-Fc5"/>
+                            <constraint firstItem="Caj-2E-Lhc" firstAttribute="top" secondItem="n5W-Ru-8Uk" secondAttribute="bottom" constant="7.6666666666667425" id="RxP-Ic-DKb"/>
+                            <constraint firstItem="fv0-Qb-dPN" firstAttribute="leading" secondItem="7V5-TE-Xq2" secondAttribute="leading" constant="16" id="UhX-Rb-fuV"/>
+                            <constraint firstItem="7V5-TE-Xq2" firstAttribute="bottom" secondItem="n5W-Ru-8Uk" secondAttribute="bottom" constant="259.66666666666674" id="dWe-qb-qaY"/>
+                            <constraint firstItem="7V5-TE-Xq2" firstAttribute="trailing" secondItem="Caj-2E-Lhc" secondAttribute="trailing" constant="77" id="iWD-Rj-rSq"/>
+                            <constraint firstItem="n5W-Ru-8Uk" firstAttribute="top" secondItem="fv0-Qb-dPN" secondAttribute="bottom" constant="8.3333333333333144" id="sUE-dQ-KZZ"/>
+                            <constraint firstItem="7V5-TE-Xq2" firstAttribute="bottom" secondItem="Caj-2E-Lhc" secondAttribute="bottom" constant="192" id="zLX-Bd-pyW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="authorDescriptionLabel" destination="Caj-2E-Lhc" id="pLk-ZL-gXG"/>
+                        <outlet property="authorImageView" destination="n5W-Ru-8Uk" id="2hJ-Sx-LlF"/>
+                        <outlet property="mainInformationLabel" destination="fv0-Qb-dPN" id="Ga2-8d-T2f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U1s-kX-Lwh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="900" y="-676.05633802816908"/>
+        </scene>
         <!--Movies Search-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -557,6 +612,7 @@
     </scenes>
     <resources>
         <image name="arrow.down.circle" catalog="system" width="128" height="123"/>
+        <image name="author" width="1180" height="1180"/>
         <image name="chevron.right.circle" catalog="system" width="128" height="123"/>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="image16" width="980" height="1482"/>

@@ -81,7 +81,10 @@ class MainViewController: UIViewController {
                          viewController: .embed(self)),
             SideMenuItem(icon: UIImage(systemName: "heart.circle"),
                          name: "Favourite",
-                         viewController: .push)
+                         viewController: .push),
+            SideMenuItem(icon: UIImage(systemName: "info.circle"),
+                         name: "Information",
+                         viewController: .pushInfo)
         ]
         
         sideMenuViewController = SideMenuViewController(sideMenuItems: sideMenuItems)
@@ -253,8 +256,18 @@ extension MainViewController: SideMenuDelegate {
             sideMenuViewController.hide()
             navigationController?.pushViewController(favouriteMoviesViewController, animated: true)
             
+        case .pushInfo:
+            
+            guard let applicationInfoViewController = storyboard?.instantiateViewController(withIdentifier: "ApplicationInfoViewControllerID") as? ApplicationInfoViewController else {
+                return
+            }
+            
+            openNavigationBar()
+            sideMenuViewController.hide()
+            navigationController?.pushViewController(applicationInfoViewController, animated: true)
+            
         }
-        
+    
     }
     
     func openNavigationBar() {
