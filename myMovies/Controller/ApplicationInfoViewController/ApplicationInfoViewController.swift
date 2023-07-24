@@ -39,11 +39,12 @@ class ApplicationInfoViewController: UIViewController {
         let mainInformationLabelText = """
         Application for watching
         movies information
-        using TMDb API. Version 1.0
+        using TMDb API.
+        v1.1
         """
         
         let authorDescriptionLabelText = """
-        Application author
+        Developer
         Raman Kozar
         """
         

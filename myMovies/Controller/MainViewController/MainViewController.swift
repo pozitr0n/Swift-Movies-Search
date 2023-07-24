@@ -239,8 +239,10 @@ extension MainViewController: SideMenuDelegate {
     //
     func menuButtonTapped() {
         
-        closeNavigationBar()
-        sideMenuViewController.show()
+        DispatchQueue.main.async {
+            self.closeNavigationBar()
+            self.sideMenuViewController.show()
+        }
         
     }
 

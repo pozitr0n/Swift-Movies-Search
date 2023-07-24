@@ -31,8 +31,8 @@
                                     <constraint firstAttribute="height" constant="240" id="zVy-b1-g6b"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Main information" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fv0-Qb-dPN">
-                                <rect key="frame" x="16" y="190" width="361" height="120"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Main information" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fv0-Qb-dPN">
+                                <rect key="frame" x="16" y="170" width="361" height="140"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -44,7 +44,7 @@
                             <constraint firstItem="7V5-TE-Xq2" firstAttribute="trailing" secondItem="n5W-Ru-8Uk" secondAttribute="trailing" constant="77" id="Arj-JG-Kfp"/>
                             <constraint firstItem="n5W-Ru-8Uk" firstAttribute="leading" secondItem="7V5-TE-Xq2" secondAttribute="leading" constant="76" id="Bkb-jP-Ce2"/>
                             <constraint firstItem="7V5-TE-Xq2" firstAttribute="bottom" secondItem="fv0-Qb-dPN" secondAttribute="bottom" constant="508" id="DD8-dM-fyz"/>
-                            <constraint firstItem="fv0-Qb-dPN" firstAttribute="top" secondItem="7V5-TE-Xq2" secondAttribute="top" constant="131" id="Ei3-4Q-OOJ"/>
+                            <constraint firstItem="fv0-Qb-dPN" firstAttribute="top" secondItem="7V5-TE-Xq2" secondAttribute="top" constant="111" id="Ei3-4Q-OOJ"/>
                             <constraint firstItem="7V5-TE-Xq2" firstAttribute="trailing" secondItem="fv0-Qb-dPN" secondAttribute="trailing" constant="16" id="HNY-ZB-qVC"/>
                             <constraint firstItem="Caj-2E-Lhc" firstAttribute="leading" secondItem="7V5-TE-Xq2" secondAttribute="leading" constant="76" id="Rwb-ka-Fc5"/>
                             <constraint firstItem="Caj-2E-Lhc" firstAttribute="top" secondItem="n5W-Ru-8Uk" secondAttribute="bottom" constant="7.6666666666667425" id="RxP-Ic-DKb"/>
