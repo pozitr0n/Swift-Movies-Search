@@ -56,7 +56,7 @@ class LoadingApplicationViewController: UIViewController {
 
     private func animateStartOfApplication() {
 
-        UIView.animate(withDuration: 3, animations: {
+        UIView.animate(withDuration: 1, animations: {
 
             let size = self.view.frame.size.width * 10
             let xPosition = size - self.view.frame.width
@@ -66,7 +66,7 @@ class LoadingApplicationViewController: UIViewController {
 
         })
 
-        UIView.animate(withDuration: 3.5, animations: {
+        UIView.animate(withDuration: 1.5, animations: {
             self.imageView.alpha = 0
         })
 

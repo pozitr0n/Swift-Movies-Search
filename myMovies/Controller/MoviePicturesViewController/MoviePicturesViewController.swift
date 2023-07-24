@@ -41,7 +41,9 @@ class MoviePicturesViewController: UIViewController {
         moviePicturesCollectionView.register(customXIBCell, forCellWithReuseIdentifier: MoviePicturesCell.identifier)
         
         // reloading data
-        moviePicturesCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.moviePicturesCollectionView.reloadData()
+        }
         
     }
 

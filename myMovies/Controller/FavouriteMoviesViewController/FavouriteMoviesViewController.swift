@@ -44,7 +44,9 @@ class FavouriteMoviesViewController: UIViewController {
         favouriteMoviesCollectionView.register(customXIBCell, forCellWithReuseIdentifier: FavouriteMovieCell.identifier)
         
         // reloading data
-        favouriteMoviesCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.favouriteMoviesCollectionView.reloadData()
+        }
         
     }
 
@@ -91,7 +93,9 @@ extension FavouriteMoviesViewController: UICollectionViewDelegate, UICollectionV
 extension FavouriteMoviesViewController: FavouriteMoviesViewControllerDelegate {
     
     func updateFavouriteMoviesViewController() {
-        favouriteMoviesCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.favouriteMoviesCollectionView.reloadData()
+        }
     }
     
 }

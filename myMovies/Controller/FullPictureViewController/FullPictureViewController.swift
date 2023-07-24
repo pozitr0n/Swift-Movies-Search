@@ -41,7 +41,9 @@ class FullPictureViewController: UIViewController {
         fullPictureCollectionView.register(customXIBCell, forCellWithReuseIdentifier: FullPictureCell.identifier)
         
         // reloading data
-        fullPictureCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.fullPictureCollectionView.reloadData()
+        }
         
     }
 

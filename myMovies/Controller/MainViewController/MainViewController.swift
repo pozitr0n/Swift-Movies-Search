@@ -56,7 +56,9 @@ class MainViewController: UIViewController {
         model.ratingSort()
         
         // reloading data
-        mainCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.mainCollectionView.reloadData()
+        }
         
     }
     
@@ -156,7 +158,9 @@ class MainViewController: UIViewController {
         sortingButton.image = model.sortAscending ? sortingUp : sortingDown
         model.ratingSort()
         
-        mainCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.mainCollectionView.reloadData()
+        }
         
     }
 
@@ -205,7 +209,9 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             model.ratingSort()
         }
         
-        mainCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.mainCollectionView.reloadData()
+        }
         
     }
     
@@ -219,7 +225,9 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
         
         model.ratingSort()
-        mainCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.mainCollectionView.reloadData()
+        }
         
     }
     

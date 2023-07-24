@@ -38,9 +38,11 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
         
         super.viewDidLoad()
         
-        setupLayout()
-        initializeDataSourceDelegates()
-        getMovieInformationFromMainController()
+        DispatchQueue.main.async {
+            self.setupLayout()
+            self.initializeDataSourceDelegates()
+            self.getMovieInformationFromMainController()
+        }
         
     }
     
