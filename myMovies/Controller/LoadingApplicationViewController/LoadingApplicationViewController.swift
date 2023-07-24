@@ -15,7 +15,7 @@ class LoadingApplicationViewController: UIViewController {
     private let imageView: UIImageView = {
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
-        imageView.image = UIImage(named: "logo")
+        imageView.image = UIImage(named: "appIconDarkLaunchScreen")
         
         return imageView
         
@@ -27,13 +27,13 @@ class LoadingApplicationViewController: UIViewController {
         setupLayout()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-
-            let mainViewController = MainViewController()
-            mainViewController.modalTransitionStyle = .crossDissolve
-            mainViewController.modalPresentationStyle = .fullScreen
+        
+            let homeController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewControllerID")
+            homeController.modalTransitionStyle = .crossDissolve
+            homeController.modalPresentationStyle = .fullScreen
             
-            // need to do pushViewController
-
+            self.navigationController?.pushViewController(homeController, animated: false)
+            
         })
 
     }
@@ -50,15 +50,15 @@ class LoadingApplicationViewController: UIViewController {
     }
 
     func setupLayout() {
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .white
         view.addSubview(imageView)
     }
 
     private func animateStartOfApplication() {
 
-        UIView.animate(withDuration: 1, animations: {
+        UIView.animate(withDuration: 3, animations: {
 
-            let size = self.view.frame.size.width * 2
+            let size = self.view.frame.size.width * 10
             let xPosition = size - self.view.frame.width
             let yPosition = self.view.frame.height - size
 
@@ -66,7 +66,7 @@ class LoadingApplicationViewController: UIViewController {
 
         })
 
-        UIView.animate(withDuration: 1.2, animations: {
+        UIView.animate(withDuration: 3.5, animations: {
             self.imageView.alpha = 0
         })
 

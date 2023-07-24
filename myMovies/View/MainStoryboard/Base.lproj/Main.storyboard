@@ -591,10 +591,10 @@
             </objects>
             <point key="canvasLocation" x="3267.9389312977096" y="-2.1126760563380285"/>
         </scene>
-        <!--Main Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="7dT-TC-fKq">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xrN-22-Mnj" customClass="MainNavigationController" customModule="myMovies" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xrN-22-Mnj" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ius-im-XeZ">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
