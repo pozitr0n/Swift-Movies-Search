@@ -9,7 +9,6 @@ import UIKit
 
 class ApplicationInfoViewController: UIViewController {
 
-    @IBOutlet weak var mainInformationLabel: UILabel!
     @IBOutlet weak var authorImageView: UIImageView!
     @IBOutlet weak var authorDescriptionLabel: UILabel!
     
@@ -36,19 +35,11 @@ class ApplicationInfoViewController: UIViewController {
     //
     func fillAuthorInfo() {
         
-        let mainInformationLabelText = """
-        Application for watching
-        movies information
-        using TMDb API.
-        v1.1
-        """
-        
         let authorDescriptionLabelText = """
         Developer
         Raman Kozar
         """
-        
-        mainInformationLabel.text = mainInformationLabelText
+            
         authorDescriptionLabel.text = authorDescriptionLabelText
         
     }
