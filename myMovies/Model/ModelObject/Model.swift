@@ -8,6 +8,14 @@
 import Foundation
 import RealmSwift
 
+// Main RealmSwift class of the application
+//
+// Contains methods:
+//      showMoviesLiked()
+//      ratingSort()
+//      search()
+//      updateFavouriteMovie()
+//
 class Model {
     
     // Realm object
