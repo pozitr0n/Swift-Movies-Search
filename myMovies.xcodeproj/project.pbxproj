@@ -359,10 +359,10 @@
 		4DE71F2D2A6B897E0074504E /* ModelObject */ = {
 			isa = PBXGroup;
 			children = (
+				4DF3F6712A7F0247001B4E32 /* API */,
 				4DDCAD4A2A3D4C4400CC845C /* JSON_Model.swift */,
 				4D7ABF2D2A65FDAB00D3F885 /* Model.swift */,
 				4DE71F2E2A6B89950074504E /* MovieObject.swift */,
-				4DF3F66F2A7DE4E5001B4E32 /* TMDB_API.swift */,
 			);
 			path = ModelObject;
 			sourceTree = "<group>";
@@ -389,6 +389,14 @@
 				4DE71F372A6E03B40074504E /* LoadingApplicationViewController.swift */,
 			);
 			path = LoadingApplicationViewController;
+			sourceTree = "<group>";
+		};
+		4DF3F6712A7F0247001B4E32 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				4DF3F66F2A7DE4E5001B4E32 /* TMDB_API.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
