@@ -6,6 +6,7 @@
 //
 
 // Documentation to the class:
+//
 // It has 5 variants of the queries: Popular | Latest | Now Playing | Top Rated | Upcoming
 // Popular:
 // https://api.themoviedb.org/3/movie/popular?api_key=<<api_key>>&language=en-US&page=1
