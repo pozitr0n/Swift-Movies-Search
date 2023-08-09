@@ -48,6 +48,7 @@ class TMDB_API {
     let apiKey: String = "e2640eea18e40322814e2a977274c411"
     let baseOfTheURL: String = "https://api.themoviedb.org/3/movie/"
     let currentSession = URLSession.shared
+    let parserService = JSON_ParsingService()
     
     // Main request-method
     //
@@ -62,13 +63,12 @@ class TMDB_API {
         let task = currentSession.dataTask(with: apiURL) { data, response, error in
         
             guard let unwrData = data,
-                  let dataString = String(data: unwrData, encoding: .utf8),
                   (response as? HTTPURLResponse)?.statusCode == 200,
                   error == nil else {
                 return
             }
             
-            print(dataString)
+            self.parserService.parseJSONData(dataForParsing: unwrData, errorDuringParsing: error)
             
         }
         
