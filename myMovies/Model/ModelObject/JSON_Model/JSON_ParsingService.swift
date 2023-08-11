@@ -10,6 +10,8 @@ import RealmSwift
 
 class JSON_ParsingService {
     
+    // Method for native parsing JSON
+    //
     func parseJSONData(dataForParsing: Data, errorDuringParsing: Error?) {
     
         do {
