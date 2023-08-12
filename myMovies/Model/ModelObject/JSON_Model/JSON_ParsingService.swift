@@ -33,6 +33,7 @@ class JSON_ParsingService {
                        let unwrOverview = itemJSON.overview,
                        let unwrReleaseYear = itemJSON.release_date,
                        let unwrMovieRating = itemJSON.vote_average {
+                        
                         object.id = unwrID
                         object.moviePicture = unwrPosterPath
                         object.movieTitle = unwrOriginalTitle
@@ -41,6 +42,7 @@ class JSON_ParsingService {
                         object.movieRating = unwrMovieRating
                         //object.moviePreviews = itemJSON.backdrop_path ?? "N/A"
                         object.isLikedByUser = false
+                        
                     }
                     
                     realm?.add(object, update: .all)
