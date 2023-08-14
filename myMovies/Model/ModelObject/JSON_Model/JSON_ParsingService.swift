@@ -40,7 +40,9 @@ class JSON_ParsingService {
                         object.about = unwrOverview
                         object.movieYear = Int(unwrReleaseYear.prefix(4)) ?? 0000
                         object.movieRating = unwrMovieRating
+                        
                         //object.moviePreviews = itemJSON.backdrop_path ?? "N/A"
+                        
                         object.isLikedByUser = false
                         
                     }
