@@ -36,8 +36,10 @@ class Model {
     // Method for getting liked movies
     //
     func showMoviesLiked() {
+        
         let likeMoviesFilter = NSPredicate(format: "isLikedByUser = true")
         likedMoviesObjects = moviesObject?.filter(likeMoviesFilter)
+        
     }
     
     // Rating method (using closure)
@@ -49,8 +51,10 @@ class Model {
     // Method for searching data (search field)
     //
     func search(_ searchTextValue: String) {
+        
         let predicate = NSPredicate(format: "movieTitle CONTAINS [c]%@", searchTextValue)
         arrayHelper = moviesObject?.filter(predicate)
+        
     }
     
     // Method for updating liked data
