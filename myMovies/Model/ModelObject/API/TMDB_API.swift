@@ -25,6 +25,7 @@
 //
 
 import Foundation
+import UIKit
 
 // Enum contains all the variants of the queries
 //
@@ -73,6 +74,28 @@ class TMDB_API {
         }
         
         task.resume()
+        
+    }
+    
+    // Method for getting/setting posters
+    //
+    func getSetPosters(withURL url: URL, imageView: UIImageView) {
+        
+        // 1. Query to the posters using getted URL
+        let downloadingTask = currentSession.dataTask(with: url) { pictures, response, failure in
+            
+            guard let picture = try? Data(contentsOf: url) else {
+                return
+            }
+            
+            // 2. Async putting into cells
+            DispatchQueue.main.async {
+                imageView.image = UIImage(data: picture)
+            }
+            
+        }
+        
+        downloadingTask.resume()
         
     }
     
