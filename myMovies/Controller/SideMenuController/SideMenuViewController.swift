@@ -12,7 +12,6 @@ final class SideMenuViewController: UIViewController {
     private var headerView: UIView = {
         
         let headerView = UIView()
-        
         headerView.translatesAutoresizingMaskIntoConstraints = false
         headerView.backgroundColor = .white
         
@@ -23,7 +22,6 @@ final class SideMenuViewController: UIViewController {
     private var tableView: UITableView = {
         
         let tableView = UITableView()
-        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.tableFooterView = UIView()
         
