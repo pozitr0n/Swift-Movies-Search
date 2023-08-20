@@ -16,6 +16,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     var data: MovieObject? {
         
         didSet {
+            
             guard data != nil else {
                 return
             }
