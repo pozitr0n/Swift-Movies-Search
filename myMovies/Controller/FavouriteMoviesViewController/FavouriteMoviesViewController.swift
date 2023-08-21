@@ -26,9 +26,7 @@ class FavouriteMoviesViewController: UIViewController {
     // Initialization of standard properties: dataSource and delegate
     //
     func initializeDataSourceDelegates() {
-        	
-        model.showMoviesLiked()
-        
+        	        
         favouriteMoviesCollectionView.dataSource = self
         favouriteMoviesCollectionView.delegate = self
                
@@ -62,13 +60,14 @@ extension FavouriteMoviesViewController: UICollectionViewDelegate, UICollectionV
         
         guard let cell = favouriteMoviesCollectionView.dequeueReusableCell(withReuseIdentifier: FavouriteMovieCell.identifier, for: indexPath) as? FavouriteMovieCell,
             
-                let likedMovieItem = model.likedMoviesObjects?[indexPath.item] else {
+                let likedMovieItem = model.likedMoviesObjects?[indexPath.row] else {
             
                 return UICollectionViewCell()
             
         }
         
         cell.data = likedMovieItem
+        cell.cellIndex = indexPath.row
         cell.delegateFavourite = self
         
         return cell
@@ -81,8 +80,10 @@ extension FavouriteMoviesViewController: UICollectionViewDelegate, UICollectionV
             return
         }
         
-        destinationViewController.receivedIndex = model.likedMoviesObjects?[indexPath.row].id ?? 0
+        destinationViewController.receivedIndex = indexPath.row
+        destinationViewController.cameFromFavourite = true
         destinationViewController.delegateFavourite = self
+        destinationViewController.controllerType = .favourite
         
         navigationController?.pushViewController(destinationViewController, animated: true)
         

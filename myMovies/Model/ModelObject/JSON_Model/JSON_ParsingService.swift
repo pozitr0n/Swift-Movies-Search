@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 class JSON_ParsingService {
-    
+        
     // Method for native parsing JSON
     //
     func parseJSONData(dataForParsing: Data, errorDuringParsing: Error?) {
@@ -43,7 +43,11 @@ class JSON_ParsingService {
                         
                         //object.moviePreviews = itemJSON.backdrop_path ?? "N/A"
                         
-                        object.isLikedByUser = false
+                        let likedScope = realm?.objects(LikedMovieObject.self).filter("id == %@", itemJSON.id!)
+                        
+                        if likedScope?.first != nil {
+                            object.isLikedByUser = true
+                        }
                         
                     }
                     

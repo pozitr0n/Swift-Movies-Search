@@ -12,38 +12,24 @@ class MovieCollectionViewCell: UICollectionViewCell {
     // Setting the parameters
     static let identifier = "MovieCell"
     private let moviePreviewImageViewCornerRadius: CGFloat = 10
+    private var imgTMDB_Address = "https://image.tmdb.org/t/p/w500"
+    let tmdbAPI = TMDB_API()
     
     var data: MovieObject? {
         
         didSet {
             
-            guard data != nil else {
+            guard let unwrData = data, let url = URL(string: imgTMDB_Address + unwrData.moviePicture) else {
                 return
             }
             
-            if let pictureName = data?.moviePicture {
-                moviePreviewImageView.image = UIImage(named: pictureName)
-            } else {
-                moviePreviewImageView.image = UIImage(named: "image_cover_144_203")
+            tmdbAPI.getSetPosters(withURL: url) { image in
+                self.moviePreviewImageView.image = image
             }
             
-            if let titleName = data?.movieTitle {
-                movieTitleLabel.text = titleName
-            } else {
-                movieTitleLabel.text = "No movie name"
-            }
-            
-            if let yearName = data?.movieYear {
-                releaseYearLabel.text = String(yearName)
-            } else {
-                releaseYearLabel.text = "0000"
-            }
-            
-            if let ratingName = data?.movieRating {
-                ratingLabel.text = String(ratingName)
-            } else {
-                ratingLabel.text = "0.0"
-            }
+            movieTitleLabel.text = unwrData.movieTitle
+            releaseYearLabel.text = String(unwrData.movieYear)
+            ratingLabel.text = String(unwrData.movieRating)
             
         }
         

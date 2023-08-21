@@ -6,12 +6,18 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MovieDetailsViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
     // Setting the parameters
     var testArrayPreview: [TestDetailPreviewModel] = TestDetailPreviewMethods().returnTestArray()
     var model = Model()
+    let realm = try? Realm()
+    
+    var tmdbAPI = TMDB_API()
+    private var imgTMDB_Address = "https://image.tmdb.org/t/p/w500"
+    var cameFromFavourite: Bool = Bool()
     
     // Setting the parameters
     private let moviePosterImageViewCornerRadius: CGFloat = 10
@@ -33,15 +39,18 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     @IBOutlet weak var likeButton: UIButton!
     
     var receivedIndex: Int = Int()
+    var controllerType: ControllerType?
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         DispatchQueue.main.async {
+            
             self.setupLayout()
             self.initializeDataSourceDelegates()
             self.getMovieInformationFromMainController()
+            
         }
         
     }
@@ -55,7 +64,10 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
         // Moving to full screen (using animation)
         destinationViewController.transitioningDelegate = self
         destinationViewController.modalPresentationStyle = .custom
-        destinationViewController.indexPathFromParentViewController = receivedIndex
+        
+        destinationViewController.detailIndexPath = receivedIndex
+        destinationViewController.isFavorited = cameFromFavourite
+        destinationViewController.controllerType = controllerType
         
     }
     
@@ -65,6 +77,7 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
         
         moviePosterImageView.layer.cornerRadius = moviePosterImageViewCornerRadius
         moviePosterImageView.clipsToBounds = true
+        movieDescriptionTextView.isUserInteractionEnabled = false
         
         setLikeButton()
         
@@ -74,7 +87,7 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     //
     func setLikeButton() {
         
-        if model.moviesObject?[receivedIndex].isLikedByUser == false {
+        if cameFromFavourite == false {
             likeButton.alpha = 0.5
             likeButton.tintColor = .lightGray
         } else {
@@ -97,23 +110,71 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     //
     func getMovieInformationFromMainController() {
         
-        moviePosterImageView.image = UIImage(named: model.moviesObject?[receivedIndex].moviePicture ?? "image_cover_144_203")
-        movieTitleLabel.text = model.moviesObject?[receivedIndex].movieTitle
-        
-        if let testYear = model.moviesObject?[receivedIndex].movieYear {
-            releaseYearLabel.text = String(testYear)
-        } else {
-            releaseYearLabel.text = "0000"
+        if controllerType == .main {
+         
+            if self.cameFromFavourite == false {
+                
+                guard let unwrMoviePicture = self.model.moviesObject?[self.receivedIndex].moviePicture,
+                      let unwrPosterURL = URL(string: self.imgTMDB_Address + unwrMoviePicture) else {
+                    return
+                }
+                
+                self.tmdbAPI.getSetPosters(withURL: unwrPosterURL) { image in
+                    self.moviePosterImageView.image = image
+                }
+                
+                self.movieTitleLabel.text = self.model.moviesObject?[self.receivedIndex].movieTitle
+                self.releaseYearLabel.text = String(self.model.moviesObject?[self.receivedIndex].movieYear ?? 0000)
+                self.ratingLabel.text = String(self.model.moviesObject?[self.receivedIndex].movieRating ?? 0)
+                self.movieDescriptionTextView.text = self.model.moviesObject?[self.receivedIndex].about
+                
+            } else if self.cameFromFavourite == true {
+                
+                guard let currID = model.moviesObject?[self.receivedIndex].id else {
+                    return
+                }
+                
+                let likedScope = realm?.objects(LikedMovieObject.self).filter("id == %@", currID)
+                
+                if likedScope?.first != nil {
+                    
+                    guard let unwrMoviePicture = likedScope?.first?.moviePicture,
+                          let unwrPosterURL = URL(string: self.imgTMDB_Address + unwrMoviePicture) else {
+                        return
+                    }
+                    
+                    self.tmdbAPI.getSetPosters(withURL: unwrPosterURL) { image in
+                        self.moviePosterImageView.image = image
+                    }
+                    
+                    self.movieTitleLabel.text = likedScope?.first?.movieTitle
+                    self.releaseYearLabel.text = String(likedScope?.first?.movieYear ?? 0000)
+                    self.ratingLabel.text = String(likedScope?.first?.movieRating ?? 0)
+                    self.movieDescriptionTextView.text = likedScope?.first?.about
+                    
+                }
+                
+            }
+            
         }
         
-        if let testRating = model.moviesObject?[receivedIndex].movieRating {
-            releaseYearLabel.text = String(testRating)
-        } else {
-            releaseYearLabel.text = "0000"
+        if controllerType == .favourite {
+            
+            guard let unwrMoviePicture = self.model.likedMoviesObjects?[self.receivedIndex].moviePicture,
+                  let unwrPosterURL = URL(string: self.imgTMDB_Address + unwrMoviePicture) else {
+                return
+            }
+            
+            self.tmdbAPI.getSetPosters(withURL: unwrPosterURL) { image in
+                self.moviePosterImageView.image = image
+            }
+            
+            self.movieTitleLabel.text = self.model.likedMoviesObjects?[self.receivedIndex].movieTitle
+            self.releaseYearLabel.text = String(self.model.likedMoviesObjects?[self.receivedIndex].movieYear ?? 0000)
+            self.ratingLabel.text = String(self.model.likedMoviesObjects?[self.receivedIndex].movieRating ?? 0)
+            self.movieDescriptionTextView.text = self.model.likedMoviesObjects?[self.receivedIndex].about
+            
         }
-        
-        // Test
-        movieDescriptionTextView.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
         
         // Test
         previewCountLabel.text = String(testArrayPreview.count)
@@ -135,9 +196,22 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     }
     
     @IBAction func likeButtonAction(_ sender: Any) {
-        model.updateFavouriteMovie(at: receivedIndex)
+        
+        model.updateFavouriteMovie(at: receivedIndex, controllerType: controllerType!)
+        cameFromFavourite = !cameFromFavourite
         setLikeButton()
         delegateFavourite?.updateFavouriteMoviesViewController()
+        
+        if !cameFromFavourite && controllerType == .favourite {
+           
+            guard let destinationViewController = storyboard?.instantiateViewController(withIdentifier: "MainViewControllerID") as? MainViewController else {
+                return
+            }
+            
+            navigationController?.pushViewController(destinationViewController, animated: true)
+            
+        }
+        
     }
     
     // Method for presenting view

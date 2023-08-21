@@ -51,10 +51,13 @@ class TMDB_API {
     let currentSession = URLSession.shared
     let parserService = JSON_ParsingService()
     
+    // constant for cache
+    var imageCache = NSCache<NSString, UIImage>()
+    
     // Main request-method
     //
     func dataRequest(requestType: APIRequestParameters) {
-        
+            
         let stringURL: String = "\(baseOfTheURL)\(requestType.rawValue)?api_key=\(apiKey)&language=en-US\(requestType.endOfTheURL)"
         
         guard let apiURL: URL = URL(string: stringURL) else {
@@ -79,23 +82,41 @@ class TMDB_API {
     
     // Method for getting/setting posters
     //
-    func getSetPosters(withURL url: URL, imageView: UIImageView) {
+    func getSetPosters(withURL url: URL, completion: @escaping (UIImage) -> Void) {
         
-        // 1. Query to the posters using getted URL
-        let downloadingTask = currentSession.dataTask(with: url) { pictures, response, failure in
+        if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) {
+            completion(cachedImage)
+        } else {
             
-            guard let picture = try? Data(contentsOf: url) else {
-                return
+            let request = URLRequest(url: url, cachePolicy: URLRequest.CachePolicy.returnCacheDataElseLoad, timeoutInterval: 10)
+            
+            
+            let downloadingTask = currentSession.dataTask(with: request) { [weak self] data, response, error in
+                
+                guard error == nil,
+                      let unwrData = data,
+                      let response = response as? HTTPURLResponse, response.statusCode == 200,
+                      let `self` = self else {
+                    return
+                }
+                
+                guard let image = UIImage(data: unwrData) else {
+                    return
+                }
+                
+                self.imageCache.setObject(image, forKey: url.absoluteString as NSString)
+                
+                // 1. Query to the posters using getted URL
+                DispatchQueue.main.async {
+                    // UIImage(named: "image_cover_144_203")
+                    completion(image)
+                }
+                
             }
             
-            // 2. Async putting into cells
-            DispatchQueue.main.async {
-                imageView.image = UIImage(data: picture)
-            }
+            downloadingTask.resume()
             
         }
-        
-        downloadingTask.resume()
         
     }
     

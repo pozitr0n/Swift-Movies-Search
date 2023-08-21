@@ -31,6 +31,26 @@ class MovieResultJSON: Codable {
     var release_date: String?
     var overview: String?
     var vote_average: Double?
-    var backdrop_path: String?
+    var backdrops: [Backdrop]?
+    
+}
+
+// The class will contain backdrop
+// ** single element **
+class Backdrop: Codable {
+    
+    var aspect_ratio: Double?
+    var height: Int
+    var file_path: String?
+    var width: Int
+    
+}
+
+// Technical enum
+//
+enum ControllerType {
+    
+    case main
+    case favourite
     
 }

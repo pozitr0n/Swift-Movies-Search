@@ -17,6 +17,10 @@ class MainViewController: UIViewController {
     let model = Model()
     let realm = try? Realm()
     
+    let tmdbAPI = TMDB_API()
+    let imgTMDB_Address = "https://image.tmdb.org/t/p/original"
+
+    
     // Outlets
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var mainMenuButton: UIBarButtonItem!
@@ -25,6 +29,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        //print(realm?.configuration.fileURL)
         
         initializeSideMenuComponents()
         initializeDataSourceDelegates()
@@ -52,13 +58,12 @@ class MainViewController: UIViewController {
         // registering xib-cell
         mainCollectionView.register(customXIBCell, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
         
-        // sorting data
-        model.ratingSort()
-        
         // reloading data
         DispatchQueue.main.async {
-            self.mainCollectionView.reloadData()
+            self.tmdbAPI.dataRequest(requestType: APIRequestParameters.popular)
         }
+        
+        mainCollectionView.reloadData()
         
     }
     
@@ -169,14 +174,14 @@ class MainViewController: UIViewController {
 extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.arrayHelper?.count ?? 0
+        return model.moviesObject?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell,
               
-            let item = model.arrayHelper?[indexPath.row] else {
+            let item = model.moviesObject?[indexPath.row] else {
             
             return UICollectionViewCell()
             
@@ -194,7 +199,22 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             return
         }
         
-        destinationViewController.receivedIndex = model.arrayHelper?[indexPath.row].id ?? 0
+        guard let currID = model.moviesObject?[indexPath.row].id else {
+            return
+        }
+        
+        let likedScope = realm?.objects(LikedMovieObject.self).filter("id == %@", currID)
+        
+        var isLikedByUser = false
+        
+        if likedScope?.first != nil {
+            isLikedByUser = true
+        }
+        
+        destinationViewController.cameFromFavourite = isLikedByUser
+        destinationViewController.receivedIndex = indexPath.row
+        destinationViewController.controllerType = .main
+        
         navigationController?.pushViewController(destinationViewController, animated: true)
         
     }

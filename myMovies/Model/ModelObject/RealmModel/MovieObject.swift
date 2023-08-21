@@ -18,7 +18,7 @@ class MovieObject: Object {
     @objc dynamic var about: String = ""
     @objc dynamic var movieYear: Int = 0
     @objc dynamic var movieRating: Double = 0
-    @objc dynamic var moviePreviews: String = ""
+    dynamic var moviePreviews: List<String> = List<String>()
     @objc dynamic var isLikedByUser: Bool = false
     
     override class func primaryKey() -> String? {

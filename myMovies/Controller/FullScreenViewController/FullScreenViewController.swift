@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FullScreenViewController: UIViewController {
 
@@ -14,8 +15,13 @@ class FullScreenViewController: UIViewController {
     @IBOutlet weak var closeButton: UIButton!
     
     // Setting the parameters
-    var indexPathFromParentViewController: Int = Int()
     let model = Model()
+    let tmdbAPI = TMDB_API()
+    let imgTMDB_Address = "https://image.tmdb.org/t/p/w500"
+    var isFavorited: Bool = Bool()
+    var detailIndexPath: Int = Int()
+    var controllerType: ControllerType?
+    let realm = try? Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +36,56 @@ class FullScreenViewController: UIViewController {
     //
     func getFullMoviePoster() {
     
-        fullScreenImageView.image = UIImage(named: model.moviesObject?[indexPathFromParentViewController].moviePicture ?? "image_cover_144_203")
+        if controllerType == .main {
+        
+            if isFavorited == false {
+                
+                guard let unwrMoviePicture = self.model.moviesObject?[self.detailIndexPath].moviePicture,
+                      let posterURL = URL(string: self.imgTMDB_Address + unwrMoviePicture) else {
+                    return
+                }
+                
+                self.tmdbAPI.getSetPosters(withURL: posterURL) { image in
+                    self.fullScreenImageView.image = image
+                }
+                
+            } else if isFavorited == true {
+                
+                guard let currID = self.model.moviesObject?[self.detailIndexPath].id else {
+                    return
+                }
+                
+                let likedScope = realm?.objects(LikedMovieObject.self).filter("id == %@", currID)
+                
+                if likedScope?.first != nil {
+                    
+                    guard let unwrMoviePicture = likedScope?.first?.moviePicture,
+                          let posterURL = URL(string: self.imgTMDB_Address + unwrMoviePicture) else {
+                        return
+                    }
+                    
+                    self.tmdbAPI.getSetPosters(withURL: posterURL) { image in
+                        self.fullScreenImageView.image = image
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+        if controllerType == .favourite {
+        
+            guard let unwrMoviePicture = self.model.likedMoviesObjects?[self.detailIndexPath].moviePicture,
+                  let posterURL = URL(string: self.imgTMDB_Address + unwrMoviePicture) else {
+                return
+            }
+            
+            self.tmdbAPI.getSetPosters(withURL: posterURL) { image in
+                self.fullScreenImageView.image = image
+            }
+            
+        }
         
     }
 
