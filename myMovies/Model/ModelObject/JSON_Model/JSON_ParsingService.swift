@@ -39,7 +39,7 @@ class JSON_ParsingService {
                         object.movieTitle = unwrOriginalTitle
                         object.about = unwrOverview
                         object.movieYear = Int(unwrReleaseYear.prefix(4)) ?? 0000
-                        object.movieRating = unwrMovieRating
+                        object.movieRating = Double(unwrMovieRating)
                         
                         //object.moviePreviews = itemJSON.backdrop_path ?? "N/A"
                         

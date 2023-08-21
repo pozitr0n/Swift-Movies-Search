@@ -17,7 +17,7 @@ class MovieObject: Object {
     @objc dynamic var movieTitle: String = ""
     @objc dynamic var about: String = ""
     @objc dynamic var movieYear: Int = 0
-    @objc dynamic var movieRating: Double = 0
+    @objc dynamic var movieRating: Double = 0.0
     dynamic var moviePreviews: List<String> = List<String>()
     @objc dynamic var isLikedByUser: Bool = false
     
@@ -36,7 +36,7 @@ class LikedMovieObject: Object {
     @objc dynamic var movieTitle: String = ""
     @objc dynamic var about: String = ""
     @objc dynamic var movieYear: Int = 0
-    @objc dynamic var movieRating: Double = 0
+    @objc dynamic var movieRating: Double = 0.0
     dynamic var moviePreviews: List<String> = List<String>()
     @objc dynamic var isLikedByUser: Bool = true
     

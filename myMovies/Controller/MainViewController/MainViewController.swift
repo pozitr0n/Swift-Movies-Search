@@ -30,8 +30,6 @@ class MainViewController: UIViewController {
         
         super.viewDidLoad()
         
-        print(realm?.configuration.fileURL)
-        
         initializeSideMenuComponents()
         initializeDataSourceDelegates()
         registerXIBCell()
@@ -57,6 +55,8 @@ class MainViewController: UIViewController {
         
         // registering xib-cell
         mainCollectionView.register(customXIBCell, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
+        
+        model.ratingSort()
         
         // reloading data
         DispatchQueue.main.async {
