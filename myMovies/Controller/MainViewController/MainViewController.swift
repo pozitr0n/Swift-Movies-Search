@@ -30,7 +30,7 @@ class MainViewController: UIViewController {
         
         super.viewDidLoad()
         
-        //print(realm?.configuration.fileURL)
+        print(realm?.configuration.fileURL)
         
         initializeSideMenuComponents()
         initializeDataSourceDelegates()

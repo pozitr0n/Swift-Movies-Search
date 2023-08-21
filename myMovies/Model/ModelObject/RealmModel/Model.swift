@@ -190,3 +190,12 @@ class Model {
     }
 
 }
+
+// Technical enum
+//
+enum ControllerType {
+    
+    case main
+    case favourite
+    
+}

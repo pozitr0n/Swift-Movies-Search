@@ -45,12 +45,3 @@ class Backdrop: Codable {
     var width: Int
     
 }
-
-// Technical enum
-//
-enum ControllerType {
-    
-    case main
-    case favourite
-    
-}
