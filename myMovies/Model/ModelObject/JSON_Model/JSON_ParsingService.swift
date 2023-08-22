@@ -52,7 +52,7 @@ class JSON_ParsingService {
                     }
                     
                     realm?.add(object, update: .all)
-                    
+
                 }
                 
             })

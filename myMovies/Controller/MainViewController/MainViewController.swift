@@ -17,10 +17,6 @@ class MainViewController: UIViewController {
     let model = Model()
     let realm = try? Realm()
     
-    let tmdbAPI = TMDB_API()
-    let imgTMDB_Address = "https://image.tmdb.org/t/p/original"
-
-    
     // Outlets
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var mainMenuButton: UIBarButtonItem!
@@ -29,6 +25,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        print(realm?.configuration.fileURL)
         
         initializeSideMenuComponents()
         initializeDataSourceDelegates()
@@ -55,15 +53,8 @@ class MainViewController: UIViewController {
         
         // registering xib-cell
         mainCollectionView.register(customXIBCell, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
-        
         model.ratingSort()
-        
-        // reloading data
-        DispatchQueue.main.async {
-            self.tmdbAPI.dataRequest(requestType: APIRequestParameters.popular)
-        }
-        
-        mainCollectionView.reloadData()
+        self.mainCollectionView.reloadData()
         
     }
     

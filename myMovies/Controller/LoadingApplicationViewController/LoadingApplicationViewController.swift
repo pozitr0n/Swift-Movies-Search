@@ -21,10 +21,17 @@ class LoadingApplicationViewController: UIViewController {
         
     }()
     
+    let tmdbAPI = TMDB_API()
+    
     override func viewDidLoad() {
 
         super.viewDidLoad()
         setupLayout()
+        
+        // reloading data
+        DispatchQueue.main.async {
+            self.tmdbAPI.dataRequest(requestType: APIRequestParameters.popular)
+        }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
         
