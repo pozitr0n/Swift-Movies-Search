@@ -25,9 +25,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        print(realm?.configuration.fileURL)
-        
+                
         initializeSideMenuComponents()
         initializeDataSourceDelegates()
         registerXIBCell()
