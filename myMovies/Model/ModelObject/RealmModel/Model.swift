@@ -28,6 +28,7 @@ class Model {
     // Sorted array
     //
     var arrayHelper: Results<MovieObject>?
+    
     var sortAscending: Bool = false
     
     var likedMoviesObjects: Results<LikedMovieObject>? {
