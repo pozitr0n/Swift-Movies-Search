@@ -24,8 +24,6 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        print(realm?.configuration.fileURL)
-        
         super.viewDidLoad()
                 
         initializeSideMenuComponents()
@@ -165,14 +163,14 @@ class MainViewController: UIViewController {
 extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.moviesObject?.count ?? 0
+        return model.arrayHelper?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell,
               
-            let item = model.moviesObject?[indexPath.row] else {
+            let item = model.arrayHelper?[indexPath.row] else {
             
             return UICollectionViewCell()
             
@@ -190,7 +188,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             return
         }
         
-        guard let currID = model.moviesObject?[indexPath.row].id else {
+        guard let currID = model.arrayHelper?[indexPath.row].id else {
             return
         }
         
@@ -204,6 +202,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         
         destinationViewController.cameFromFavourite = isLikedByUser
         destinationViewController.receivedIndex = indexPath.row
+        destinationViewController.arrayHelper = model.arrayHelper
         destinationViewController.controllerType = .main
         
         navigationController?.pushViewController(destinationViewController, animated: true)

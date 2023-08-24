@@ -21,6 +21,7 @@ class FullScreenViewController: UIViewController {
     var isFavorited: Bool = Bool()
     var detailIndexPath: Int = Int()
     var controllerType: ControllerType?
+    var arrayHelper: Results<MovieObject>?
     let realm = try? Realm()
     
     override func viewDidLoad() {
@@ -40,7 +41,7 @@ class FullScreenViewController: UIViewController {
         
             if isFavorited == false {
                 
-                guard let unwrMoviePicture = self.model.moviesObject?[self.detailIndexPath].moviePicture,
+                guard let unwrMoviePicture = self.arrayHelper?[self.detailIndexPath].moviePicture,
                       let posterURL = URL(string: self.imgTMDB_Address + unwrMoviePicture) else {
                     return
                 }
@@ -51,7 +52,7 @@ class FullScreenViewController: UIViewController {
                 
             } else if isFavorited == true {
                 
-                guard let currID = self.model.moviesObject?[self.detailIndexPath].id else {
+                guard let currID = self.arrayHelper?[self.detailIndexPath].id else {
                     return
                 }
                 

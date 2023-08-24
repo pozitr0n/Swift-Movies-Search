@@ -82,12 +82,12 @@ class Model {
     
     // Method for updating favourite movie
     //
-    func updateFavouriteMovie(at item: Int, controllerType: ControllerType) {
+    func updateFavouriteMovie(at item: Int, controllerType: ControllerType, gettingArrayHelper: Results<MovieObject>?) {
        
         if controllerType == .main {
             
             // Created optional binding for the object
-            if let movie = moviesObject?[item] {
+            if let movie = gettingArrayHelper?[item] {
                 
                 do {
                     
@@ -96,7 +96,7 @@ class Model {
                         // revert like
                         movie.isLikedByUser = !movie.isLikedByUser
                         
-                        guard let currID = moviesObject?[item].id else {
+                        guard let currID = gettingArrayHelper?[item].id else {
                             return
                         }
                         

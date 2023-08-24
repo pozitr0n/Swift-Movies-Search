@@ -39,6 +39,7 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     @IBOutlet weak var likeButton: UIButton!
     
     var receivedIndex: Int = Int()
+    var arrayHelper: Results<MovieObject>?
     var controllerType: ControllerType?
     
     override func viewDidLoad() {
@@ -68,6 +69,7 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
         destinationViewController.detailIndexPath = receivedIndex
         destinationViewController.isFavorited = cameFromFavourite
         destinationViewController.controllerType = controllerType
+        destinationViewController.arrayHelper = arrayHelper
         
     }
     
@@ -114,7 +116,7 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
          
             if self.cameFromFavourite == false {
                 
-                guard let unwrMoviePicture = self.model.moviesObject?[self.receivedIndex].moviePicture,
+                guard let unwrMoviePicture = self.arrayHelper?[self.receivedIndex].moviePicture,
                       let unwrPosterURL = URL(string: self.imgTMDB_Address + unwrMoviePicture) else {
                     return
                 }
@@ -123,14 +125,14 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
                     self.moviePosterImageView.image = image
                 }
                 
-                self.movieTitleLabel.text = self.model.moviesObject?[self.receivedIndex].movieTitle
-                self.releaseYearLabel.text = String(self.model.moviesObject?[self.receivedIndex].movieYear ?? 0000)
-                self.ratingLabel.text = String(self.model.moviesObject?[self.receivedIndex].movieRating ?? 0)
-                self.movieDescriptionTextView.text = self.model.moviesObject?[self.receivedIndex].about
+                self.movieTitleLabel.text = self.arrayHelper?[self.receivedIndex].movieTitle
+                self.releaseYearLabel.text = String(self.arrayHelper?[self.receivedIndex].movieYear ?? 0000)
+                self.ratingLabel.text = String(self.arrayHelper?[self.receivedIndex].movieRating ?? 0)
+                self.movieDescriptionTextView.text = self.arrayHelper?[self.receivedIndex].about
                 
             } else if self.cameFromFavourite == true {
                 
-                guard let currID = model.moviesObject?[self.receivedIndex].id else {
+                guard let currID = self.arrayHelper?[self.receivedIndex].id else {
                     return
                 }
                 
@@ -197,7 +199,7 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     
     @IBAction func likeButtonAction(_ sender: Any) {
         
-        model.updateFavouriteMovie(at: receivedIndex, controllerType: controllerType!)
+        model.updateFavouriteMovie(at: receivedIndex, controllerType: controllerType!, gettingArrayHelper: arrayHelper)
         cameFromFavourite = !cameFromFavourite
         setLikeButton()
         delegateFavourite?.updateFavouriteMoviesViewController()
