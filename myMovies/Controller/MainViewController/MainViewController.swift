@@ -24,6 +24,8 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         
+        print(realm?.configuration.fileURL)
+        
         super.viewDidLoad()
                 
         initializeSideMenuComponents()
