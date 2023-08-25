@@ -10,7 +10,7 @@ import RealmSwift
 
 class JSON_ParsingService {
         
-    // Method for native parsing JSON
+    // Method for native parsing movie-data (from .json)
     //
     func parseJSONData(dataForParsing: Data, errorDuringParsing: Error?) {
     
@@ -41,8 +41,6 @@ class JSON_ParsingService {
                         object.movieYear = Int(unwrReleaseYear.prefix(4)) ?? 0000
                         object.movieRating = Double(unwrMovieRating)
                         
-                        //object.moviePreviews = itemJSON.backdrop_path ?? "N/A"
-                        
                         let likedScope = realm?.objects(LikedMovieObject.self).filter("id == %@", itemJSON.id!)
                         
                         if likedScope?.first != nil {
@@ -56,6 +54,52 @@ class JSON_ParsingService {
                 }
                 
             })
+            
+        } catch let error {
+            print(error)
+        }
+        
+    }
+    
+    // Method for native parsing backdrops (from .json)
+    //
+    func parseMovieBackdropsJSONData(parseData: Data, parseError: Error?) {
+        
+        do {
+            
+            let movieData = try JSONDecoder().decode(MovieResultJSON.self, from: parseData)
+            let movieID = movieData.id
+            guard let backdrops = movieData.backdrops else {
+                return
+            }
+            
+            let realm = try? Realm()
+            
+            guard let currentMovie = realm?.object(ofType: MovieObject.self, forPrimaryKey: movieID) else {
+                return
+            }
+            
+            do {
+                
+                try realm?.write ({
+                    
+                    currentMovie.moviePreviews.removeAll()
+                    
+                    for backdrop in backdrops {
+                        
+                        guard let filePath = backdrop.file_path else {
+                            return
+                        }
+                        
+                        currentMovie.moviePreviews.append(objectsIn: Array(arrayLiteral: filePath))
+                        
+                    }
+                    
+                })
+                
+            } catch {
+                print("Can't update backdrops for film due error: \(error)")
+            }
             
         } catch let error {
             print(error)

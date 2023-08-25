@@ -105,14 +105,15 @@ class Model {
                         
                         if likedScopeValue == nil && movie.isLikedByUser == true {
                             
-                            let object = LikedMovieObject()
+                            let object           = LikedMovieObject()
                             
-                            object.id           = movie.id
-                            object.moviePicture = movie.moviePicture
-                            object.movieTitle   = movie.movieTitle
-                            object.about        = movie.about
-                            object.movieYear    = movie.movieYear
-                            object.movieRating  = movie.movieRating
+                            object.id            = movie.id
+                            object.moviePicture  = movie.moviePicture
+                            object.movieTitle    = movie.movieTitle
+                            object.about         = movie.about
+                            object.movieYear     = movie.movieYear
+                            object.movieRating   = movie.movieRating
+                            object.moviePreviews = movie.moviePreviews
                             
                             realm?.add(object, update: .all)
                             

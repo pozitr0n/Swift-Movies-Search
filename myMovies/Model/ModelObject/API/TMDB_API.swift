@@ -120,4 +120,32 @@ class TMDB_API {
         
     }
     
+    // Method for getting backdrops
+    //
+    // Link-template:
+    // https://api.themoviedb.org/3/movie/{movie_id}/images?api_key=<<api_key>>
+    //
+    func getBackdropsForFilmBy(id: Int) {
+        
+        let idString = String(id)
+        let urlString = "\(baseOfTheURL)\(idString)/images?api_key=\(apiKey)"
+        
+        guard let apiURL: URL = URL(string: urlString) else { return }
+        
+        let backdropsTask = currentSession.dataTask(with: apiURL) { data, response, error in
+            
+            guard let unwrData = data,
+                  (response as? HTTPURLResponse)?.statusCode == 200,
+                  error == nil else {
+                return
+            }
+            
+            self.parserService.parseMovieBackdropsJSONData(parseData: unwrData, parseError: error)
+            
+        }
+        
+        backdropsTask.resume()
+        
+    }
+    
 }

@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
     
     let model = Model()
     let realm = try? Realm()
+    let tmdbAPI = TMDB_API()
     
     // Outlets
     @IBOutlet weak var mainCollectionView: UICollectionView!
@@ -25,7 +26,9 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-                
+        
+        print(realm?.configuration.fileURL)
+        
         initializeSideMenuComponents()
         initializeDataSourceDelegates()
         registerXIBCell()
@@ -204,6 +207,8 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         destinationViewController.receivedIndex = indexPath.row
         destinationViewController.arrayHelper = model.arrayHelper
         destinationViewController.controllerType = .main
+        
+        tmdbAPI.getBackdropsForFilmBy(id: currID)
         
         navigationController?.pushViewController(destinationViewController, animated: true)
         
