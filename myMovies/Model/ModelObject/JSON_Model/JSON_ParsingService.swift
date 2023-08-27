@@ -69,6 +69,7 @@ class JSON_ParsingService {
             
             let movieData = try JSONDecoder().decode(MovieResultJSON.self, from: parseData)
             let movieID = movieData.id
+            
             guard let backdrops = movieData.backdrops else {
                 return
             }
