@@ -23,6 +23,8 @@
 		4D822C632A9EC79C00813DAF /* myMoviesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D822C622A9EC79C00813DAF /* myMoviesUITests.swift */; };
 		4D822C652A9EC79C00813DAF /* myMoviesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D822C642A9EC79C00813DAF /* myMoviesUITestsLaunchTests.swift */; };
 		4D822C6D2A9ECB6F00813DAF /* MovieMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D822C6C2A9ECB6F00813DAF /* MovieMock.swift */; };
+		4D822C702A9F90A300813DAF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D822C6F2A9F90A300813DAF /* LoginViewController.swift */; };
+		4D822C742A9FEB0E00813DAF /* APIKeyData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D822C722A9FEB0E00813DAF /* APIKeyData.xcdatamodeld */; };
 		4DDCAD272A3D444600CC845C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD262A3D444600CC845C /* AppDelegate.swift */; };
 		4DDCAD292A3D444600CC845C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD282A3D444600CC845C /* SceneDelegate.swift */; };
 		4DDCAD2B2A3D444600CC845C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD2A2A3D444600CC845C /* MainViewController.swift */; };
@@ -86,6 +88,8 @@
 		4D822C622A9EC79C00813DAF /* myMoviesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myMoviesUITests.swift; sourceTree = "<group>"; };
 		4D822C642A9EC79C00813DAF /* myMoviesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myMoviesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4D822C6C2A9ECB6F00813DAF /* MovieMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieMock.swift; sourceTree = "<group>"; };
+		4D822C6F2A9F90A300813DAF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4D822C732A9FEB0E00813DAF /* APIKeyData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = APIKeyData.xcdatamodel; sourceTree = "<group>"; };
 		4DDCAD262A3D444600CC845C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DDCAD282A3D444600CC845C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4DDCAD2A2A3D444600CC845C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -286,6 +290,22 @@
 			path = "Model Unit-tests";
 			sourceTree = "<group>";
 		};
+		4D822C6E2A9F907F00813DAF /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4D822C6F2A9F90A300813DAF /* LoginViewController.swift */,
+			);
+			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		4D822C712A9FEAE700813DAF /* CoredataAPIKeyData */ = {
+			isa = PBXGroup;
+			children = (
+				4D822C722A9FEB0E00813DAF /* APIKeyData.xcdatamodeld */,
+			);
+			path = CoredataAPIKeyData;
+			sourceTree = "<group>";
+		};
 		4DDCAD1A2A3D444600CC845C = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +336,7 @@
 		4DDCAD3A2A3D467E00CC845C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4D822C712A9FEAE700813DAF /* CoredataAPIKeyData */,
 				4D822C322A9EBDF300813DAF /* Constants */,
 				4DE71F2D2A6B897E0074504E /* ModelObject */,
 				4D7ABF412A6864BA00D3F885 /* SideMenuItem */,
@@ -341,6 +362,7 @@
 		4DDCAD3C2A3D469300CC845C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4D822C6E2A9F907F00813DAF /* LoginViewController */,
 				4DE71F362A6E039E0074504E /* LoadingApplicationViewController */,
 				4DE71F332A6DC5880074504E /* ApplicationInfoViewController */,
 				4D7ABF352A68608A00D3F885 /* SideMenuController */,
@@ -706,11 +728,13 @@
 				4DE71F322A6C17AF0074504E /* ViewControllerDelegate.swift in Sources */,
 				4D822C342A9EBE2500813DAF /* Constants.swift in Sources */,
 				4D7ABF2E2A65FDAB00D3F885 /* Model.swift in Sources */,
+				4D822C742A9FEB0E00813DAF /* APIKeyData.xcdatamodeld in Sources */,
 				4DDCAD4B2A3D4C4400CC845C /* JSON_Model.swift in Sources */,
 				4DE71F382A6E03B40074504E /* LoadingApplicationViewController.swift in Sources */,
 				4D7ABF3B2A6860EF00D3F885 /* ContentViewControllerPresentation.swift in Sources */,
 				4DE71F2F2A6B89950074504E /* MovieObject.swift in Sources */,
 				4DDCAD4F2A3E7F6200CC845C /* MovieCollectionViewCell.swift in Sources */,
+				4D822C702A9F90A300813DAF /* LoginViewController.swift in Sources */,
 				4D822C6D2A9ECB6F00813DAF /* MovieMock.swift in Sources */,
 				4D52803D2A4B1CD800991CBB /* DetailsPreviewCollectionViewCell.swift in Sources */,
 				4DE71F252A6B5D7A0074504E /* MoviePicturesCell.swift in Sources */,
@@ -1046,6 +1070,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4D822C722A9FEB0E00813DAF /* APIKeyData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4D822C732A9FEB0E00813DAF /* APIKeyData.xcdatamodel */,
+			);
+			currentVersion = 4D822C732A9FEB0E00813DAF /* APIKeyData.xcdatamodel */;
+			path = APIKeyData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4DDCAD1B2A3D444600CC845C /* Project object */;
 }

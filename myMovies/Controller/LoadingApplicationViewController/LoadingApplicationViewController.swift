@@ -28,18 +28,34 @@ class LoadingApplicationViewController: UIViewController {
         super.viewDidLoad()
         setupLayout()
         
-        // reloading data
-        DispatchQueue.main.async {
-            self.tmdbAPI.dataRequest(requestType: APIRequestParameters.popular)
+        // reloading data if need
+        if !Constants().apiKey.isEmpty {
+            DispatchQueue.main.async {
+                self.tmdbAPI.dataRequest(requestType: APIRequestParameters.popular)
+            }
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
         
-            let homeController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewControllerID")
-            homeController.modalTransitionStyle = .crossDissolve
-            homeController.modalPresentationStyle = .fullScreen
+            if !Constants().apiKey.isEmpty {
+             
+                let homeController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewControllerID")
+                homeController.modalTransitionStyle = .crossDissolve
+                homeController.modalPresentationStyle = .fullScreen
+                
+                self.navigationController?.pushViewController(homeController, animated: false)
+                
+            } else {
+           
+                let homeController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewControllerID")
             
-            self.navigationController?.pushViewController(homeController, animated: false)
+                let navigationViewController = UINavigationController(rootViewController: homeController)
+                navigationViewController.modalTransitionStyle = .crossDissolve
+                navigationViewController.modalPresentationStyle = .fullScreen
+                
+                self.present(navigationViewController, animated: false)
+                
+            }
             
         })
 
