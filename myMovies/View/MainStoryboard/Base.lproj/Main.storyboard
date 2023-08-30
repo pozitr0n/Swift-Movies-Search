@@ -389,7 +389,7 @@ switch the switch to the Exit</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OIU-iu-vI2">
-                                <rect key="frame" x="356" y="330" width="26" height="26"/>
+                                <rect key="frame" x="356" y="328" width="26" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="26" id="791-v9-3kt"/>
                                     <constraint firstAttribute="height" constant="26" id="Df0-Mh-hWw"/>
@@ -465,7 +465,7 @@ switch the switch to the Exit</string>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1h-C2-g8Y">
-                                <rect key="frame" x="324" y="332" width="28.333333333333314" height="20.333333333333314"/>
+                                <rect key="frame" x="324" y="330" width="28.333333333333258" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.4646070175" green="0.4646070175" blue="0.4646070175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -485,7 +485,7 @@ switch the switch to the Exit</string>
                         <constraints>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="bottom" secondItem="m1W-Oh-P8a" secondAttribute="bottom" constant="605" id="3a6-qa-asi"/>
                             <constraint firstItem="YRl-sj-rUj" firstAttribute="leading" secondItem="uWI-jh-Mso" secondAttribute="leading" constant="16" id="4Tf-Oc-EBV"/>
-                            <constraint firstItem="U1h-C2-g8Y" firstAttribute="top" secondItem="rPV-DD-0Ve" secondAttribute="top" constant="332" id="6Ls-dB-l3F"/>
+                            <constraint firstItem="U1h-C2-g8Y" firstAttribute="top" secondItem="rPV-DD-0Ve" secondAttribute="top" constant="330" id="6Ls-dB-l3F"/>
                             <constraint firstItem="VI0-ud-yrq" firstAttribute="top" secondItem="ssR-oX-vlP" secondAttribute="bottom" constant="8" symbolic="YES" id="6RZ-6D-4BH"/>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="bottom" secondItem="60T-5M-Y1g" secondAttribute="bottom" constant="506" id="8oZ-VZ-h99"/>
                             <constraint firstItem="VI0-ud-yrq" firstAttribute="bottom" secondItem="uWI-jh-Mso" secondAttribute="bottom" id="96r-cp-DXw"/>
@@ -507,7 +507,7 @@ switch the switch to the Exit</string>
                             <constraint firstItem="ssR-oX-vlP" firstAttribute="trailing" secondItem="1LZ-u3-dPb" secondAttribute="trailing" id="dol-YR-sUB"/>
                             <constraint firstItem="d9N-dz-1VO" firstAttribute="leading" secondItem="uWI-jh-Mso" secondAttribute="leading" constant="16" id="gMn-qH-TO6"/>
                             <constraint firstItem="ssR-oX-vlP" firstAttribute="leading" secondItem="1LZ-u3-dPb" secondAttribute="leading" id="ggb-rm-MqK"/>
-                            <constraint firstItem="OIU-iu-vI2" firstAttribute="top" secondItem="rPV-DD-0Ve" secondAttribute="top" constant="330" id="lSf-VB-Obu"/>
+                            <constraint firstItem="OIU-iu-vI2" firstAttribute="top" secondItem="rPV-DD-0Ve" secondAttribute="top" constant="328" id="lSf-VB-Obu"/>
                             <constraint firstItem="m1W-Oh-P8a" firstAttribute="top" secondItem="rPV-DD-0Ve" secondAttribute="top" constant="130" id="lVm-YZ-grc"/>
                             <constraint firstItem="U1h-C2-g8Y" firstAttribute="leading" secondItem="d9N-dz-1VO" secondAttribute="trailing" constant="131" id="m87-jp-h4o"/>
                             <constraint firstItem="1LZ-u3-dPb" firstAttribute="leading" secondItem="uWI-jh-Mso" secondAttribute="leading" constant="16" id="rba-iw-58h"/>
@@ -551,7 +551,7 @@ switch the switch to the Exit</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="z4G-ey-Yp6">
-                                <rect key="frame" x="16" y="303" width="361" height="412"/>
+                                <rect key="frame" x="16" y="254" width="361" height="412"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="361" id="AgD-Ai-MZy"/>
@@ -580,7 +580,7 @@ switch the switch to the Exit</string>
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Previews to the movie" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Er-pb-yFU">
-                                <rect key="frame" x="16" y="122" width="361" height="156"/>
+                                <rect key="frame" x="16" y="122" width="361" height="108"/>
                                 <color key="backgroundColor" red="0.96210150345407353" green="0.96210150345407353" blue="0.96210150345407353" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="28"/>
                                 <nil key="textColor"/>
@@ -596,7 +596,7 @@ switch the switch to the Exit</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/5" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDB-M0-W2E">
-                                <rect key="frame" x="125" y="750" width="142" height="25"/>
+                                <rect key="frame" x="125" y="683" width="142" height="25"/>
                                 <color key="backgroundColor" red="0.96709282289851795" green="0.96709282289851795" blue="0.96709282289851795" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="25"/>
                                 <nil key="textColor"/>
@@ -606,19 +606,19 @@ switch the switch to the Exit</string>
                         <viewLayoutGuide key="safeArea" id="zpv-cL-FzK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="qDB-M0-W2E" firstAttribute="top" secondItem="z4G-ey-Yp6" secondAttribute="bottom" constant="35" id="7VM-sb-ued"/>
+                            <constraint firstItem="qDB-M0-W2E" firstAttribute="top" secondItem="z4G-ey-Yp6" secondAttribute="bottom" constant="17" id="7VM-sb-ued"/>
                             <constraint firstItem="z4G-ey-Yp6" firstAttribute="trailing" secondItem="2Er-pb-yFU" secondAttribute="trailing" id="A2S-4Z-OLz"/>
                             <constraint firstItem="2Er-pb-yFU" firstAttribute="top" secondItem="CLY-UM-w3t" secondAttribute="bottom" constant="8" id="Lfn-2Y-gRH"/>
                             <constraint firstItem="zpv-cL-FzK" firstAttribute="trailing" secondItem="qDB-M0-W2E" secondAttribute="trailing" constant="126" id="RNY-hh-Uko"/>
                             <constraint firstItem="z4G-ey-Yp6" firstAttribute="leading" secondItem="2Er-pb-yFU" secondAttribute="leading" id="SIl-Kw-j0q"/>
-                            <constraint firstItem="z4G-ey-Yp6" firstAttribute="top" secondItem="GhS-N4-xc2" secondAttribute="top" constant="303" id="V73-PA-ywc"/>
+                            <constraint firstItem="z4G-ey-Yp6" firstAttribute="top" secondItem="GhS-N4-xc2" secondAttribute="top" constant="254" id="V73-PA-ywc"/>
                             <constraint firstItem="z4G-ey-Yp6" firstAttribute="leading" secondItem="CLY-UM-w3t" secondAttribute="leading" id="deo-p0-ZJy"/>
                             <constraint firstItem="qDB-M0-W2E" firstAttribute="leading" secondItem="zpv-cL-FzK" secondAttribute="leading" constant="125" id="lYn-lH-Ezl"/>
                             <constraint firstItem="CLY-UM-w3t" firstAttribute="top" secondItem="zpv-cL-FzK" secondAttribute="top" constant="38" id="m34-oB-QZs"/>
-                            <constraint firstItem="zpv-cL-FzK" firstAttribute="bottom" secondItem="qDB-M0-W2E" secondAttribute="bottom" constant="43" id="mvY-Jg-4yj"/>
+                            <constraint firstItem="zpv-cL-FzK" firstAttribute="bottom" secondItem="qDB-M0-W2E" secondAttribute="bottom" constant="110" id="mvY-Jg-4yj"/>
                             <constraint firstItem="z4G-ey-Yp6" firstAttribute="leading" secondItem="GhS-N4-xc2" secondAttribute="leadingMargin" id="nCO-vV-8fN"/>
                             <constraint firstItem="zpv-cL-FzK" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CLY-UM-w3t" secondAttribute="trailing" symbolic="YES" id="wHZ-47-bQO"/>
-                            <constraint firstItem="z4G-ey-Yp6" firstAttribute="top" secondItem="2Er-pb-yFU" secondAttribute="bottom" constant="25" id="ygH-3P-g8p"/>
+                            <constraint firstItem="z4G-ey-Yp6" firstAttribute="top" secondItem="2Er-pb-yFU" secondAttribute="bottom" constant="24" id="ygH-3P-g8p"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="AFp-A4-am5"/>
