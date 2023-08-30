@@ -13,7 +13,6 @@ class FavouriteMovieCell: UICollectionViewCell {
     static let identifier = "FavouriteMovieCell"
     private let moviePreviewImageViewCornerRadius: CGFloat = 10
     private let model = Model()
-    private var imgTMDB_Address = "https://image.tmdb.org/t/p/w500"
     let tmdbAPI = TMDB_API()
     var cellIndex: Int = Int()
     
@@ -21,7 +20,7 @@ class FavouriteMovieCell: UICollectionViewCell {
         
         didSet {
             
-            guard let unwrFavouriteData = data, let url = URL(string: imgTMDB_Address + unwrFavouriteData.moviePicture) else {
+            guard let unwrFavouriteData = data, let url = URL(string: Constants.imgTMDB_Address + unwrFavouriteData.moviePicture) else {
                 return
             }
             

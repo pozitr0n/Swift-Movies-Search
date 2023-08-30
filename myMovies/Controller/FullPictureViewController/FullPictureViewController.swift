@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FullPictureViewController: UIViewController {
 
@@ -13,11 +14,14 @@ class FullPictureViewController: UIViewController {
     
     // Setting the parameters
     let model = Model()
+    var moviePreviews: List<String>?
+    var countTheElements: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initializeDataSourceDelegates()
+        initializeViewParameters()
         registerXIBCell()
         
     }
@@ -29,6 +33,18 @@ class FullPictureViewController: UIViewController {
         fullPictureCollectionView.dataSource = self
         fullPictureCollectionView.delegate = self
                
+    }
+    
+    // Method for initialization parameters
+    //
+    func initializeViewParameters() {
+        
+        guard let previews = moviePreviews else {
+            return
+        }
+        
+        countTheElements = previews.count
+        
     }
     
     // Registartion XIB cell
@@ -52,16 +68,17 @@ class FullPictureViewController: UIViewController {
 extension FullPictureViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return countTheElements
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FullPictureCell.identifier, for: indexPath) as? FullPictureCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FullPictureCell.identifier, for: indexPath) as? FullPictureCell,
+              let previews = self.moviePreviews else {
             return UICollectionViewCell()
         }
         
-        cell.fillTheImage()
+        cell.fillTheImage(partOtTheURL: previews[indexPath.row])
         
         return cell
         

@@ -27,8 +27,6 @@ class MainViewController: UIViewController {
         
         super.viewDidLoad()
         
-        print(realm?.configuration.fileURL)
-        
         initializeSideMenuComponents()
         initializeDataSourceDelegates()
         registerXIBCell()
@@ -207,8 +205,6 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         destinationViewController.receivedIndex = indexPath.row
         destinationViewController.arrayHelper = model.arrayHelper
         destinationViewController.controllerType = .main
-        
-        tmdbAPI.getBackdropsForFilmBy(id: currID)
         
         navigationController?.pushViewController(destinationViewController, animated: true)
         

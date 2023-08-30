@@ -14,6 +14,8 @@ class JSON_ParsingService {
     //
     func parseJSONData(dataForParsing: Data, errorDuringParsing: Error?) {
     
+        let tmdbAPI = TMDB_API()
+        
         do {
            
             let movieObject = try JSONDecoder().decode(MovieList.self, from: dataForParsing)
@@ -40,6 +42,8 @@ class JSON_ParsingService {
                         object.about = unwrOverview
                         object.movieYear = Int(unwrReleaseYear.prefix(4)) ?? 0000
                         object.movieRating = Double(unwrMovieRating)
+                        
+                        tmdbAPI.getBackdropsForFilmBy(id: unwrID)
                         
                         let likedScope = realm?.objects(LikedMovieObject.self).filter("id == %@", itemJSON.id!)
                         

@@ -13,6 +13,28 @@ class MoviePicturesCell: UICollectionViewCell {
     static let identifier = "MoviePicturesCell"
     private let moviePictureImageViewCornerRadius: CGFloat = 40
     
+    let tmdbAPI = TMDB_API()
+    
+    var imagePath: String? {
+        
+        didSet {
+            
+            guard let imagePath = self.imagePath else {
+                return
+            }
+            
+            guard let url = URL(string: Constants.imgTMDB_Address + imagePath) else {
+                return
+            }
+            
+            tmdbAPI.getSetPosters(withURL: url) { image in
+                self.moviePictureImageView.image = image
+            }
+            
+        }
+        
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -33,10 +55,4 @@ class MoviePicturesCell: UICollectionViewCell {
     
     @IBOutlet weak var moviePictureImageView: UIImageView!
     
-    func fillTheImage() {
-        
-        moviePictureImageView.image = UIImage(named: "image1")
-        
-    }
-
 }

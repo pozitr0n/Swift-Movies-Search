@@ -12,14 +12,13 @@ class MovieCollectionViewCell: UICollectionViewCell {
     // Setting the parameters
     static let identifier = "MovieCell"
     private let moviePreviewImageViewCornerRadius: CGFloat = 10
-    private var imgTMDB_Address = "https://image.tmdb.org/t/p/w500"
     let tmdbAPI = TMDB_API()
     
     var data: MovieObject? {
         
         didSet {
             
-            guard let unwrData = data, let url = URL(string: imgTMDB_Address + unwrData.moviePicture) else {
+            guard let unwrData = data, let url = URL(string: Constants.imgTMDB_Address + unwrData.moviePicture) else {
                 return
             }
             

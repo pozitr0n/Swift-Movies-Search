@@ -6,19 +6,27 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MoviePicturesViewController: UIViewController {
 
+    @IBOutlet weak var movieNameFull: UILabel!
     @IBOutlet weak var moviePicturesCollectionView: UICollectionView!
+    @IBOutlet weak var currentCounter: UILabel!
     
     // Setting the parameters
     let model = Model()
+    var moviePreviews: List<String>?
+    var movieName: String?
+    var countTheElements: Int = 0
+    private let cornerRadius: CGFloat = 15
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initializeDataSourceDelegates()
         registerXIBCell()
+        initializeViewParameters()
         
     }
     
@@ -29,6 +37,27 @@ class MoviePicturesViewController: UIViewController {
         moviePicturesCollectionView.dataSource = self
         moviePicturesCollectionView.delegate = self
                
+    }
+    
+    // Method for initialization parameters
+    //
+    func initializeViewParameters() {
+        
+        currentCounter.layer.masksToBounds = true
+        currentCounter.layer.cornerRadius = cornerRadius
+        
+        guard let movieNameUnwr = movieName else {
+            return
+        }
+        
+        movieNameFull.text =  "\(movieNameUnwr)"
+        
+        guard let previews = moviePreviews else {
+            return
+        }
+        
+        countTheElements = previews.count
+        
     }
     
     // Registartion XIB cell
@@ -52,16 +81,17 @@ class MoviePicturesViewController: UIViewController {
 extension MoviePicturesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return countTheElements
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MoviePicturesCell.identifier, for: indexPath) as? MoviePicturesCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MoviePicturesCell.identifier, for: indexPath) as? MoviePicturesCell,
+              let previews = self.moviePreviews else {
             return UICollectionViewCell()
         }
         
-        cell.fillTheImage()
+        cell.imagePath = previews[indexPath.row]
         
         return cell
         
@@ -73,7 +103,41 @@ extension MoviePicturesViewController: UICollectionViewDataSource, UICollectionV
             return
         }
         
+        destinationViewController.moviePreviews = moviePreviews
+        
         navigationController?.pushViewController(destinationViewController, animated: true)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        for cell in collectionView.visibleCells {
+            
+            let indexPath = collectionView.indexPath(for: cell)
+            
+            guard let _indexPath = indexPath else {
+                return
+            }
+            
+            currentCounter.text = "\(_indexPath.row + 1) / \(countTheElements)"
+            
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        for cell in collectionView.visibleCells {
+            
+            let indexPath = collectionView.indexPath(for: cell)
+            
+            guard let _indexPath = indexPath else {
+                return
+            }
+            
+            currentCounter.text = "\(_indexPath.row + 1) / \(countTheElements)"
+            
+        }
         
     }
     

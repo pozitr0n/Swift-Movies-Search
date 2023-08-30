@@ -17,7 +17,7 @@ class FullScreenViewController: UIViewController {
     // Setting the parameters
     let model = Model()
     let tmdbAPI = TMDB_API()
-    let imgTMDB_Address = "https://image.tmdb.org/t/p/w500"
+
     var isFavorited: Bool = Bool()
     var detailIndexPath: Int = Int()
     var controllerType: ControllerType?
@@ -42,7 +42,7 @@ class FullScreenViewController: UIViewController {
             if isFavorited == false {
                 
                 guard let unwrMoviePicture = self.arrayHelper?[self.detailIndexPath].moviePicture,
-                      let posterURL = URL(string: self.imgTMDB_Address + unwrMoviePicture) else {
+                      let posterURL = URL(string: Constants.imgTMDB_Address + unwrMoviePicture) else {
                     return
                 }
                 
@@ -61,7 +61,7 @@ class FullScreenViewController: UIViewController {
                 if likedScope?.first != nil {
                     
                     guard let unwrMoviePicture = likedScope?.first?.moviePicture,
-                          let posterURL = URL(string: self.imgTMDB_Address + unwrMoviePicture) else {
+                          let posterURL = URL(string: Constants.imgTMDB_Address + unwrMoviePicture) else {
                         return
                     }
                     
@@ -78,7 +78,7 @@ class FullScreenViewController: UIViewController {
         if controllerType == .favourite {
         
             guard let unwrMoviePicture = self.model.likedMoviesObjects?[self.detailIndexPath].moviePicture,
-                  let posterURL = URL(string: self.imgTMDB_Address + unwrMoviePicture) else {
+                  let posterURL = URL(string: Constants.imgTMDB_Address + unwrMoviePicture) else {
                 return
             }
             

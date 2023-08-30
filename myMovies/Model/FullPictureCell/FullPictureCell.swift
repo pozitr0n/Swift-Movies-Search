@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FullPictureCell: UICollectionViewCell {
 
@@ -32,9 +33,20 @@ class FullPictureCell: UICollectionViewCell {
     
     @IBOutlet weak var fullPictureImageView: UIImageView!
     
-    func fillTheImage() {
+    func fillTheImage(partOtTheURL: String?) {
         
-        fullPictureImageView.image = UIImage(named: "image1")
+        guard let imagePath = partOtTheURL else {
+            return
+        }
+        
+        guard let url = URL(string: Constants.imgTMDB_Address_Original + imagePath) else {
+            return
+        }
+        
+        fullPictureImageView.sd_setImage(with: url,
+                                        placeholderImage: UIImage(named: "image_cover_144_203"),
+                                        options: [.continueInBackground, .progressiveLoad],
+                                        completed: nil)
         
     }
 

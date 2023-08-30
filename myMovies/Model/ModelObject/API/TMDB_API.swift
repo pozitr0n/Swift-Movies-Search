@@ -46,8 +46,6 @@ enum APIRequestParameters: String {
 class TMDB_API {
     
     // Parameters
-    let apiKey: String = "e2640eea18e40322814e2a977274c411"
-    let baseOfTheURL: String = "https://api.themoviedb.org/3/movie/"
     let currentSession = URLSession.shared
     let parserService = JSON_ParsingService()
     
@@ -58,7 +56,7 @@ class TMDB_API {
     //
     func dataRequest(requestType: APIRequestParameters) {
             
-        let stringURL: String = "\(baseOfTheURL)\(requestType.rawValue)?api_key=\(apiKey)&language=en-US\(requestType.endOfTheURL)"
+        let stringURL: String = "\(Constants.baseOfTheURL)\(requestType.rawValue)?api_key=\(Constants.apiKey)&language=en-US\(requestType.endOfTheURL)"
         
         guard let apiURL: URL = URL(string: stringURL) else {
             return
@@ -128,7 +126,7 @@ class TMDB_API {
     func getBackdropsForFilmBy(id: Int) {
         
         let idString = String(id)
-        let urlString = "\(baseOfTheURL)\(idString)/images?api_key=\(apiKey)"
+        let urlString = "\(Constants.baseOfTheURL)\(idString)/images?api_key=\(Constants.apiKey)"
         
         guard let apiURL: URL = URL(string: urlString) else { return }
         

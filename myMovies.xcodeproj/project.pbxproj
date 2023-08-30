@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D1B64DA2A69FA7200A5CA61 /* TestPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1B64D92A69FA7200A5CA61 /* TestPreview.swift */; };
 		4D52803D2A4B1CD800991CBB /* DetailsPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D52803C2A4B1CD800991CBB /* DetailsPreviewCollectionViewCell.swift */; };
 		4D5280412A4B46DE00991CBB /* FullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5280402A4B46DE00991CBB /* FullScreenViewController.swift */; };
 		4D7ABF2C2A615DBA00D3F885 /* RoundingTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7ABF2B2A615DBA00D3F885 /* RoundingTransition.swift */; };
@@ -19,6 +18,7 @@
 		4D7ABF3D2A68618C00D3F885 /* SideMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7ABF3C2A68618C00D3F885 /* SideMenuItem.swift */; };
 		4D7ABF3F2A68644100D3F885 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7ABF3E2A68644100D3F885 /* SideMenuViewController.swift */; };
 		4D7ABF432A6864D800D3F885 /* SideMenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7ABF422A6864D800D3F885 /* SideMenuItemCell.swift */; };
+		4D822C342A9EBE2500813DAF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D822C332A9EBE2500813DAF /* Constants.swift */; };
 		4DDCAD272A3D444600CC845C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD262A3D444600CC845C /* AppDelegate.swift */; };
 		4DDCAD292A3D444600CC845C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD282A3D444600CC845C /* SceneDelegate.swift */; };
 		4DDCAD2B2A3D444600CC845C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD2A2A3D444600CC845C /* MainViewController.swift */; };
@@ -47,7 +47,6 @@
 
 /* Begin PBXFileReference section */
 		40F22AFC9B7FB1FC3CA638AF /* Pods-myMovies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myMovies.debug.xcconfig"; path = "Target Support Files/Pods-myMovies/Pods-myMovies.debug.xcconfig"; sourceTree = "<group>"; };
-		4D1B64D92A69FA7200A5CA61 /* TestPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPreview.swift; sourceTree = "<group>"; };
 		4D52803C2A4B1CD800991CBB /* DetailsPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		4D5280402A4B46DE00991CBB /* FullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenViewController.swift; sourceTree = "<group>"; };
 		4D7ABF2B2A615DBA00D3F885 /* RoundingTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundingTransition.swift; sourceTree = "<group>"; };
@@ -59,6 +58,7 @@
 		4D7ABF3C2A68618C00D3F885 /* SideMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuItem.swift; sourceTree = "<group>"; };
 		4D7ABF3E2A68644100D3F885 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		4D7ABF422A6864D800D3F885 /* SideMenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuItemCell.swift; sourceTree = "<group>"; };
+		4D822C332A9EBE2500813DAF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4DDCAD262A3D444600CC845C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DDCAD282A3D444600CC845C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4DDCAD2A2A3D444600CC845C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +212,14 @@
 			path = SideMenuStruct;
 			sourceTree = "<group>";
 		};
+		4D822C322A9EBDF300813DAF /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				4D822C332A9EBE2500813DAF /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		4DDCAD1A2A3D444600CC845C = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +245,7 @@
 		4DDCAD3A2A3D467E00CC845C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4D822C322A9EBDF300813DAF /* Constants */,
 				4DE71F2D2A6B897E0074504E /* ModelObject */,
 				4D7ABF412A6864BA00D3F885 /* SideMenuItem */,
 				4D52803E2A4B41F100991CBB /* DetailsPreviewCell */,
@@ -244,7 +253,6 @@
 				4DDCAD4D2A3E7F3600CC845C /* MainMovieCell */,
 				4DE71F272A6B5D8B0074504E /* MoviePicturesCell */,
 				4DE71F2C2A6B79570074504E /* FullPictureCell */,
-				4D1B64D92A69FA7200A5CA61 /* TestPreview.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -541,7 +549,6 @@
 				4DE71F352A6DC5A80074504E /* ApplicationInfoViewController.swift in Sources */,
 				4DF3F6752A844F6A001B4E32 /* JSON_ParsingService.swift in Sources */,
 				4DDCAD2B2A3D444600CC845C /* MainViewController.swift in Sources */,
-				4D1B64DA2A69FA7200A5CA61 /* TestPreview.swift in Sources */,
 				4D7ABF432A6864D800D3F885 /* SideMenuItemCell.swift in Sources */,
 				4DDCAD462A3D476600CC845C /* FullPictureViewController.swift in Sources */,
 				4DDCAD432A3D474500CC845C /* MoviePicturesViewController.swift in Sources */,
@@ -549,6 +556,7 @@
 				4DDCAD272A3D444600CC845C /* AppDelegate.swift in Sources */,
 				4DF3F6702A7DE4E5001B4E32 /* TMDB_API.swift in Sources */,
 				4DE71F322A6C17AF0074504E /* ViewControllerDelegate.swift in Sources */,
+				4D822C342A9EBE2500813DAF /* Constants.swift in Sources */,
 				4D7ABF2E2A65FDAB00D3F885 /* Model.swift in Sources */,
 				4DDCAD4B2A3D4C4400CC845C /* JSON_Model.swift in Sources */,
 				4DE71F382A6E03B40074504E /* LoadingApplicationViewController.swift in Sources */,

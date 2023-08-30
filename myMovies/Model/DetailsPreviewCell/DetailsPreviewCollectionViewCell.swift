@@ -13,6 +13,28 @@ class DetailsPreviewCollectionViewCell: UICollectionViewCell {
     static let identifier = "DetailsPreviewCell"
     private let imageDetailsImageViewCornerRadius: CGFloat = 5
     
+    let tmdbAPI = TMDB_API()
+    
+    var imagePath: String? {
+        
+        didSet {
+            
+            guard let imagePath = self.imagePath else {
+                return
+            }
+            
+            guard let url = URL(string: Constants.imgTMDB_Address + imagePath) else {
+                return
+            }
+            
+            tmdbAPI.getSetPosters(withURL: url) { image in
+                self.imageDetailsImageView.image = image
+            }
+            
+        }
+        
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -32,17 +54,5 @@ class DetailsPreviewCollectionViewCell: UICollectionViewCell {
     }
     
     @IBOutlet weak var imageDetailsImageView: UIImageView!
-    
-    // Filling picture into details preview cell
-    //
-    func fillMoviePreviewIntoCell(_ pictureName: String?) {
-        
-        if let pictureName = pictureName {
-            imageDetailsImageView.image = UIImage(named: pictureName)
-        } else {
-            imageDetailsImageView.image = UIImage(named: "image_cover_100_100")
-        }
-        
-    }
-    
+
 }

@@ -7,5 +7,6 @@ target 'myMovies' do
 
   # Pods for myMovies
   pod 'RealmSwift'
+  pod 'SDWebImage'
 
 end

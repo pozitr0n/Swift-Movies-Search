@@ -11,12 +11,12 @@ import RealmSwift
 class MovieDetailsViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
     // Setting the parameters
-    var testArrayPreview: [TestDetailPreviewModel] = TestDetailPreviewMethods().returnTestArray()
+    var moviePreviews: List<String>?
+    var moviePreviewsImagesOriginal: [UIImage] = []
     var model = Model()
     let realm = try? Realm()
     
     var tmdbAPI = TMDB_API()
-    private var imgTMDB_Address = "https://image.tmdb.org/t/p/w500"
     var cameFromFavourite: Bool = Bool()
     
     // Setting the parameters
@@ -52,6 +52,9 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
             self.initializeDataSourceDelegates()
             self.getMovieInformationFromMainController()
             
+            self.getPreviewInformationFromMainController()
+            self.moviewPreviewCollectionView.reloadData()
+
         }
         
     }
@@ -117,7 +120,7 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
             if self.cameFromFavourite == false {
                 
                 guard let unwrMoviePicture = self.arrayHelper?[self.receivedIndex].moviePicture,
-                      let unwrPosterURL = URL(string: self.imgTMDB_Address + unwrMoviePicture) else {
+                      let unwrPosterURL = URL(string: Constants.imgTMDB_Address + unwrMoviePicture) else {
                     return
                 }
                 
@@ -141,7 +144,7 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
                 if likedScope?.first != nil {
                     
                     guard let unwrMoviePicture = likedScope?.first?.moviePicture,
-                          let unwrPosterURL = URL(string: self.imgTMDB_Address + unwrMoviePicture) else {
+                          let unwrPosterURL = URL(string: Constants.imgTMDB_Address + unwrMoviePicture) else {
                         return
                     }
                     
@@ -163,7 +166,7 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
         if controllerType == .favourite {
             
             guard let unwrMoviePicture = self.model.likedMoviesObjects?[self.receivedIndex].moviePicture,
-                  let unwrPosterURL = URL(string: self.imgTMDB_Address + unwrMoviePicture) else {
+                  let unwrPosterURL = URL(string: Constants.imgTMDB_Address + unwrMoviePicture) else {
                 return
             }
             
@@ -178,8 +181,45 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
             
         }
         
-        // Test
-        previewCountLabel.text = String(testArrayPreview.count)
+    }
+    
+    func getPreviewInformationFromMainController() {
+        
+        if controllerType == .main {
+         
+            if self.cameFromFavourite == false {
+                
+                self.moviePreviews = self.arrayHelper?[self.receivedIndex].moviePreviews
+                
+            } else if self.cameFromFavourite == true {
+                
+                guard let currID = self.arrayHelper?[self.receivedIndex].id else {
+                    return
+                }
+                
+                let likedScope = realm?.objects(LikedMovieObject.self).filter("id == %@", currID)
+                
+                if likedScope?.first != nil {
+                    
+                    self.moviePreviews = likedScope?.first?.moviePreviews
+                    
+                }
+                
+            }
+            
+        }
+        
+        if controllerType == .favourite {
+            
+            self.moviePreviews = self.model.likedMoviesObjects?[self.receivedIndex].moviePreviews
+            
+        }
+        
+        guard let previews = self.moviePreviews else {
+            return
+        }
+        
+        previewCountLabel.text = String(previews.count)
         
     }
     
@@ -192,6 +232,9 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
         guard let destinationViewController = storyboard?.instantiateViewController(withIdentifier: "MoviePicturesViewControllerID") as? MoviePicturesViewController else {
             return
         }
+        
+        destinationViewController.moviePreviews = moviePreviews
+        destinationViewController.movieName = movieTitleLabel.text
         
         navigationController?.pushViewController(destinationViewController, animated: true)
         
@@ -245,16 +288,23 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
 extension MovieDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return testArrayPreview.count
+        
+        guard let previews = self.moviePreviews else {
+            return 0
+        }
+        
+        return previews.count
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailsPreviewCollectionViewCell.identifier, for: indexPath) as? DetailsPreviewCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailsPreviewCollectionViewCell.identifier, for: indexPath) as? DetailsPreviewCollectionViewCell,
+              let previews = self.moviePreviews else {
             return UICollectionViewCell()
         }
         
-        cell.fillMoviePreviewIntoCell(testArrayPreview[indexPath.row].testPic)
+        cell.imagePath = previews[indexPath.row]
         
         return cell
         
