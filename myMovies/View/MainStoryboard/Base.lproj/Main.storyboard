@@ -27,7 +27,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Caj-2E-Lhc">
                                 <rect key="frame" x="76" y="554" width="240" height="60"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -52,7 +52,7 @@
             </objects>
             <point key="canvasLocation" x="900" y="-676.05633802816908"/>
         </scene>
-        <!--myMovies-->
+        <!--Movies-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="MainViewControllerID" id="BYZ-38-t0r" customClass="MainViewController" customModule="myMovies" customModuleProvider="target" sceneMemberID="viewController">
@@ -95,7 +95,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kqs-kc-YHm" secondAttribute="trailing" constant="20" id="myV-Us-sAe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="myMovies" id="g7e-wt-xb7">
+                    <navigationItem key="navigationItem" title="Movies" id="g7e-wt-xb7">
                         <barButtonItem key="leftBarButtonItem" title="Main menu" image="line.3.horizontal" catalog="system" id="Ux3-Cs-UOb">
                             <color key="tintColor" red="0.4646070175" green="0.4646070175" blue="0.4646070175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
@@ -118,6 +118,104 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="900" y="-2"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="4T1-qQ-RRZ">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewControllerID" id="CbD-Fy-Piz" customClass="LoginViewController" customModule="myMovies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vUy-ux-PfE">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="equal_login" translatesAutoresizingMaskIntoConstraints="NO" id="mOg-35-P73">
+                                <rect key="frame" x="176.66666666666666" y="68" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="1K5-i3-V1g"/>
+                                    <constraint firstAttribute="height" constant="40" id="SOg-H5-NT1"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KpF-17-IyJ">
+                                <rect key="frame" x="16" y="228" width="361" height="139.33333333333337"/>
+                                <string key="text">To use the myMovies application, use the authorization key obtained from the TMDB service
+
+If you want to exit the application,
+switch the switch to the Exit</string>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input the TMDB API key..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bhs-m4-LVs">
+                                <rect key="frame" x="16" y="388" width="361" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="qCj-Id-dsO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9B-ke-Yic">
+                                <rect key="frame" x="16" y="485" width="361" height="45"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="IIT-GG-FH3"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Login">
+                                    <fontDescription key="titleFontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="loginAction:" destination="CbD-Fy-Piz" eventType="touchUpInside" id="TMm-yB-Tpw"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your credentials are incorrect" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBD-Gs-bja">
+                                <rect key="frame" x="16" y="441" width="361" height="21"/>
+                                <color key="tintColor" systemColor="tintColor"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="j25-jU-zVu">
+                                <rect key="frame" x="144" y="136" width="105" height="32"/>
+                                <segments>
+                                    <segment title="Login"/>
+                                    <segment title="Exit"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changedValueSelector:" destination="CbD-Fy-Piz" eventType="valueChanged" id="hfe-fB-3Qy"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="t6X-TB-Ha6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="t6X-TB-Ha6" firstAttribute="bottom" secondItem="x9B-ke-Yic" secondAttribute="bottom" constant="288" id="5Oa-tN-ll8"/>
+                            <constraint firstItem="mOg-35-P73" firstAttribute="centerX" secondItem="KpF-17-IyJ" secondAttribute="centerX" id="6OM-0c-St2"/>
+                            <constraint firstItem="x9B-ke-Yic" firstAttribute="leading" secondItem="KpF-17-IyJ" secondAttribute="leading" id="9CU-FJ-jiz"/>
+                            <constraint firstItem="x9B-ke-Yic" firstAttribute="top" secondItem="EBD-Gs-bja" secondAttribute="bottom" constant="23" id="CdJ-6z-emI"/>
+                            <constraint firstItem="mOg-35-P73" firstAttribute="centerX" secondItem="j25-jU-zVu" secondAttribute="centerX" id="D3A-P0-Axm"/>
+                            <constraint firstItem="mOg-35-P73" firstAttribute="centerX" secondItem="x9B-ke-Yic" secondAttribute="centerX" id="O9B-GE-8kM"/>
+                            <constraint firstItem="x9B-ke-Yic" firstAttribute="leading" secondItem="EBD-Gs-bja" secondAttribute="leading" id="QFL-Cw-3zy"/>
+                            <constraint firstItem="EBD-Gs-bja" firstAttribute="top" secondItem="bhs-m4-LVs" secondAttribute="bottom" constant="8" id="TFi-4S-vQD"/>
+                            <constraint firstItem="j25-jU-zVu" firstAttribute="top" secondItem="mOg-35-P73" secondAttribute="bottom" constant="28" id="Wfs-1p-BGw"/>
+                            <constraint firstItem="mOg-35-P73" firstAttribute="top" secondItem="t6X-TB-Ha6" secondAttribute="top" constant="9" id="d1L-87-rQC"/>
+                            <constraint firstItem="mOg-35-P73" firstAttribute="centerX" secondItem="EBD-Gs-bja" secondAttribute="centerX" id="d9W-tL-aER"/>
+                            <constraint firstItem="mOg-35-P73" firstAttribute="centerX" secondItem="vUy-ux-PfE" secondAttribute="centerX" id="jAJ-wr-0CN"/>
+                            <constraint firstItem="bhs-m4-LVs" firstAttribute="top" secondItem="KpF-17-IyJ" secondAttribute="bottom" constant="20.666666666666629" id="lNd-Pg-0MP"/>
+                            <constraint firstItem="mOg-35-P73" firstAttribute="centerX" secondItem="bhs-m4-LVs" secondAttribute="centerX" id="mn9-Er-iz3"/>
+                            <constraint firstItem="x9B-ke-Yic" firstAttribute="leading" secondItem="vUy-ux-PfE" secondAttribute="leadingMargin" id="n8Q-7f-T56"/>
+                            <constraint firstItem="x9B-ke-Yic" firstAttribute="leading" secondItem="bhs-m4-LVs" secondAttribute="leading" id="xjW-AW-q0O"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="errorLabel" destination="EBD-Gs-bja" id="5QS-TJ-1wE"/>
+                        <outlet property="inputLabelAPIKey" destination="bhs-m4-LVs" id="HjY-cw-P7m"/>
+                        <outlet property="loginButton" destination="x9B-ke-Yic" id="BJj-9v-jGB"/>
+                        <outlet property="loginSelector" destination="j25-jU-zVu" id="PcA-Re-O2e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qHt-dY-grE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="116.79389312977099" y="743.66197183098598"/>
         </scene>
         <!--Favourite Movies-->
         <scene sceneID="9Hp-gQ-lYj">
@@ -235,11 +333,11 @@
                                 <rect key="frame" x="168" y="130" width="214" height="83"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0vK-mZ-GyX">
-                                        <rect key="frame" x="0.0" y="0.0" width="214" height="31.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="214" height="26.666666666666668"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmT-vM-sO8">
-                                                <rect key="frame" x="0.0" y="0.0" width="212" height="31.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="212" height="26.666666666666668"/>
+                                                <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="26"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -284,9 +382,9 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frames, shooting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9N-dz-1VO">
-                                <rect key="frame" x="16" y="328" width="177" height="26.333333333333314"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Frames" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9N-dz-1VO">
+                                <rect key="frame" x="16" y="328" width="177" height="22.333333333333314"/>
+                                <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -308,7 +406,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1LZ-u3-dPb">
-                                <rect key="frame" x="16" y="364.66666666666669" width="361" height="100.33333333333331"/>
+                                <rect key="frame" x="16" y="360.66666666666669" width="361" height="104.33333333333331"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2zJ-Nx-TcG">
                                     <size key="itemSize" width="100" height="100"/>
@@ -318,7 +416,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DetailsPreviewCell" id="cl2-q8-rH9" customClass="DetailsPreviewCollectionViewCell" customModule="myMovies" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <rect key="frame" x="0.0" y="2" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hi0-8C-m2u">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -354,7 +452,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="Ld6-It-T4R"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -453,7 +551,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="z4G-ey-Yp6">
-                                <rect key="frame" x="16" y="220" width="361" height="412"/>
+                                <rect key="frame" x="16" y="303" width="361" height="412"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="361" id="AgD-Ai-MZy"/>
@@ -482,15 +580,25 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Previews to the movie" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Er-pb-yFU">
-                                <rect key="frame" x="16" y="114" width="361" height="98"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <rect key="frame" x="16" y="122" width="361" height="156"/>
+                                <color key="backgroundColor" red="0.96210150345407353" green="0.96210150345407353" blue="0.96210150345407353" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDB-M0-W2E">
-                                <rect key="frame" x="110" y="679" width="173" height="36"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Previews to the movie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLY-UM-w3t">
+                                <rect key="frame" x="16" y="97" width="196" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="Ozq-2b-bOL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/5" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDB-M0-W2E">
+                                <rect key="frame" x="125" y="750" width="142" height="25"/>
+                                <color key="backgroundColor" red="0.96709282289851795" green="0.96709282289851795" blue="0.96709282289851795" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -498,15 +606,19 @@
                         <viewLayoutGuide key="safeArea" id="zpv-cL-FzK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="zpv-cL-FzK" firstAttribute="trailing" secondItem="qDB-M0-W2E" secondAttribute="trailing" constant="110" id="0V4-ma-jwR"/>
-                            <constraint firstItem="z4G-ey-Yp6" firstAttribute="centerX" secondItem="zpv-cL-FzK" secondAttribute="centerX" id="5mf-Dx-iOw"/>
-                            <constraint firstItem="2Er-pb-yFU" firstAttribute="leading" secondItem="zpv-cL-FzK" secondAttribute="leading" constant="16" id="RsI-fq-L14"/>
-                            <constraint firstItem="qDB-M0-W2E" firstAttribute="leading" secondItem="zpv-cL-FzK" secondAttribute="leading" constant="110" id="VZe-vI-sQT"/>
-                            <constraint firstItem="z4G-ey-Yp6" firstAttribute="centerY" secondItem="zpv-cL-FzK" secondAttribute="centerY" constant="-12.5" id="Xx9-9n-ZNJ"/>
-                            <constraint firstItem="zpv-cL-FzK" firstAttribute="trailing" secondItem="2Er-pb-yFU" secondAttribute="trailing" constant="16" id="YHF-xK-N7G"/>
-                            <constraint firstItem="z4G-ey-Yp6" firstAttribute="top" secondItem="2Er-pb-yFU" secondAttribute="bottom" constant="8" id="YXm-5i-xPl"/>
-                            <constraint firstItem="zpv-cL-FzK" firstAttribute="bottom" secondItem="qDB-M0-W2E" secondAttribute="bottom" constant="103" id="cdG-oc-Bv1"/>
-                            <constraint firstItem="2Er-pb-yFU" firstAttribute="top" secondItem="zpv-cL-FzK" secondAttribute="top" constant="55" id="uId-Bo-76H"/>
+                            <constraint firstItem="qDB-M0-W2E" firstAttribute="top" secondItem="z4G-ey-Yp6" secondAttribute="bottom" constant="35" id="7VM-sb-ued"/>
+                            <constraint firstItem="z4G-ey-Yp6" firstAttribute="trailing" secondItem="2Er-pb-yFU" secondAttribute="trailing" id="A2S-4Z-OLz"/>
+                            <constraint firstItem="2Er-pb-yFU" firstAttribute="top" secondItem="CLY-UM-w3t" secondAttribute="bottom" constant="8" id="Lfn-2Y-gRH"/>
+                            <constraint firstItem="zpv-cL-FzK" firstAttribute="trailing" secondItem="qDB-M0-W2E" secondAttribute="trailing" constant="126" id="RNY-hh-Uko"/>
+                            <constraint firstItem="z4G-ey-Yp6" firstAttribute="leading" secondItem="2Er-pb-yFU" secondAttribute="leading" id="SIl-Kw-j0q"/>
+                            <constraint firstItem="z4G-ey-Yp6" firstAttribute="top" secondItem="GhS-N4-xc2" secondAttribute="top" constant="303" id="V73-PA-ywc"/>
+                            <constraint firstItem="z4G-ey-Yp6" firstAttribute="leading" secondItem="CLY-UM-w3t" secondAttribute="leading" id="deo-p0-ZJy"/>
+                            <constraint firstItem="qDB-M0-W2E" firstAttribute="leading" secondItem="zpv-cL-FzK" secondAttribute="leading" constant="125" id="lYn-lH-Ezl"/>
+                            <constraint firstItem="CLY-UM-w3t" firstAttribute="top" secondItem="zpv-cL-FzK" secondAttribute="top" constant="38" id="m34-oB-QZs"/>
+                            <constraint firstItem="zpv-cL-FzK" firstAttribute="bottom" secondItem="qDB-M0-W2E" secondAttribute="bottom" constant="43" id="mvY-Jg-4yj"/>
+                            <constraint firstItem="z4G-ey-Yp6" firstAttribute="leading" secondItem="GhS-N4-xc2" secondAttribute="leadingMargin" id="nCO-vV-8fN"/>
+                            <constraint firstItem="zpv-cL-FzK" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CLY-UM-w3t" secondAttribute="trailing" symbolic="YES" id="wHZ-47-bQO"/>
+                            <constraint firstItem="z4G-ey-Yp6" firstAttribute="top" secondItem="2Er-pb-yFU" secondAttribute="bottom" constant="25" id="ygH-3P-g8p"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="AFp-A4-am5"/>
@@ -595,6 +707,7 @@
         <image name="arrow.down.circle" catalog="system" width="128" height="123"/>
         <image name="author" width="1180" height="1180"/>
         <image name="chevron.right.circle" catalog="system" width="128" height="123"/>
+        <image name="equal_login" width="512" height="512"/>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="image16" width="980" height="1482"/>
         <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
@@ -603,6 +716,15 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

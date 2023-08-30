@@ -56,7 +56,7 @@ class TMDB_API {
     //
     func dataRequest(requestType: APIRequestParameters) {
             
-        let stringURL: String = "\(Constants.baseOfTheURL)\(requestType.rawValue)?api_key=\(Constants.apiKey)&language=en-US\(requestType.endOfTheURL)"
+        let stringURL: String = "\(Constants.baseOfTheURL)\(requestType.rawValue)?api_key=\(Constants().apiKey)&language=en-US\(requestType.endOfTheURL)"
         
         guard let apiURL: URL = URL(string: stringURL) else {
             return
@@ -87,7 +87,6 @@ class TMDB_API {
         } else {
             
             let request = URLRequest(url: url, cachePolicy: URLRequest.CachePolicy.returnCacheDataElseLoad, timeoutInterval: 10)
-            
             
             let downloadingTask = currentSession.dataTask(with: request) { [weak self] data, response, error in
                 
@@ -126,7 +125,7 @@ class TMDB_API {
     func getBackdropsForFilmBy(id: Int) {
         
         let idString = String(id)
-        let urlString = "\(Constants.baseOfTheURL)\(idString)/images?api_key=\(Constants.apiKey)"
+        let urlString = "\(Constants.baseOfTheURL)\(idString)/images?api_key=\(Constants().apiKey)"
         
         guard let apiURL: URL = URL(string: urlString) else { return }
         
@@ -143,6 +142,54 @@ class TMDB_API {
         }
         
         backdropsTask.resume()
+        
+    }
+    
+    func validateAPIKey(apiKey: String, completion: @escaping (Int) -> Void) {
+        
+        let apiKeyURL = "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)"
+        
+        if !verifyURL(urlString: apiKeyURL) {
+            return
+        }
+        
+        let headers = [
+            "accept": "application/json"
+        ]
+        
+        let request = NSMutableURLRequest(url: NSURL(string: apiKeyURL)! as URL,
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
+        
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                completion(httpResponse.statusCode)
+            }
+            
+        })
+        
+        dataTask.resume()
+        
+    }
+    
+    func verifyURL(urlString: String?) -> Bool {
+        
+        if let urlString = urlString {
+            if let url = NSURL(string: urlString) {
+                return UIApplication.shared.canOpenURL(url as URL)
+            }
+        }
+        
+        return false
         
     }
     

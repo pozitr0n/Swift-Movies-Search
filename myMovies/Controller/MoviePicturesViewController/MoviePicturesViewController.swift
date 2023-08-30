@@ -19,7 +19,7 @@ class MoviePicturesViewController: UIViewController {
     var moviePreviews: List<String>?
     var movieName: String?
     var countTheElements: Int = 0
-    private let cornerRadius: CGFloat = 15
+    private let cornerRadius: CGFloat = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +45,9 @@ class MoviePicturesViewController: UIViewController {
         
         currentCounter.layer.masksToBounds = true
         currentCounter.layer.cornerRadius = cornerRadius
+        
+        movieNameFull.layer.masksToBounds = true
+        movieNameFull.layer.cornerRadius = cornerRadius
         
         guard let movieNameUnwr = movieName else {
             return
