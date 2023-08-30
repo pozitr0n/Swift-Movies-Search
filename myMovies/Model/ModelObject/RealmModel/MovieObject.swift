@@ -24,6 +24,32 @@ class MovieObject: Object {
     override class func primaryKey() -> String? {
         return "id"
     }
+        
+    // For unit-tests block
+    //
+    func changeId(_ id: Int) {
+        self.id = id
+    }
+    
+    func changeMoviePicture(_ moviePicture: String) {
+        self.moviePicture = moviePicture
+    }
+    
+    func changeMovieTitle(_ movieTitle: String) {
+        self.movieTitle = movieTitle
+    }
+    
+    func changeAbout(_ about: String) {
+        self.about = about
+    }
+    
+    func changeMovieYear(_ movieYear: Int) {
+        self.movieYear = movieYear
+    }
+    
+    func changeIsLikedByUser(_ isLikedByUser: Bool) {
+        self.isLikedByUser = isLikedByUser
+    }
     
 }
 
