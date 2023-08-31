@@ -26,6 +26,9 @@
 		4D822C702A9F90A300813DAF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D822C6F2A9F90A300813DAF /* LoginViewController.swift */; };
 		4D822C742A9FEB0E00813DAF /* APIKeyData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D822C722A9FEB0E00813DAF /* APIKeyData.xcdatamodeld */; };
 		4D822C762AA02FB800813DAF /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D822C752AA02FB800813DAF /* CoreData.swift */; };
+		4D822C842AA103F100813DAF /* SmallPopUpUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D822C832AA103F100813DAF /* SmallPopUpUIView.swift */; };
+		4D822C862AA1040400813DAF /* MyPopUpUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D822C852AA1040400813DAF /* MyPopUpUIView.swift */; };
+		4D822C882AA1041A00813DAF /* Message+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D822C872AA1041A00813DAF /* Message+UIView.swift */; };
 		4DDCAD272A3D444600CC845C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD262A3D444600CC845C /* AppDelegate.swift */; };
 		4DDCAD292A3D444600CC845C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD282A3D444600CC845C /* SceneDelegate.swift */; };
 		4DDCAD2B2A3D444600CC845C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD2A2A3D444600CC845C /* MainViewController.swift */; };
@@ -92,6 +95,9 @@
 		4D822C6F2A9F90A300813DAF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4D822C732A9FEB0E00813DAF /* APIKeyData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = APIKeyData.xcdatamodel; sourceTree = "<group>"; };
 		4D822C752AA02FB800813DAF /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+		4D822C832AA103F100813DAF /* SmallPopUpUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallPopUpUIView.swift; sourceTree = "<group>"; };
+		4D822C852AA1040400813DAF /* MyPopUpUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPopUpUIView.swift; sourceTree = "<group>"; };
+		4D822C872AA1041A00813DAF /* Message+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+UIView.swift"; sourceTree = "<group>"; };
 		4DDCAD262A3D444600CC845C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DDCAD282A3D444600CC845C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4DDCAD2A2A3D444600CC845C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -309,6 +315,32 @@
 			path = CoredataAPIKeyData;
 			sourceTree = "<group>";
 		};
+		4D822C802AA103BD00813DAF /* PopupViews */ = {
+			isa = PBXGroup;
+			children = (
+				4D822C822AA103DE00813DAF /* SmallPopUpUIView */,
+				4D822C812AA103CD00813DAF /* MyPopUpUIView */,
+				4D822C872AA1041A00813DAF /* Message+UIView.swift */,
+			);
+			path = PopupViews;
+			sourceTree = "<group>";
+		};
+		4D822C812AA103CD00813DAF /* MyPopUpUIView */ = {
+			isa = PBXGroup;
+			children = (
+				4D822C852AA1040400813DAF /* MyPopUpUIView.swift */,
+			);
+			path = MyPopUpUIView;
+			sourceTree = "<group>";
+		};
+		4D822C822AA103DE00813DAF /* SmallPopUpUIView */ = {
+			isa = PBXGroup;
+			children = (
+				4D822C832AA103F100813DAF /* SmallPopUpUIView.swift */,
+			);
+			path = SmallPopUpUIView;
+			sourceTree = "<group>";
+		};
 		4DDCAD1A2A3D444600CC845C = {
 			isa = PBXGroup;
 			children = (
@@ -355,6 +387,7 @@
 		4DDCAD3B2A3D468F00CC845C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4D822C802AA103BD00813DAF /* PopupViews */,
 				4D7ABF2A2A615DA300D3F885 /* Animation */,
 				4DDCAD502A4127BD00CC845C /* XIB */,
 				4DDCAD4C2A3E7F2800CC845C /* MainStoryboard */,
@@ -747,9 +780,12 @@
 				4D7ABF392A6860BA00D3F885 /* SideMenuDelegate.swift in Sources */,
 				4DDCAD292A3D444600CC845C /* SceneDelegate.swift in Sources */,
 				4D5280412A4B46DE00991CBB /* FullScreenViewController.swift in Sources */,
+				4D822C842AA103F100813DAF /* SmallPopUpUIView.swift in Sources */,
 				4DE71F2A2A6B794E0074504E /* FullPictureCell.swift in Sources */,
 				4D7ABF3F2A68644100D3F885 /* SideMenuViewController.swift in Sources */,
 				4DDCAD492A3D478100CC845C /* FavouriteMoviesViewController.swift in Sources */,
+				4D822C862AA1040400813DAF /* MyPopUpUIView.swift in Sources */,
+				4D822C882AA1041A00813DAF /* Message+UIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

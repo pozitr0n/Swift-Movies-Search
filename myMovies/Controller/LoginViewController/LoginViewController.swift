@@ -50,7 +50,7 @@ class LoginViewController: UIViewController {
                 
                 CoreDataMethods().saveAPI_KeyIntoCoreData(key)
                 
-                TMDB_API().dataRequest(requestType: APIRequestParameters.popular)
+                TMDB_API().dataRequest(requestType: APIRequestParameters.popular, apiKey: key)
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                     

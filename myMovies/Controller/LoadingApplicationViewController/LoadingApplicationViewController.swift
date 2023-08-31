@@ -31,7 +31,7 @@ class LoadingApplicationViewController: UIViewController {
         // reloading data if need
         if !Constants().apiKey.isEmpty {
             DispatchQueue.main.async {
-                self.tmdbAPI.dataRequest(requestType: APIRequestParameters.popular)
+                self.tmdbAPI.dataRequest(requestType: APIRequestParameters.popular, apiKey: Constants().apiKey)
             }
         }
 
