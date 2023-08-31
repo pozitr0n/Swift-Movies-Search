@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreData
 
 class LoginViewController: UIViewController {
     
@@ -49,7 +48,7 @@ class LoginViewController: UIViewController {
                 self.errorLabel.textColor = .green
                 self.errorLabel.text = "Your credentials are correct"
                 
-                self.saveAPI_KeyIntoCoreData(key)
+                CoreDataMethods().saveAPI_KeyIntoCoreData(key)
                 
                 TMDB_API().dataRequest(requestType: APIRequestParameters.popular)
                 
@@ -101,22 +100,6 @@ class LoginViewController: UIViewController {
     
     func setupView() {
         self.errorLabel.text = " "
-    }
-    
-    func saveAPI_KeyIntoCoreData(_ key: String) {
-    
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "APIKeys", in: managedContext)!
-        let apiKeyForSaving = NSManagedObject(entity: entity, insertInto: managedContext)
-        
-        apiKeyForSaving.setValue(key, forKey: "apiKey")
-        
-        try! managedContext.save()
-        
     }
     
 }

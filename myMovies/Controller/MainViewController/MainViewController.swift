@@ -81,7 +81,11 @@ class MainViewController: UIViewController {
                          viewController: .push),
             SideMenuItem(icon: UIImage(systemName: "info.circle"),
                          name: "Information",
-                         viewController: .pushInfo)
+                         viewController: .pushInfo),
+            SideMenuItem(icon: UIImage(systemName: "rectangle.portrait.and.arrow.right"),
+                         name: "Logout",
+                         viewController: .logout)
+            
         ]
         
         sideMenuViewController = SideMenuViewController(sideMenuItems: sideMenuItems)
@@ -286,6 +290,33 @@ extension MainViewController: SideMenuDelegate {
             openNavigationBar()
             sideMenuViewController.hide()
             navigationController?.pushViewController(applicationInfoViewController, animated: true)
+            
+        case .logout:
+            
+            let refreshAlert = UIAlertController(title: "Logout application", message: "Are you sure that you want to logout?", preferredStyle: UIAlertController.Style.alert)
+            
+            refreshAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    
+                    CoreDataMethods().deleteAPI_KeyFromCoreData()
+                    
+                    let homeController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewControllerID")
+                
+                    let navigationViewController = UINavigationController(rootViewController: homeController)
+                    navigationViewController.modalTransitionStyle = .crossDissolve
+                    navigationViewController.modalPresentationStyle = .fullScreen
+                    
+                    self.present(navigationViewController, animated: false)
+                    
+                }
+                
+            }))
+            
+            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            }))
+            
+            present(refreshAlert, animated: true, completion: nil)
             
         }
     

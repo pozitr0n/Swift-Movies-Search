@@ -25,6 +25,7 @@
 		4D822C6D2A9ECB6F00813DAF /* MovieMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D822C6C2A9ECB6F00813DAF /* MovieMock.swift */; };
 		4D822C702A9F90A300813DAF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D822C6F2A9F90A300813DAF /* LoginViewController.swift */; };
 		4D822C742A9FEB0E00813DAF /* APIKeyData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D822C722A9FEB0E00813DAF /* APIKeyData.xcdatamodeld */; };
+		4D822C762AA02FB800813DAF /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D822C752AA02FB800813DAF /* CoreData.swift */; };
 		4DDCAD272A3D444600CC845C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD262A3D444600CC845C /* AppDelegate.swift */; };
 		4DDCAD292A3D444600CC845C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD282A3D444600CC845C /* SceneDelegate.swift */; };
 		4DDCAD2B2A3D444600CC845C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD2A2A3D444600CC845C /* MainViewController.swift */; };
@@ -90,6 +91,7 @@
 		4D822C6C2A9ECB6F00813DAF /* MovieMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieMock.swift; sourceTree = "<group>"; };
 		4D822C6F2A9F90A300813DAF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4D822C732A9FEB0E00813DAF /* APIKeyData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = APIKeyData.xcdatamodel; sourceTree = "<group>"; };
+		4D822C752AA02FB800813DAF /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		4DDCAD262A3D444600CC845C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DDCAD282A3D444600CC845C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4DDCAD2A2A3D444600CC845C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				4D822C722A9FEB0E00813DAF /* APIKeyData.xcdatamodeld */,
+				4D822C752AA02FB800813DAF /* CoreData.swift */,
 			);
 			path = CoredataAPIKeyData;
 			sourceTree = "<group>";
@@ -727,6 +730,7 @@
 				4DF3F6702A7DE4E5001B4E32 /* TMDB_API.swift in Sources */,
 				4DE71F322A6C17AF0074504E /* ViewControllerDelegate.swift in Sources */,
 				4D822C342A9EBE2500813DAF /* Constants.swift in Sources */,
+				4D822C762AA02FB800813DAF /* CoreData.swift in Sources */,
 				4D7ABF2E2A65FDAB00D3F885 /* Model.swift in Sources */,
 				4D822C742A9FEB0E00813DAF /* APIKeyData.xcdatamodeld in Sources */,
 				4DDCAD4B2A3D4C4400CC845C /* JSON_Model.swift in Sources */,
