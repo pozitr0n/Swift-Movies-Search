@@ -54,9 +54,9 @@ class TMDB_API {
     
     // Main request-method
     //
-    func dataRequest(requestType: APIRequestParameters) {
+    func dataRequest(requestType: APIRequestParameters, apiKey: String) {
             
-        let stringURL: String = "\(Constants.baseOfTheURL)\(requestType.rawValue)?api_key=\(Constants().apiKey)&language=en-US\(requestType.endOfTheURL)"
+        let stringURL: String = "\(Constants.baseOfTheURL)\(requestType.rawValue)?api_key=\(apiKey)&language=en-US\(requestType.endOfTheURL)"
         
         guard let apiURL: URL = URL(string: stringURL) else {
             return
@@ -70,7 +70,7 @@ class TMDB_API {
                 return
             }
             
-            self.parserService.parseJSONData(dataForParsing: unwrData, errorDuringParsing: error)
+            self.parserService.parseJSONData(dataForParsing: unwrData, errorDuringParsing: error, apiKey: apiKey)
             
         }
         
@@ -122,10 +122,10 @@ class TMDB_API {
     // Link-template:
     // https://api.themoviedb.org/3/movie/{movie_id}/images?api_key=<<api_key>>
     //
-    func getBackdropsForFilmBy(id: Int) {
+    func getBackdropsForFilmBy(id: Int, apiKey: String) {
         
         let idString = String(id)
-        let urlString = "\(Constants.baseOfTheURL)\(idString)/images?api_key=\(Constants().apiKey)"
+        let urlString = "\(Constants.baseOfTheURL)\(idString)/images?api_key=\(apiKey)"
         
         guard let apiURL: URL = URL(string: urlString) else { return }
         

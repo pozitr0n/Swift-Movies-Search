@@ -7,22 +7,26 @@ PODS:
   - SDWebImage (5.17.0):
     - SDWebImage/Core (= 5.17.0)
   - SDWebImage/Core (5.17.0)
+  - SwiftEntryKit (2.0.0)
 
 DEPENDENCIES:
   - RealmSwift
   - SDWebImage
+  - SwiftEntryKit
 
 SPEC REPOS:
   trunk:
     - Realm
     - RealmSwift
     - SDWebImage
+    - SwiftEntryKit
 
 SPEC CHECKSUMS:
   Realm: f433b80a05f68575e88364d6fcc6234965ccc5af
   RealmSwift: 757e1416e2314f7e1543abdb2aa65b311d7b6545
   SDWebImage: 750adf017a315a280c60fde706ab1e552a3ae4e9
+  SwiftEntryKit: 61b5fa36f34a97dd8013e48a7345bc4c4720be9a
 
-PODFILE CHECKSUM: 58c7276d301b483b0a5237ac02634a59c2c2fb78
+PODFILE CHECKSUM: f73c74f64abdf631dcde5e6e07d4db383134db59
 
 COCOAPODS: 1.11.3

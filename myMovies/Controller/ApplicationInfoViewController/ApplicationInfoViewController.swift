@@ -36,6 +36,7 @@ class ApplicationInfoViewController: UIViewController {
     func fillAuthorInfo() {
         
         let authorDescriptionLabelText = """
+        myMovies app, version 1.1.0
         Developer
         Raman Kozar
         """
