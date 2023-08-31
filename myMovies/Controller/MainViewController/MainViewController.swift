@@ -22,6 +22,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var mainMenuButton: UIBarButtonItem!
     @IBOutlet weak var sortingButton: UIBarButtonItem!
+    @IBOutlet weak var infoButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         
@@ -160,6 +161,12 @@ class MainViewController: UIViewController {
         DispatchQueue.main.async {
             self.mainCollectionView.reloadData()
         }
+        
+    }
+    
+    @IBAction func showInfoAboutApplication(_ sender: Any) {
+        
+        
         
     }
 

@@ -102,14 +102,25 @@
                                 <action selector="mainMenuButton:" destination="BYZ-38-t0r" id="l75-fl-6UE"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Sorting" image="arrow.down.circle" catalog="system" id="Pyb-Sb-aZc">
-                            <color key="tintColor" red="0.4646070175" green="0.4646070175" blue="0.4646070175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <connections>
-                                <action selector="sortData:" destination="BYZ-38-t0r" id="YhE-VI-yzl"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Sorting" id="Pyb-Sb-aZc">
+                                <imageReference key="image" image="arrow.down.circle" catalog="system" variableValue="0.0"/>
+                                <color key="tintColor" red="0.4646070175" green="0.4646070175" blue="0.4646070175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <action selector="sortData:" destination="BYZ-38-t0r" id="YhE-VI-yzl"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Info" id="o1W-Sh-9AQ">
+                                <imageReference key="image" image="info.circle" catalog="system" variableValue="0.0"/>
+                                <color key="tintColor" red="0.4646070175" green="0.4646070175" blue="0.4646070175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <action selector="showInfoAboutApplication:" destination="BYZ-38-t0r" id="Aju-aN-NmO"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="infoButton" destination="o1W-Sh-9AQ" id="aOi-L3-boa"/>
                         <outlet property="mainCollectionView" destination="kqs-kc-YHm" id="NiI-Kn-2G1"/>
                         <outlet property="mainMenuButton" destination="Ux3-Cs-UOb" id="U0d-8C-Oz9"/>
                         <outlet property="sortingButton" destination="Pyb-Sb-aZc" id="Sfg-BD-jov"/>
@@ -710,6 +721,7 @@ switch the switch to the Exit</string>
         <image name="equal_login" width="512" height="512"/>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="image16" width="980" height="1482"/>
+        <image name="info.circle" catalog="system" width="128" height="123"/>
         <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
