@@ -96,7 +96,11 @@ class MainViewController: UIViewController {
         upMenu.selectionBackgroundColor = UIColor(red: 220.0, green: 220.0, blue: 220.0, alpha: 1.0)
         
         upMenu.selectRow(at: 0)
-        titleLabel.text = "\(upMenu.selectedItem!) movies"
+        
+        titleLabel.attributedText =
+            NSMutableAttributedString()
+                .bold("\(self.upMenu.selectedItem!) ")
+                .normal("movies" + " ▽ ")
         
         upMenu.direction = .any
         
@@ -107,8 +111,14 @@ class MainViewController: UIViewController {
         upView.addGestureRecognizer(gesture)
         
         upMenu.selectionAction = { index, title in
+            
             //print("index: \(index), title: \(title)")
-            titleLabel.text = "\(self.upMenu.selectedItem!) movies"
+
+            titleLabel.attributedText =
+                NSMutableAttributedString()
+                    .bold("\(self.upMenu.selectedItem!) ")
+                    .normal("movies" + " ▽ ")
+
         }
         
     }
@@ -479,6 +489,77 @@ extension MainViewController: SideMenuDelegate {
         UIView.animate(withDuration: 0.3) {
             self.navigationController?.setNavigationBarHidden(true, animated: true)
         }
+        
+    }
+    
+}
+
+extension NSMutableAttributedString {
+    
+    var fontSize: CGFloat { return 17 }
+    var boldFont: UIFont { return UIFont(name: "AvenirNext-Bold", size: fontSize) ?? UIFont.boldSystemFont(ofSize: fontSize) }
+    var normalFont: UIFont { return UIFont(name: "AvenirNext-Regular", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize) }
+    
+    func bold(_ value:String) -> NSMutableAttributedString {
+        
+        let attributes:[NSAttributedString.Key : Any] = [
+            .font : boldFont
+        ]
+        
+        self.append(NSAttributedString(string: value, attributes:attributes))
+        return self
+        
+    }
+    
+    func normal(_ value:String) -> NSMutableAttributedString {
+        
+        let attributes:[NSAttributedString.Key : Any] = [
+            .font : normalFont,
+        ]
+        
+        self.append(NSAttributedString(string: value, attributes:attributes))
+        return self
+        
+    }
+    
+    /* Other styling methods */
+    func orangeHighlight(_ value:String) -> NSMutableAttributedString {
+        
+        let attributes:[NSAttributedString.Key : Any] = [
+            .font :  normalFont,
+            .foregroundColor : UIColor.white,
+            .backgroundColor : UIColor.orange
+        ]
+        
+        self.append(NSAttributedString(string: value, attributes:attributes))
+        return self
+        
+    }
+    
+    func blackHighlight(_ value:String) -> NSMutableAttributedString {
+        
+        let attributes:[NSAttributedString.Key : Any] = [
+            .font :  normalFont,
+            .foregroundColor : UIColor.white,
+            .backgroundColor : UIColor.black
+            
+        ]
+        
+        self.append(NSAttributedString(string: value, attributes:attributes))
+        return self
+        
+    }
+    
+    func underlined(_ value:String) -> NSMutableAttributedString {
+        
+        let attributes:[NSAttributedString.Key : Any] = [
+            .font :  normalFont,
+            .underlineStyle : NSUnderlineStyle.single.rawValue
+            
+        ]
+        
+        self.append(NSAttributedString(string: value, attributes:attributes))
+        return self
         
     }
     

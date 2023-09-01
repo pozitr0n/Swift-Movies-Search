@@ -299,7 +299,7 @@ switch the switch to the Exit</string>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bl6-IM-STV"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.89498502619999998" green="0.89498502619999998" blue="0.89498502619999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="l2C-zA-jC4" firstAttribute="top" secondItem="bl6-IM-STV" secondAttribute="top" constant="20" id="ESc-FP-tTS"/>
                             <constraint firstItem="Yvz-zN-3Wg" firstAttribute="top" secondItem="l2C-zA-jC4" secondAttribute="bottom" constant="48" id="G5Q-we-qV5"/>
@@ -338,11 +338,11 @@ switch the switch to the Exit</string>
                                 <rect key="frame" x="168" y="130" width="214" height="83"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0vK-mZ-GyX">
-                                        <rect key="frame" x="0.0" y="0.0" width="214" height="26.666666666666668"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="214" height="31.333333333333332"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmT-vM-sO8">
-                                                <rect key="frame" x="0.0" y="0.0" width="212" height="26.666666666666668"/>
-                                                <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="26"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="212" height="31.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -388,8 +388,8 @@ switch the switch to the Exit</string>
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Frames" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9N-dz-1VO">
-                                <rect key="frame" x="16" y="328" width="177" height="22.333333333333314"/>
-                                <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="22"/>
+                                <rect key="frame" x="16" y="328" width="177" height="26.333333333333314"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -411,7 +411,7 @@ switch the switch to the Exit</string>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1LZ-u3-dPb">
-                                <rect key="frame" x="16" y="360.66666666666669" width="361" height="104.33333333333331"/>
+                                <rect key="frame" x="16" y="364.66666666666669" width="361" height="100.33333333333331"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2zJ-Nx-TcG">
                                     <size key="itemSize" width="100" height="100"/>
@@ -421,7 +421,7 @@ switch the switch to the Exit</string>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DetailsPreviewCell" id="cl2-q8-rH9" customClass="DetailsPreviewCollectionViewCell" customModule="myMovies" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="2" width="100" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hi0-8C-m2u">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -457,7 +457,7 @@ switch the switch to the Exit</string>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="Ld6-It-T4R"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="22"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -557,7 +557,7 @@ switch the switch to the Exit</string>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="z4G-ey-Yp6">
                                 <rect key="frame" x="16" y="254" width="361" height="412"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.89498502619999998" green="0.89498502619999998" blue="0.89498502619999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="361" id="AgD-Ai-MZy"/>
                                     <constraint firstAttribute="height" constant="412" id="mQp-dS-v4q"/>
@@ -587,7 +587,7 @@ switch the switch to the Exit</string>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Previews to the movie" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Er-pb-yFU">
                                 <rect key="frame" x="16" y="122" width="361" height="108"/>
                                 <color key="backgroundColor" red="0.96210150345407353" green="0.96210150345407353" blue="0.96210150345407353" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="28"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -609,7 +609,7 @@ switch the switch to the Exit</string>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zpv-cL-FzK"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.89498502618134623" green="0.89498502618134623" blue="0.89498502618134623" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="qDB-M0-W2E" firstAttribute="top" secondItem="z4G-ey-Yp6" secondAttribute="bottom" constant="17" id="7VM-sb-ued"/>
                             <constraint firstItem="z4G-ey-Yp6" firstAttribute="trailing" secondItem="2Er-pb-yFU" secondAttribute="trailing" id="A2S-4Z-OLz"/>
@@ -672,7 +672,7 @@ switch the switch to the Exit</string>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kYP-t7-qNm"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.89498502619999998" green="0.89498502619999998" blue="0.89498502619999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="kYP-t7-qNm" firstAttribute="bottom" secondItem="KN9-SS-VCy" secondAttribute="bottom" id="69U-aG-lsL"/>
                             <constraint firstItem="KN9-SS-VCy" firstAttribute="leading" secondItem="kYP-t7-qNm" secondAttribute="leading" id="GHd-Nh-Ble"/>
