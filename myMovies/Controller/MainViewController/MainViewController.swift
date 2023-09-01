@@ -56,6 +56,8 @@ class MainViewController: UIViewController {
     let model = Model()
     let realm = try? Realm()
     let tmdbAPI = TMDB_API()
+    var currentPage: Int = 0
+    let pagesWithNamesMovieTypes: [Int: String] = [0 : "popular", 1 : "latest", 2 : "now_playing", 3 : "top_rated", 4 : "upcoming"]
     
     // Outlets
     @IBOutlet weak var mainCollectionView: UICollectionView!
@@ -96,6 +98,7 @@ class MainViewController: UIViewController {
         upMenu.selectionBackgroundColor = UIColor(red: 220.0, green: 220.0, blue: 220.0, alpha: 1.0)
         
         upMenu.selectRow(at: 0)
+        currentPage = 0
         
         titleLabel.attributedText =
             NSMutableAttributedString()
@@ -112,13 +115,20 @@ class MainViewController: UIViewController {
         
         upMenu.selectionAction = { index, title in
             
-            //print("index: \(index), title: \(title)")
-
             titleLabel.attributedText =
                 NSMutableAttributedString()
                     .bold("\(self.upMenu.selectedItem!) ")
                     .normal("movies" + " ▽ ")
-
+            
+            self.currentPage = index
+            
+            guard let valueMovieType = self.pagesWithNamesMovieTypes[self.currentPage] else {
+                return
+            }
+            
+            self.model.ratingSort(valueMovieType)
+            self.mainCollectionView.reloadData()
+            
         }
         
     }
@@ -146,7 +156,12 @@ class MainViewController: UIViewController {
         
         // registering xib-cell
         mainCollectionView.register(customXIBCell, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
-        model.ratingSort()
+        
+        guard let valueMovieType = pagesWithNamesMovieTypes[currentPage] else {
+            return
+        }
+        
+        model.ratingSort(valueMovieType)
         self.mainCollectionView.reloadData()
         
     }
@@ -252,10 +267,17 @@ class MainViewController: UIViewController {
             
         model.sortAscending = !model.sortAscending
         sortingButton.image = model.sortAscending ? sortingUp : sortingDown
-        model.ratingSort()
+        
+        guard let valueMovieType = pagesWithNamesMovieTypes[currentPage] else {
+            return
+        }
+        
+        model.ratingSort(valueMovieType)
         
         DispatchQueue.main.async {
+            
             self.mainCollectionView.reloadData()
+            
         }
         
     }
@@ -367,15 +389,22 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         model.arrayHelper = model.moviesObject
-        model.search(searchText)
+        
+        guard let valueMovieType = pagesWithNamesMovieTypes[currentPage] else {
+            return
+        }
+        
+        model.search(searchText, valueMovieType)
         
         if searchBar.text?.count == 0 {
             model.arrayHelper = model.moviesObject
-            model.ratingSort()
+            model.ratingSort(valueMovieType)
         }
         
         DispatchQueue.main.async {
+            
             self.mainCollectionView.reloadData()
+            
         }
         
     }
@@ -384,14 +413,21 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         
         model.arrayHelper = model.moviesObject
         
-        if searchBar.text?.count == 0 {
-            model.arrayHelper = model.moviesObject
-            model.ratingSort()
+        guard let valueMovieType = pagesWithNamesMovieTypes[currentPage] else {
+            return
         }
         
-        model.ratingSort()
+        if searchBar.text?.count == 0 {
+            model.arrayHelper = model.moviesObject
+            model.ratingSort(valueMovieType)
+        }
+        
+        model.ratingSort(valueMovieType)
+        
         DispatchQueue.main.async {
+            
             self.mainCollectionView.reloadData()
+            
         }
         
     }

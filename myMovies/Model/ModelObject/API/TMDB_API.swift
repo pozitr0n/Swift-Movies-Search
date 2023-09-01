@@ -70,7 +70,7 @@ class TMDB_API {
                 return
             }
             
-            self.parserService.parseJSONData(dataForParsing: unwrData, errorDuringParsing: error, apiKey: apiKey)
+            self.parserService.parseJSONData(dataForParsing: unwrData, errorDuringParsing: error, apiKey: apiKey, rType: requestType.rawValue)
             
         }
         

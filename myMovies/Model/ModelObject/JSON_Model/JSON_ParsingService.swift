@@ -12,7 +12,7 @@ class JSON_ParsingService {
         
     // Method for native parsing movie-data (from .json)
     //
-    func parseJSONData(dataForParsing: Data, errorDuringParsing: Error?, apiKey: String) {
+    func parseJSONData(dataForParsing: Data, errorDuringParsing: Error?, apiKey: String, rType: String) {
     
         let tmdbAPI = TMDB_API()
         
@@ -42,6 +42,7 @@ class JSON_ParsingService {
                         object.about = unwrOverview
                         object.movieYear = Int(unwrReleaseYear.prefix(4)) ?? 0000
                         object.movieRating = Double(unwrMovieRating)
+                        object.movieType = rType
                         
                         tmdbAPI.getBackdropsForFilmBy(id: unwrID, apiKey: apiKey)
                         

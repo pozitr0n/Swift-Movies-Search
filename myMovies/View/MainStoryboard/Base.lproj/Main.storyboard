@@ -575,7 +575,9 @@ switch the switch to the Exit</string>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gWf-eE-ebr">
                                             <rect key="frame" x="0.0" y="0.0" width="500" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" red="0.89498502619999998" green="0.89498502619999998" blue="0.89498502619999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </collectionViewCellContentView>
+                                        <color key="backgroundColor" red="0.89498502619999998" green="0.89498502619999998" blue="0.89498502619999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <size key="customSize" width="500" height="300"/>
                                     </collectionViewCell>
                                 </cells>
@@ -586,7 +588,7 @@ switch the switch to the Exit</string>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Previews to the movie" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Er-pb-yFU">
                                 <rect key="frame" x="16" y="122" width="361" height="108"/>
-                                <color key="backgroundColor" red="0.96210150345407353" green="0.96210150345407353" blue="0.96210150345407353" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.89498502619999998" green="0.89498502619999998" blue="0.89498502619999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

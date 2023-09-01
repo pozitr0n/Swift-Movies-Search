@@ -48,17 +48,58 @@ class LoginViewController: UIViewController {
                 self.errorLabel.textColor = .green
                 self.errorLabel.text = "Your credentials are correct"
                 
-                CoreDataMethods().saveAPI_KeyIntoCoreData(key)
+                let operationQueue = OperationQueue()
+
+                let zeroOperation = BlockOperation {
+                    CoreDataMethods().saveAPI_KeyIntoCoreData(key)
+                }
                 
-                TMDB_API().dataRequest(requestType: APIRequestParameters.popular, apiKey: key)
+                let oneOperation = BlockOperation {
+                    TMDB_API().dataRequest(requestType: APIRequestParameters.latest, apiKey: key)
+                }
+
+                let twoOperation = BlockOperation {
+                    TMDB_API().dataRequest(requestType: APIRequestParameters.popular, apiKey: key)
+                }
+
+                let threeOperation = BlockOperation {
+                    TMDB_API().dataRequest(requestType: APIRequestParameters.nowPlaying, apiKey: key)
+                }
+
+                let fourOperation = BlockOperation {
+                    TMDB_API().dataRequest(requestType: APIRequestParameters.topRated, apiKey: key)
+                }
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                let fiveOperation = BlockOperation {
+                    TMDB_API().dataRequest(requestType: APIRequestParameters.upcoming, apiKey: key)
+                }
+                
+                oneOperation.addDependency(zeroOperation)
+                twoOperation.addDependency(oneOperation)
+                threeOperation.addDependency(twoOperation)
+                fourOperation.addDependency(threeOperation)
+                fiveOperation.addDependency(fourOperation)
+                
+                operationQueue.addOperations([
+                    zeroOperation,
+                    oneOperation,
+                    twoOperation,
+                    threeOperation,
+                    fourOperation,
+                    fiveOperation
+                ], waitUntilFinished: false)
+                
+                operationQueue.addBarrierBlock {
                     
-                    let homeController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewControllerID")
-                    homeController.modalTransitionStyle = .crossDissolve
-                    homeController.modalPresentationStyle = .fullScreen
-                    
-                    self.navigationController?.pushViewController(homeController, animated: false)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        
+                        let homeController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewControllerID")
+                        homeController.modalTransitionStyle = .crossDissolve
+                        homeController.modalPresentationStyle = .fullScreen
+                        
+                        self.navigationController?.pushViewController(homeController, animated: false)
+                        
+                    }
                     
                 }
                 

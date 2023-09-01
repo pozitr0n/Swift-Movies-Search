@@ -37,16 +37,18 @@ class Model {
     
     // Rating method (using closure)
     //
-    func ratingSort() {
-        arrayHelper = moviesObject?.sorted(byKeyPath: "movieRating", ascending: sortAscending)
+    func ratingSort(_ currMovieType: String) {
+        
+        let arrayHelperBuffering = moviesObject?.filter("movieType == %@", currMovieType)
+        arrayHelper = arrayHelperBuffering?.sorted(byKeyPath: "movieRating", ascending: sortAscending)
+        
     }
     
     // Method for searching data (search field)
     //
-    func search(_ searchTextValue: String) {
+    func search(_ searchTextValue: String, _ currMovieType: String) {
         
-        let predicate = NSPredicate(format: "movieTitle CONTAINS [c]%@", searchTextValue)
-        arrayHelper = moviesObject?.filter(predicate)
+        arrayHelper = moviesObject?.filter("movieType == %@", currMovieType).filter("movieTitle CONTAINS [c]%@", searchTextValue)
         
     }
     
@@ -114,6 +116,7 @@ class Model {
                             object.movieYear     = movie.movieYear
                             object.movieRating   = movie.movieRating
                             object.moviePreviews = movie.moviePreviews
+                            object.movieType     = movie.movieType
                             
                             realm?.add(object, update: .all)
                             
@@ -167,6 +170,7 @@ class Model {
                                 object.about        = likedScopeOldValue!.about
                                 object.movieYear    = likedScopeOldValue!.movieYear
                                 object.movieRating  = likedScopeOldValue!.movieRating
+                                object.movieType    = likedScopeOldValue!.movieType
                                 
                                 realm?.add(object, update: .all)
                                 

@@ -22,22 +22,57 @@ class LoadingApplicationViewController: UIViewController {
     }()
     
     let tmdbAPI = TMDB_API()
-    
+     
     override func viewDidLoad() {
 
         super.viewDidLoad()
         setupLayout()
         
+        let key = Constants().apiKey
+        
         // reloading data if need
-        if !Constants().apiKey.isEmpty {
-            DispatchQueue.main.async {
-                self.tmdbAPI.dataRequest(requestType: APIRequestParameters.popular, apiKey: Constants().apiKey)
+        if !key.isEmpty {
+            
+            let operationQueue = OperationQueue()
+
+            let oneOperation = BlockOperation {
+                self.tmdbAPI.dataRequest(requestType: APIRequestParameters.latest, apiKey: key)
             }
+
+            let twoOperation = BlockOperation {
+                self.tmdbAPI.dataRequest(requestType: APIRequestParameters.popular, apiKey: key)
+            }
+
+            let threeOperation = BlockOperation {
+                self.tmdbAPI.dataRequest(requestType: APIRequestParameters.nowPlaying, apiKey: key)
+            }
+
+            let fourOperation = BlockOperation {
+                self.tmdbAPI.dataRequest(requestType: APIRequestParameters.topRated, apiKey: key)
+            }
+            
+            let fiveOperation = BlockOperation {
+                self.tmdbAPI.dataRequest(requestType: APIRequestParameters.upcoming, apiKey: key)
+            }
+            
+            twoOperation.addDependency(oneOperation)
+            threeOperation.addDependency(twoOperation)
+            fourOperation.addDependency(threeOperation)
+            fiveOperation.addDependency(fourOperation)
+            
+            operationQueue.addOperations([
+                oneOperation,
+                twoOperation,
+                threeOperation,
+                fourOperation,
+                fiveOperation
+            ], waitUntilFinished: false)
+            
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
         
-            if !Constants().apiKey.isEmpty {
+            if !key.isEmpty {
              
                 let homeController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewControllerID")
                 homeController.modalTransitionStyle = .crossDissolve

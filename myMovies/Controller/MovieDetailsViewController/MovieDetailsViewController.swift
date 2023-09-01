@@ -248,12 +248,12 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
         delegateFavourite?.updateFavouriteMoviesViewController()
         
         if !cameFromFavourite && controllerType == .favourite {
-           
-            guard let destinationViewController = storyboard?.instantiateViewController(withIdentifier: "MainViewControllerID") as? MainViewController else {
-                return
-            }
+                       
+            let homeController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewControllerID")
+            homeController.modalTransitionStyle = .crossDissolve
+            homeController.modalPresentationStyle = .fullScreen
             
-            navigationController?.pushViewController(destinationViewController, animated: true)
+            self.navigationController?.pushViewController(homeController, animated: false)
             
         }
         
