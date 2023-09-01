@@ -8,9 +8,47 @@
 import UIKit
 import RealmSwift
 import SwiftEntryKit
+import DropDown
 
 class MainViewController: UIViewController {
 
+    // Sreating the menu
+    let upMenu: DropDown = {
+        
+        let menu = DropDown()
+        
+        menu.dataSource = [
+            "Popular",
+            "Latest",
+            "Now Playing",
+            "Top Rated",
+            "Upcoming"
+        ]
+        
+        let nameImages = [
+            "popcorn.circle",
+            "clock.circle",
+            "play.circle",
+            "star.circle",
+            "calendar.circle"
+        ]
+        
+        menu.cellNib = UINib(nibName: "DropDownCell", bundle: nil)
+        
+        menu.customCellConfiguration = { index, title, cell in
+            
+            guard let cell = cell as? UpMenuCell else {
+                return
+            }
+            
+            cell.myImageView.image = UIImage(systemName: nameImages[index])
+            
+        }
+        
+        return menu
+        
+    }()
+    
     // Setting the parameters
     private var sideMenuViewController: SideMenuViewController!
     private var searchController = UISearchController()
@@ -29,13 +67,57 @@ class MainViewController: UIViewController {
         
         super.viewDidLoad()
         
+        initializeUpMenu()
         initializeSideMenuComponents()
         initializeDataSourceDelegates()
         registerXIBCell()
         
     }
     
-    // Function of initialization all the components of side menu
+    // Method of initialization UP menu
+    //
+    func initializeUpMenu() {
+     
+        let upMenuView = UIView(frame: navigationController?.navigationBar.frame ?? .zero)
+        navigationController?.navigationBar.topItem?.titleView = upMenuView
+        
+        let titleLabel = UILabel()
+        titleLabel.frame = CGRect(x: 0, y: 0, width: 250, height: upMenuView.frame.height)
+        titleLabel.textColor = UIColor.lightGray
+        upMenuView.addSubview(titleLabel)
+        titleLabel.textAlignment = .right
+        
+        guard let upView = navigationController?.navigationBar.topItem?.titleView else {
+            return
+        }
+        
+        upMenu.anchorView = upView
+        upMenu.cornerRadius = 15
+        upMenu.selectionBackgroundColor = UIColor(red: 220.0, green: 220.0, blue: 220.0, alpha: 1.0)
+        
+        upMenu.selectRow(at: 0)
+        titleLabel.text = "\(upMenu.selectedItem!) movies"
+        
+        upMenu.direction = .any
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapTopItem))
+        gesture.numberOfTapsRequired = 1
+        gesture.numberOfTouchesRequired = 1
+        
+        upView.addGestureRecognizer(gesture)
+        
+        upMenu.selectionAction = { index, title in
+            //print("index: \(index), title: \(title)")
+            titleLabel.text = "\(self.upMenu.selectedItem!) movies"
+        }
+        
+    }
+    
+    @objc func didTapTopItem() {
+        upMenu.show()
+    }
+    
+    // Method of initialization all the components of side menu
     //
     func initializeSideMenuComponents() {
         
@@ -82,8 +164,11 @@ class MainViewController: UIViewController {
                          name: "Favourite",
                          viewController: .push),
             SideMenuItem(icon: UIImage(systemName: "info.circle"),
-                         name: "Information",
+                         name: "App Information",
                          viewController: .pushInfo),
+            SideMenuItem(icon: UIImage(systemName: "person.badge.key"),
+                         name: "API Key Information",
+                         viewController: .keyInformation),
             SideMenuItem(icon: UIImage(systemName: "rectangle.portrait.and.arrow.right"),
                          name: "Logout",
                          viewController: .logout)
@@ -162,12 +247,6 @@ class MainViewController: UIViewController {
         DispatchQueue.main.async {
             self.mainCollectionView.reloadData()
         }
-        
-    }
-    
-    @IBAction func showInfoAboutApplication(_ sender: Any) {
-        
-        SwiftEntryKit.display(entry: SmallPopUpUIView(image: #imageLiteral(resourceName: "tmdb_icon"), name: "You have successfully logged in with your personal key"), using: setupAttributes())
         
     }
     
@@ -378,6 +457,10 @@ extension MainViewController: SideMenuDelegate {
             }))
             
             present(refreshAlert, animated: true, completion: nil)
+            
+        case .keyInformation:
+            
+            SwiftEntryKit.display(entry: SmallPopUpUIView(image: #imageLiteral(resourceName: "tmdb_icon"), name: "You have successfully logged in with your personal key"), using: setupAttributes())
             
         }
     

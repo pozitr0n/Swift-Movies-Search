@@ -29,6 +29,8 @@
 		4D822C842AA103F100813DAF /* SmallPopUpUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D822C832AA103F100813DAF /* SmallPopUpUIView.swift */; };
 		4D822C862AA1040400813DAF /* MyPopUpUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D822C852AA1040400813DAF /* MyPopUpUIView.swift */; };
 		4D822C882AA1041A00813DAF /* Message+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D822C872AA1041A00813DAF /* Message+UIView.swift */; };
+		4DA93A7C2AA174BC0077861B /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA93A7A2AA174BC0077861B /* DropDownCell.swift */; };
+		4DA93A7D2AA174BC0077861B /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA93A7B2AA174BC0077861B /* DropDownCell.xib */; };
 		4DDCAD272A3D444600CC845C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD262A3D444600CC845C /* AppDelegate.swift */; };
 		4DDCAD292A3D444600CC845C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD282A3D444600CC845C /* SceneDelegate.swift */; };
 		4DDCAD2B2A3D444600CC845C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAD2A2A3D444600CC845C /* MainViewController.swift */; };
@@ -98,6 +100,8 @@
 		4D822C832AA103F100813DAF /* SmallPopUpUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallPopUpUIView.swift; sourceTree = "<group>"; };
 		4D822C852AA1040400813DAF /* MyPopUpUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPopUpUIView.swift; sourceTree = "<group>"; };
 		4D822C872AA1041A00813DAF /* Message+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+UIView.swift"; sourceTree = "<group>"; };
+		4DA93A7A2AA174BC0077861B /* DropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
+		4DA93A7B2AA174BC0077861B /* DropDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
 		4DDCAD262A3D444600CC845C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DDCAD282A3D444600CC845C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4DDCAD2A2A3D444600CC845C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -341,6 +345,14 @@
 			path = SmallPopUpUIView;
 			sourceTree = "<group>";
 		};
+		4DA93A752AA174430077861B /* UpMenuCell */ = {
+			isa = PBXGroup;
+			children = (
+				4DA93A7A2AA174BC0077861B /* DropDownCell.swift */,
+			);
+			path = UpMenuCell;
+			sourceTree = "<group>";
+		};
 		4DDCAD1A2A3D444600CC845C = {
 			isa = PBXGroup;
 			children = (
@@ -371,6 +383,7 @@
 		4DDCAD3A2A3D467E00CC845C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4DA93A752AA174430077861B /* UpMenuCell */,
 				4D822C712A9FEAE700813DAF /* CoredataAPIKeyData */,
 				4D822C322A9EBDF300813DAF /* Constants */,
 				4DE71F2D2A6B897E0074504E /* ModelObject */,
@@ -475,6 +488,7 @@
 				4DDCAD512A4127F200CC845C /* MovieCollectionViewCell.xib */,
 				4DE71F242A6B5D7A0074504E /* MoviePicturesCell.xib */,
 				4DE71F292A6B794E0074504E /* FullPictureCell.xib */,
+				4DA93A7B2AA174BC0077861B /* DropDownCell.xib */,
 			);
 			path = XIB;
 			sourceTree = "<group>";
@@ -676,6 +690,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DDCAD332A3D444700CC845C /* LaunchScreen.storyboard in Resources */,
+				4DA93A7D2AA174BC0077861B /* DropDownCell.xib in Resources */,
 				4DDCAD302A3D444700CC845C /* Assets.xcassets in Resources */,
 				4D7ABF342A6634E600D3F885 /* FavouriteMovieCell.xib in Resources */,
 				4DDCAD2E2A3D444600CC845C /* Main.storyboard in Resources */,
@@ -776,6 +791,7 @@
 				4D52803D2A4B1CD800991CBB /* DetailsPreviewCollectionViewCell.swift in Sources */,
 				4DE71F252A6B5D7A0074504E /* MoviePicturesCell.swift in Sources */,
 				4D7ABF332A6634E600D3F885 /* FavouriteMovieCell.swift in Sources */,
+				4DA93A7C2AA174BC0077861B /* DropDownCell.swift in Sources */,
 				4D7ABF3D2A68618C00D3F885 /* SideMenuItem.swift in Sources */,
 				4D7ABF392A6860BA00D3F885 /* SideMenuDelegate.swift in Sources */,
 				4DDCAD292A3D444600CC845C /* SceneDelegate.swift in Sources */,

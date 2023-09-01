@@ -9,5 +9,6 @@ target 'myMovies' do
   pod 'RealmSwift'
   pod 'SDWebImage'
   pod 'SwiftEntryKit'
+  pod 'DropDown'
 
 end

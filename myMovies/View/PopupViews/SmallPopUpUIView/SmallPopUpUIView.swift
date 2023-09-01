@@ -49,8 +49,8 @@ class SmallPopUpUIView: UIView {
         
         let themeImage = EKPopUpMessage.ThemeImage(image: EKProperty.ImageContent(image: image, size: CGSize(width: 60, height: 60), tint: .black, contentMode: .scaleAspectFit))
         
-        let titleLabel = EKProperty.LabelContent(text: title, style: .init(font: UIFont.systemFont(ofSize: 24),
-                                                                      color: .black,
+        let titleLabel = EKProperty.LabelContent(text: title, style: .init(font: UIFont.systemFont(ofSize: 25),
+                                                                           color: .init(red: 34, green: 139, blue: 34),
                                                                       alignment: .center))
         
         let descriptionLabel = EKProperty.LabelContent(

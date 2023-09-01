@@ -1,4 +1,5 @@
 PODS:
+  - DropDown (2.3.13)
   - Realm (10.42.1):
     - Realm/Headers (= 10.42.1)
   - Realm/Headers (10.42.1)
@@ -10,23 +11,26 @@ PODS:
   - SwiftEntryKit (2.0.0)
 
 DEPENDENCIES:
+  - DropDown
   - RealmSwift
   - SDWebImage
   - SwiftEntryKit
 
 SPEC REPOS:
   trunk:
+    - DropDown
     - Realm
     - RealmSwift
     - SDWebImage
     - SwiftEntryKit
 
 SPEC CHECKSUMS:
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   Realm: f433b80a05f68575e88364d6fcc6234965ccc5af
   RealmSwift: 757e1416e2314f7e1543abdb2aa65b311d7b6545
   SDWebImage: 750adf017a315a280c60fde706ab1e552a3ae4e9
   SwiftEntryKit: 61b5fa36f34a97dd8013e48a7345bc4c4720be9a
 
-PODFILE CHECKSUM: f73c74f64abdf631dcde5e6e07d4db383134db59
+PODFILE CHECKSUM: d9af8a254bb2f2f3b0d144a03b69208ad8202e3f
 
 COCOAPODS: 1.11.3

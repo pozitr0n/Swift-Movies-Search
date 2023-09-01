@@ -13,5 +13,6 @@ enum ContentViewControllerPresentation {
     case push
     case pushInfo
     case logout
+    case keyInformation
 
 }
