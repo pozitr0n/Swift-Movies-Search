@@ -552,7 +552,7 @@ extension MainViewController: SideMenuDelegate {
         alertTextAlert.contentText = message
         alertTextAlert.alertColor = .lightGray
         alertTextAlert.alertHeight = 35.0
-        alertTextAlert.alertAlpha = 1.0
+        alertTextAlert.alertAlpha = 0.5
         alertTextAlert.autoCloseEnabled = true
         alertTextAlert.contentTextColor = UIColor.white
         alertTextAlert.hasNavigationBar = true
