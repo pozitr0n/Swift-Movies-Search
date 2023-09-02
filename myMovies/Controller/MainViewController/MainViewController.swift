@@ -70,6 +70,8 @@ class MainViewController: UIViewController {
         
         super.viewDidLoad()
         
+        //print(realm?.configuration.fileURL)
+        
         initializeUpMenu()
         initializeSideMenuComponents()
         initializeDataSourceDelegates()
