@@ -1,5 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-myMovies/Pods-myMovies-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework
+${BUILT_PRODUCTS_DIR}/LIHAlert/LIHAlert.framework
 ${BUILT_PRODUCTS_DIR}/Realm/Realm.framework
 ${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework
 ${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework

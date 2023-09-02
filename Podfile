@@ -10,5 +10,6 @@ target 'myMovies' do
   pod 'SDWebImage'
   pod 'SwiftEntryKit'
   pod 'DropDown'
+  pod 'LIHAlert'
 
 end

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LIHAlert
 
 class FavouriteMoviesViewController: UIViewController {
 

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LIHAlert
 
 class LoginViewController: UIViewController {
     
@@ -14,11 +15,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var inputLabelAPIKey: UITextField!
     
+    var processingAlert: LIHAlert?
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         setupView()
-        
+
     }
     
     @IBAction func loginAction(_ sender: Any) {
@@ -45,14 +48,14 @@ class LoginViewController: UIViewController {
                 
             } else {
                 
+                self.processingAlert?.show(nil, hidden: nil)
+                
                 self.errorLabel.textColor = .green
                 self.errorLabel.text = "Your credentials are correct"
                 
+                CoreDataMethods().saveAPI_KeyIntoCoreData(key)
+                
                 let operationQueue = OperationQueue()
-
-                let zeroOperation = BlockOperation {
-                    CoreDataMethods().saveAPI_KeyIntoCoreData(key)
-                }
                 
                 let oneOperation = BlockOperation {
                     TMDB_API().dataRequest(requestType: APIRequestParameters.latest, apiKey: key)
@@ -74,14 +77,12 @@ class LoginViewController: UIViewController {
                     TMDB_API().dataRequest(requestType: APIRequestParameters.upcoming, apiKey: key)
                 }
                 
-                oneOperation.addDependency(zeroOperation)
                 twoOperation.addDependency(oneOperation)
                 threeOperation.addDependency(twoOperation)
                 fourOperation.addDependency(threeOperation)
                 fiveOperation.addDependency(fourOperation)
                 
                 operationQueue.addOperations([
-                    zeroOperation,
                     oneOperation,
                     twoOperation,
                     threeOperation,
@@ -93,11 +94,15 @@ class LoginViewController: UIViewController {
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                         
-                        let homeController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewControllerID")
-                        homeController.modalTransitionStyle = .crossDissolve
-                        homeController.modalPresentationStyle = .fullScreen
-                        
-                        self.navigationController?.pushViewController(homeController, animated: false)
+                        self.processingAlert?.hideAlert({ () -> () in
+                            
+                            let homeController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewControllerID")
+                            homeController.modalTransitionStyle = .crossDissolve
+                            homeController.modalPresentationStyle = .fullScreen
+                            
+                            self.navigationController?.pushViewController(homeController, animated: false)
+                            
+                        })
                         
                     }
                     
@@ -140,7 +145,14 @@ class LoginViewController: UIViewController {
     }
     
     func setupView() {
+        
         self.errorLabel.text = " "
+    
+        self.processingAlert = LIHAlertManager.getProcessingAlert(message: "Signing in...")
+        self.processingAlert?.touchBackgroundToDismiss = false
+        self.processingAlert?.dimsBackground = false
+        self.processingAlert?.initAlert(self.view)
+        
     }
     
 }

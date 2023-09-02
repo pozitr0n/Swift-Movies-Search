@@ -1,5 +1,6 @@
 PODS:
   - DropDown (2.3.13)
+  - LIHAlert (2.1.1)
   - Realm (10.42.1):
     - Realm/Headers (= 10.42.1)
   - Realm/Headers (10.42.1)
@@ -12,6 +13,7 @@ PODS:
 
 DEPENDENCIES:
   - DropDown
+  - LIHAlert
   - RealmSwift
   - SDWebImage
   - SwiftEntryKit
@@ -19,6 +21,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - DropDown
+    - LIHAlert
     - Realm
     - RealmSwift
     - SDWebImage
@@ -26,11 +29,12 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  LIHAlert: a027605673986d03b896e4f4a901f393b15840b9
   Realm: f433b80a05f68575e88364d6fcc6234965ccc5af
   RealmSwift: 757e1416e2314f7e1543abdb2aa65b311d7b6545
   SDWebImage: 750adf017a315a280c60fde706ab1e552a3ae4e9
   SwiftEntryKit: 61b5fa36f34a97dd8013e48a7345bc4c4720be9a
 
-PODFILE CHECKSUM: d9af8a254bb2f2f3b0d144a03b69208ad8202e3f
+PODFILE CHECKSUM: 17afc119e547e2aa3435c62db21fdd7199707092
 
 COCOAPODS: 1.11.3

@@ -9,6 +9,7 @@ import UIKit
 import RealmSwift
 import SwiftEntryKit
 import DropDown
+import LIHAlert
 
 class MainViewController: UIViewController {
 
@@ -59,6 +60,8 @@ class MainViewController: UIViewController {
     var currentPage: Int = 0
     let pagesWithNamesMovieTypes: [Int: String] = [0 : "popular", 1 : "latest", 2 : "now_playing", 3 : "top_rated", 4 : "upcoming"]
     
+    var alertTextAlert: LIHAlert?
+    
     // Outlets
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var mainMenuButton: UIBarButtonItem!
@@ -69,10 +72,18 @@ class MainViewController: UIViewController {
         
         super.viewDidLoad()
         
+        initializeCustomAlert()
         initializeUpMenu()
         initializeSideMenuComponents()
         initializeDataSourceDelegates()
         registerXIBCell()
+        
+    }
+        
+    func initializeCustomAlert() {
+        
+        alertTextAlert = getTextAlert(message: "No data😥")
+        alertTextAlert?.initAlert(self.view)
         
     }
     
@@ -127,6 +138,11 @@ class MainViewController: UIViewController {
             }
             
             self.model.ratingSort(valueMovieType)
+            
+            if self.model.arrayHelper?.count == 0 {
+                self.alertTextAlert?.show(nil, hidden: nil)
+            }
+            
             self.mainCollectionView.reloadData()
             
         }
@@ -528,6 +544,26 @@ extension MainViewController: SideMenuDelegate {
         
     }
     
+    func getTextAlert(message: String) -> LIHAlert {
+        
+        let alertTextAlert: LIHAlert = LIHAlert()
+        
+        alertTextAlert.alertType = LIHAlertType.text
+        alertTextAlert.contentText = message
+        alertTextAlert.alertColor = .lightGray
+        alertTextAlert.alertHeight = 35.0
+        alertTextAlert.alertAlpha = 1.0
+        alertTextAlert.autoCloseEnabled = true
+        alertTextAlert.contentTextColor = UIColor.white
+        alertTextAlert.hasNavigationBar = true
+        alertTextAlert.paddingTop = 0.0
+        alertTextAlert.animationDuration = 0.35
+        alertTextAlert.autoCloseTimeInterval = 1.0
+        
+        return alertTextAlert
+        
+    }
+    
 }
 
 extension NSMutableAttributedString {
@@ -600,5 +636,6 @@ extension NSMutableAttributedString {
     }
     
 }
+
 
 
