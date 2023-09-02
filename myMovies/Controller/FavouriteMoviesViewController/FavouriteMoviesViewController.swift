@@ -7,6 +7,7 @@
 
 import UIKit
 import LIHAlert
+import SwiftMessages
 
 class FavouriteMoviesViewController: UIViewController {
 
@@ -21,6 +22,7 @@ class FavouriteMoviesViewController: UIViewController {
         
         initializeDataSourceDelegates()
         registerXIBCell()
+        backToRootControllerBecauseEmptyInfo()
         
     }
     
@@ -46,6 +48,44 @@ class FavouriteMoviesViewController: UIViewController {
         DispatchQueue.main.async {
             self.favouriteMoviesCollectionView.reloadData()
         }
+        
+    }
+    
+    func backToRootControllerBecauseEmptyInfo() {
+        
+        if model.likedMoviesObjects?.count == 0 {
+            
+            showAlertEmptyInfo()
+            
+            let homeController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewControllerID")
+            homeController.modalTransitionStyle = .crossDissolve
+            homeController.modalPresentationStyle = .fullScreen
+            
+            self.navigationController?.pushViewController(homeController, animated: false)
+            
+        }
+        
+    }
+    
+    func showAlertEmptyInfo() {
+        
+        let messageView: MessageView = MessageView.viewFromNib(layout: .centeredView)
+        messageView.configureBackgroundView(width: 250)
+        
+        messageView.configureContent(title: "Oops...", body: "There are no favourite movies at this moment. Please swipe to dismiss this message", iconImage: nil, iconText: "🥺", buttonImage: nil, buttonTitle: "Okay") { _ in
+            SwiftMessages.hide()
+        }
+        
+        messageView.backgroundView.backgroundColor = UIColor.init(white: 0.97, alpha: 1)
+        messageView.backgroundView.layer.cornerRadius = 10
+        
+        var config = SwiftMessages.defaultConfig
+        config.presentationStyle = .center
+        config.duration = .forever
+        config.dimMode = .blur(style: .dark, alpha: 1, interactive: true)
+        config.presentationContext  = .window(windowLevel: UIWindow.Level.statusBar)
+        
+        SwiftMessages.show(config: config, view: messageView)
         
     }
 
@@ -96,7 +136,10 @@ extension FavouriteMoviesViewController: FavouriteMoviesViewControllerDelegate {
     
     func updateFavouriteMoviesViewController() {
         DispatchQueue.main.async {
+            
             self.favouriteMoviesCollectionView.reloadData()
+            self.backToRootControllerBecauseEmptyInfo()
+            
         }
     }
     

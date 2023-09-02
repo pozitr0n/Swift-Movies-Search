@@ -9,6 +9,7 @@ import UIKit
 import RealmSwift
 import SwiftEntryKit
 import DropDown
+import SwiftMessages
 
 class MainViewController: UIViewController {
 
@@ -127,6 +128,28 @@ class MainViewController: UIViewController {
             }
             
             self.model.ratingSort(valueMovieType)
+            
+            if self.model.arrayHelper?.count == 0 {
+                
+                self.showAlertEmptyInfo(categoryName: self.upMenu.selectedItem!)
+                
+                self.upMenu.deselectRow(at: 1)
+                self.upMenu.selectRow(at: 0)
+                self.currentPage = 0
+                
+                titleLabel.attributedText =
+                    NSMutableAttributedString()
+                        .bold("\(self.upMenu.selectedItem!) ")
+                        .normal("movies" + " ▽ ")
+                
+                guard let valueMovieType = self.pagesWithNamesMovieTypes[self.currentPage] else {
+                    return
+                }
+                
+                self.model.ratingSort(valueMovieType)
+                
+            }
+            
             self.mainCollectionView.reloadData()
             
         }
@@ -239,6 +262,28 @@ class MainViewController: UIViewController {
         rightSwipeGesture.cancelsTouchesInView = false
         rightSwipeGesture.edges = .left
         view.addGestureRecognizer(rightSwipeGesture)
+        
+    }
+    
+    func showAlertEmptyInfo(categoryName: String) {
+        
+        let messageView: MessageView = MessageView.viewFromNib(layout: .centeredView)
+        messageView.configureBackgroundView(width: 250)
+        
+        messageView.configureContent(title: "Oops...", body: "There are no movies in the \(categoryName) category at this moment. Please swipe to dismiss this message", iconImage: nil, iconText: "🥺", buttonImage: nil, buttonTitle: "Okay") { _ in
+            SwiftMessages.hide()
+        }
+        
+        messageView.backgroundView.backgroundColor = UIColor.init(white: 0.97, alpha: 1)
+        messageView.backgroundView.layer.cornerRadius = 10
+        
+        var config = SwiftMessages.defaultConfig
+        config.presentationStyle = .center
+        config.duration = .forever
+        config.dimMode = .blur(style: .dark, alpha: 1, interactive: true)
+        config.presentationContext  = .window(windowLevel: UIWindow.Level.statusBar)
+        
+        SwiftMessages.show(config: config, view: messageView)
         
     }
     

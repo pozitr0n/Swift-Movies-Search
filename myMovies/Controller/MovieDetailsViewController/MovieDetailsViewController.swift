@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import SwiftMessages
 
 class MovieDetailsViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
@@ -247,6 +248,8 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
         setLikeButton()
         delegateFavourite?.updateFavouriteMoviesViewController()
         
+        startWarningAlert(favouriteMovie: cameFromFavourite)
+        
         if !cameFromFavourite && controllerType == .favourite {
                        
             let homeController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewControllerID")
@@ -256,6 +259,40 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
             self.navigationController?.pushViewController(homeController, animated: false)
             
         }
+        
+    }
+    
+    func startWarningAlert(favouriteMovie: Bool) {
+     
+        let warning = MessageView.viewFromNib(layout: .cardView)
+        warning.configureTheme(.warning)
+        warning.configureDropShadow()
+        
+        var iconText: String = ""
+        var title: String = ""
+        var body: String = ""
+        
+        if favouriteMovie {
+            
+            iconText = ["🤩"].randomElement()!
+            title = "WOW"
+            body = "Movie has been added to favourite!"
+            
+        } else {
+         
+            iconText = ["😥"].randomElement()!
+            title = "Ohh"
+            body = "You don't like the movie anymore"
+            
+        }
+        
+        warning.configureContent(title: title, body: body, iconText: iconText)
+        warning.button?.isHidden = true
+        
+        var warningConfig = SwiftMessages.defaultConfig
+        warningConfig.presentationContext = .window(windowLevel: UIWindow.Level.statusBar)
+        
+        SwiftMessages.show(config: warningConfig, view: warning)
         
     }
     

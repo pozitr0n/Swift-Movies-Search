@@ -11,5 +11,6 @@ target 'myMovies' do
   pod 'SwiftEntryKit'
   pod 'DropDown'
   pod 'LIHAlert'
+  pod 'SwiftMessages'
 
 end

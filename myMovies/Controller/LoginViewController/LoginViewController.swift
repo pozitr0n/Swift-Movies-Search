@@ -7,6 +7,7 @@
 
 import UIKit
 import LIHAlert
+import SwiftMessages
 
 class LoginViewController: UIViewController {
     
@@ -40,6 +41,8 @@ class LoginViewController: UIViewController {
                 
                 self.errorLabel.text = "Your credentials are incorrect"
                 self.errorLabel.textColor = .red
+                
+                self.showAlertLogging(isSuccess: false)
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     self.errorLabel.text = " "
@@ -96,6 +99,8 @@ class LoginViewController: UIViewController {
                         
                         self.processingAlert?.hideAlert({ () -> () in
                             
+                            self.showAlertLogging(isSuccess: true)
+                            
                             let homeController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewControllerID")
                             homeController.modalTransitionStyle = .crossDissolve
                             homeController.modalPresentationStyle = .fullScreen
@@ -109,6 +114,35 @@ class LoginViewController: UIViewController {
                 }
                 
             }
+            
+        }
+        
+    }
+    
+    func showAlertLogging(isSuccess: Bool) {
+    
+        if isSuccess {
+            
+            let success = MessageView.viewFromNib(layout: .cardView)
+            success.configureTheme(.success)
+            success.configureDropShadow()
+            success.configureContent(title: "Success", body: "You have successfully logged in!")
+            success.button?.isHidden = true
+            
+            var successConfig = SwiftMessages.defaultConfig
+            successConfig.presentationStyle = .top
+            successConfig.presentationContext = .window(windowLevel: UIWindow.Level.normal)
+            
+            SwiftMessages.show(config: successConfig, view: success)
+            
+        } else {
+        
+            let error = MessageView.viewFromNib(layout: .tabView)
+            error.configureTheme(.error)
+            error.configureContent(title: "Error", body: "Login attempt failed!")
+            error.button?.isHidden = true
+            
+            SwiftMessages.show(view: error)
             
         }
         

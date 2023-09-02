@@ -150,6 +150,7 @@ class TMDB_API {
         let apiKeyURL = "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)"
         
         if !verifyURL(urlString: apiKeyURL) {
+            completion(401)
             return
         }
         
