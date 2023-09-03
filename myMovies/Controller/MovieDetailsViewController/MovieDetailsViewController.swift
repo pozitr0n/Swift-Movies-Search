@@ -38,6 +38,7 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     @IBOutlet weak var previewCountLabel: UILabel!
     @IBOutlet weak var allThePreviewImagesButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var playVideoButton: UIButton!
     
     var receivedIndex: Int = Int()
     var arrayHelper: Results<MovieObject>?
@@ -259,6 +260,84 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
             self.navigationController?.pushViewController(homeController, animated: false)
             
         }
+        
+    }
+    
+    @IBAction func playVideoAction(_ sender: Any) {
+        
+        let playingVideoViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PlayingVideoViewControllerID") as? PlayingVideoViewController
+        
+        var arrayOfTrailers: [String] = []
+        var movieTitle: String = ""
+        
+        if controllerType == .main {
+         
+            if self.cameFromFavourite == false {
+                
+                guard let arrayTrailers = self.arrayHelper?[self.receivedIndex].movieTrailers else {
+                    return
+                }
+                
+                arrayOfTrailers = Array(arrayTrailers)
+                
+                guard let title = self.arrayHelper?[self.receivedIndex].movieTitle else {
+                    return
+                }
+                
+                movieTitle = title
+                
+            } else if self.cameFromFavourite == true {
+                
+                guard let currID = self.arrayHelper?[self.receivedIndex].id else {
+                    return
+                }
+                
+                let likedScope = realm?.objects(LikedMovieObject.self).filter("id == %@", currID)
+                
+                if likedScope?.first != nil {
+                    
+                    guard let arrayTrailers = likedScope?.first?.movieTrailers else {
+                        return
+                    }
+                    
+                    arrayOfTrailers = Array(arrayTrailers)
+                    
+                    guard let title = likedScope?.first?.movieTitle else {
+                        return
+                    }
+                    
+                    movieTitle = title
+                    
+                }
+                
+            }
+            
+        }
+        
+        if controllerType == .favourite {
+            
+            guard let arrayTrailers = self.model.likedMoviesObjects?[self.receivedIndex].movieTrailers else {
+                return
+            }
+            
+            arrayOfTrailers = Array(arrayTrailers)
+            
+            guard let title = self.model.likedMoviesObjects?[self.receivedIndex].movieTitle else {
+                return
+            }
+            
+            movieTitle = title
+            
+        }
+    
+        playingVideoViewController?.arrayOfVideosYoutubeID = arrayOfTrailers
+        playingVideoViewController?.titleMovie = movieTitle
+        
+        guard let playingVideoViewController = playingVideoViewController else {
+            return
+        }
+        
+        self.navigationController?.present(playingVideoViewController, animated: true)
         
     }
     

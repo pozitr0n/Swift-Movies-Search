@@ -117,6 +117,7 @@ class Model {
                             object.movieRating   = movie.movieRating
                             object.moviePreviews = movie.moviePreviews
                             object.movieType     = movie.movieType
+                            object.movieTrailers = movie.movieTrailers
                             
                             realm?.add(object, update: .all)
                             
@@ -164,13 +165,14 @@ class Model {
                                 
                                 let object = LikedMovieObject()
                                 
-                                object.id           = likedScopeOldValue!.id
-                                object.moviePicture = likedScopeOldValue!.moviePicture
-                                object.movieTitle   = likedScopeOldValue!.movieTitle
-                                object.about        = likedScopeOldValue!.about
-                                object.movieYear    = likedScopeOldValue!.movieYear
-                                object.movieRating  = likedScopeOldValue!.movieRating
-                                object.movieType    = likedScopeOldValue!.movieType
+                                object.id            = likedScopeOldValue!.id
+                                object.moviePicture  = likedScopeOldValue!.moviePicture
+                                object.movieTitle    = likedScopeOldValue!.movieTitle
+                                object.about         = likedScopeOldValue!.about
+                                object.movieYear     = likedScopeOldValue!.movieYear
+                                object.movieRating   = likedScopeOldValue!.movieRating
+                                object.movieType     = likedScopeOldValue!.movieType
+                                object.movieTrailers = likedScopeOldValue!.movieTrailers
                                 
                                 realm?.add(object, update: .all)
                                 

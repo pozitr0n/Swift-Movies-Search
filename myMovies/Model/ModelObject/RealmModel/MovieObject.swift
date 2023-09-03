@@ -21,6 +21,7 @@ class MovieObject: Object {
     dynamic var moviePreviews: List<String> = List<String>()
     @objc dynamic var isLikedByUser: Bool = false
     @objc dynamic var movieType: String = ""
+    dynamic var movieTrailers: List<String> = List<String>()
     
     override class func primaryKey() -> String? {
         return "id"
@@ -67,6 +68,7 @@ class LikedMovieObject: Object {
     dynamic var moviePreviews: List<String> = List<String>()
     @objc dynamic var isLikedByUser: Bool = true
     @objc dynamic var movieType: String = ""
+    dynamic var movieTrailers: List<String> = List<String>()
     
     override class func primaryKey() -> String? {
         return "id"

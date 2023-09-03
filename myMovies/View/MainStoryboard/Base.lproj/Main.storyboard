@@ -52,6 +52,60 @@
             </objects>
             <point key="canvasLocation" x="900" y="-676.05633802816908"/>
         </scene>
+        <!--Playing Video View Controller-->
+        <scene sceneID="mci-j9-LmS">
+            <objects>
+                <viewController storyboardIdentifier="PlayingVideoViewControllerID" id="dcY-Fk-jlF" customClass="PlayingVideoViewController" customModule="myMovies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="R8N-2Y-pxu">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gx5-fL-y1n" customClass="YTPlayerView">
+                                <rect key="frame" x="0.0" y="276" width="393" height="300"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="393" id="CUg-bh-T0Q"/>
+                                    <constraint firstAttribute="height" constant="300" id="wpc-tq-5B7"/>
+                                </constraints>
+                            </view>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P5b-1T-zbq">
+                                <rect key="frame" x="0.0" y="584" width="393" height="162"/>
+                                <color key="backgroundColor" red="0.89498502619999998" green="0.89498502619999998" blue="0.89498502619999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCK-Y1-3T1">
+                                <rect key="frame" x="16" y="116" width="361" height="111"/>
+                                <color key="backgroundColor" red="0.89498502619999998" green="0.89498502619999998" blue="0.89498502619999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Jyd-Xg-nbT"/>
+                        <color key="backgroundColor" red="0.89498502619999998" green="0.89498502619999998" blue="0.89498502619999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="xCK-Y1-3T1" firstAttribute="top" secondItem="Jyd-Xg-nbT" secondAttribute="top" constant="57" id="CkN-oz-3UY"/>
+                            <constraint firstItem="gx5-fL-y1n" firstAttribute="top" secondItem="xCK-Y1-3T1" secondAttribute="bottom" constant="49" id="MTS-oV-Ab1"/>
+                            <constraint firstItem="gx5-fL-y1n" firstAttribute="centerY" secondItem="R8N-2Y-pxu" secondAttribute="centerY" id="Q0l-nv-rOk"/>
+                            <constraint firstItem="xCK-Y1-3T1" firstAttribute="leading" secondItem="Jyd-Xg-nbT" secondAttribute="leading" constant="16" id="QLx-ce-ZGV"/>
+                            <constraint firstItem="gx5-fL-y1n" firstAttribute="centerX" secondItem="R8N-2Y-pxu" secondAttribute="centerX" id="coP-QM-w9o"/>
+                            <constraint firstItem="P5b-1T-zbq" firstAttribute="top" secondItem="gx5-fL-y1n" secondAttribute="bottom" symbolic="YES" id="iCQ-dE-D0T"/>
+                            <constraint firstItem="Jyd-Xg-nbT" firstAttribute="trailing" secondItem="P5b-1T-zbq" secondAttribute="trailing" id="mkQ-Th-eRQ"/>
+                            <constraint firstItem="P5b-1T-zbq" firstAttribute="leading" secondItem="Jyd-Xg-nbT" secondAttribute="leading" id="uNe-Gz-uZs"/>
+                            <constraint firstItem="Jyd-Xg-nbT" firstAttribute="trailing" secondItem="xCK-Y1-3T1" secondAttribute="trailing" constant="16" id="vzC-bw-Smo"/>
+                            <constraint firstItem="Jyd-Xg-nbT" firstAttribute="bottom" secondItem="P5b-1T-zbq" secondAttribute="bottom" constant="72" id="yj7-oA-K1v"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="393" height="852"/>
+                    <connections>
+                        <outlet property="movieTitle" destination="xCK-Y1-3T1" id="tTc-2F-yCF"/>
+                        <outlet property="picker" destination="P5b-1T-zbq" id="bTP-IE-RZc"/>
+                        <outlet property="playerView" destination="gx5-fL-y1n" id="Lcm-YS-jlA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F4c-Zd-pmC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1684.7328244274809" y="-676.05633802816908"/>
+        </scene>
         <!--Movies-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -484,14 +538,26 @@ switch the switch to the Exit</string>
                                     <action selector="likeButtonAction:" destination="i5U-SE-vjq" eventType="touchUpInside" id="Apx-VE-cog"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xXg-wD-heg">
+                                <rect key="frame" x="201" y="287" width="25" height="25"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="play.circle" catalog="system">
+                                    <color key="baseForegroundColor" red="0.4646070175" green="0.4646070175" blue="0.4646070175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="playVideoAction:" destination="i5U-SE-vjq" eventType="touchUpInside" id="Cha-cm-P3v"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="uWI-jh-Mso"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="bottom" secondItem="m1W-Oh-P8a" secondAttribute="bottom" constant="605" id="3a6-qa-asi"/>
                             <constraint firstItem="YRl-sj-rUj" firstAttribute="leading" secondItem="uWI-jh-Mso" secondAttribute="leading" constant="16" id="4Tf-Oc-EBV"/>
+                            <constraint firstItem="uWI-jh-Mso" firstAttribute="trailing" secondItem="xXg-wD-heg" secondAttribute="trailing" constant="167" id="4b8-Ms-iJH"/>
                             <constraint firstItem="U1h-C2-g8Y" firstAttribute="top" secondItem="rPV-DD-0Ve" secondAttribute="top" constant="330" id="6Ls-dB-l3F"/>
                             <constraint firstItem="VI0-ud-yrq" firstAttribute="top" secondItem="ssR-oX-vlP" secondAttribute="bottom" constant="8" symbolic="YES" id="6RZ-6D-4BH"/>
+                            <constraint firstItem="xXg-wD-heg" firstAttribute="top" secondItem="m1W-Oh-P8a" secondAttribute="bottom" constant="74" id="8Se-cN-m8u"/>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="bottom" secondItem="60T-5M-Y1g" secondAttribute="bottom" constant="506" id="8oZ-VZ-h99"/>
                             <constraint firstItem="VI0-ud-yrq" firstAttribute="bottom" secondItem="uWI-jh-Mso" secondAttribute="bottom" id="96r-cp-DXw"/>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="trailing" secondItem="m1W-Oh-P8a" secondAttribute="trailing" constant="11" id="A4d-QD-emf"/>
@@ -504,12 +570,14 @@ switch the switch to the Exit</string>
                             <constraint firstItem="ssR-oX-vlP" firstAttribute="trailing" secondItem="VI0-ud-yrq" secondAttribute="trailing" id="Nuw-qF-03W"/>
                             <constraint firstItem="d9N-dz-1VO" firstAttribute="top" secondItem="JnJ-NA-nla" secondAttribute="bottom" constant="52.666666666666686" id="QVs-Rd-iiy"/>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="trailing" secondItem="OIU-iu-vI2" secondAttribute="trailing" constant="11" id="RUg-ij-HtA"/>
+                            <constraint firstItem="xXg-wD-heg" firstAttribute="leading" secondItem="YRl-sj-rUj" secondAttribute="trailing" constant="41" id="RZc-GU-5vO"/>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="trailing" secondItem="YRl-sj-rUj" secondAttribute="trailing" constant="233" id="Rus-P4-okP"/>
                             <constraint firstItem="uWI-jh-Mso" firstAttribute="trailing" secondItem="1LZ-u3-dPb" secondAttribute="trailing" constant="16" id="SsJ-8H-nR9"/>
                             <constraint firstItem="60T-5M-Y1g" firstAttribute="top" secondItem="m1W-Oh-P8a" secondAttribute="bottom" constant="74" id="TbR-Yv-5zW"/>
                             <constraint firstItem="JnJ-NA-nla" firstAttribute="top" secondItem="m1W-Oh-P8a" secondAttribute="bottom" constant="2" id="axj-g2-jGA"/>
                             <constraint firstItem="m1W-Oh-P8a" firstAttribute="leading" secondItem="uWI-jh-Mso" secondAttribute="leading" constant="168" id="bch-oJ-n4S"/>
                             <constraint firstItem="ssR-oX-vlP" firstAttribute="trailing" secondItem="1LZ-u3-dPb" secondAttribute="trailing" id="dol-YR-sUB"/>
+                            <constraint firstItem="uWI-jh-Mso" firstAttribute="bottom" secondItem="xXg-wD-heg" secondAttribute="bottom" constant="506" id="g8t-wf-Yfj"/>
                             <constraint firstItem="d9N-dz-1VO" firstAttribute="leading" secondItem="uWI-jh-Mso" secondAttribute="leading" constant="16" id="gMn-qH-TO6"/>
                             <constraint firstItem="ssR-oX-vlP" firstAttribute="leading" secondItem="1LZ-u3-dPb" secondAttribute="leading" id="ggb-rm-MqK"/>
                             <constraint firstItem="OIU-iu-vI2" firstAttribute="top" secondItem="rPV-DD-0Ve" secondAttribute="top" constant="328" id="lSf-VB-Obu"/>
@@ -531,6 +599,7 @@ switch the switch to the Exit</string>
                         <outlet property="moviePosterImageView" destination="YRl-sj-rUj" id="vhN-jW-8YX"/>
                         <outlet property="movieTitleLabel" destination="nmT-vM-sO8" id="lSU-j1-n6l"/>
                         <outlet property="moviewPreviewCollectionView" destination="1LZ-u3-dPb" id="Jqq-ua-fIN"/>
+                        <outlet property="playVideoButton" destination="xXg-wD-heg" id="dtH-qo-ofa"/>
                         <outlet property="previewCountLabel" destination="U1h-C2-g8Y" id="3Ed-BY-n5V"/>
                         <outlet property="ratingLabel" destination="daK-TT-xy7" id="xn8-9e-VBt"/>
                         <outlet property="releaseYearLabel" destination="asf-b0-o1T" id="PaZ-Fz-FFa"/>
@@ -545,7 +614,7 @@ switch the switch to the Exit</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1685" y="-2"/>
+            <point key="canvasLocation" x="1684.7328244274809" y="-2.1126760563380285"/>
         </scene>
         <!--Movie Pictures View Controller-->
         <scene sceneID="wcd-VR-Jpc">
@@ -718,6 +787,7 @@ switch the switch to the Exit</string>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="image16" width="980" height="1482"/>
         <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
+        <image name="play.circle" catalog="system" width="128" height="123"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

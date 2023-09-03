@@ -32,6 +32,7 @@ class MovieResultJSON: Codable {
     var overview: String?
     var vote_average: Double?
     var backdrops: [Backdrop]?
+    var results: [MovieTrailers]?
     
 }
 
@@ -43,5 +44,15 @@ class Backdrop: Codable {
     var height: Int
     var file_path: String?
     var width: Int
+    
+}
+
+// The class will contain videos
+// for movie
+class MovieTrailers: Codable {
+    
+    var key: String?
+    var site: String?
+    var type: String?
     
 }

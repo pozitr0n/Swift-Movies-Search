@@ -12,5 +12,6 @@ target 'myMovies' do
   pod 'DropDown'
   pod 'LIHAlert'
   pod 'SwiftMessages'
+  pod 'youtube-ios-player-helper'
 
 end

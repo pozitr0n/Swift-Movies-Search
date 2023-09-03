@@ -145,6 +145,34 @@ class TMDB_API {
         
     }
     
+    // Method for getting movie trailers
+    //
+    // Link-template:
+    // https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=<<api_key>>
+    //
+    func getMovieTrailers(id: Int, apiKey: String) {
+        
+        let idString = String(id)
+        let urlString = "\(Constants.baseOfTheURL)\(idString)/videos?api_key=\(apiKey)"
+        
+        guard let apiURL: URL = URL(string: urlString) else { return }
+        
+        let backdropsTask = currentSession.dataTask(with: apiURL) { data, response, error in
+            
+            guard let unwrData = data,
+                  (response as? HTTPURLResponse)?.statusCode == 200,
+                  error == nil else {
+                return
+            }
+            
+            self.parserService.parseMovieTrailersJSONData(parseData: unwrData, parseError: error)
+            
+        }
+        
+        backdropsTask.resume()
+        
+    }
+    
     func validateAPIKey(apiKey: String, completion: @escaping (Int) -> Void) {
         
         let apiKeyURL = "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)"

@@ -45,6 +45,7 @@ class JSON_ParsingService {
                         object.movieType = rType
                         
                         tmdbAPI.getBackdropsForFilmBy(id: unwrID, apiKey: apiKey)
+                        tmdbAPI.getMovieTrailers(id: unwrID, apiKey: apiKey)
                         
                         let likedScope = realm?.objects(LikedMovieObject.self).filter("id == %@", itemJSON.id!)
                         
@@ -105,6 +106,61 @@ class JSON_ParsingService {
                 
             } catch {
                 print("Can't update backdrops for film due error: \(error)")
+            }
+            
+        } catch let error {
+            print(error)
+        }
+        
+    }
+    
+    // Method for native parsing movie trailers (from .json)
+    //
+    func parseMovieTrailersJSONData(parseData: Data, parseError: Error?) {
+        
+        do {
+            
+            let movieData = try JSONDecoder().decode(MovieResultJSON.self, from: parseData)
+            let movieID = movieData.id
+            
+            guard let resultsTrailers = movieData.results else {
+                return
+            }
+            
+            let realm = try? Realm()
+            
+            guard let currentMovie = realm?.object(ofType: MovieObject.self, forPrimaryKey: movieID) else {
+                return
+            }
+            
+            do {
+                
+                try realm?.write ({
+                    
+                    currentMovie.movieTrailers.removeAll()
+                    
+                    for trailer in resultsTrailers {
+                        
+                        if let key = trailer.key,
+                           let site = trailer.site,
+                           let type = trailer.type  {
+                            
+                            if site == "YouTube"
+                                && type == "Trailer"
+                                && !key.isEmpty {
+                                
+                                currentMovie.movieTrailers.append(objectsIn: Array(arrayLiteral: key))
+                                
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                })
+                
+            } catch {
+                print("Can't update trailers for film due error: \(error)")
             }
             
         } catch let error {
