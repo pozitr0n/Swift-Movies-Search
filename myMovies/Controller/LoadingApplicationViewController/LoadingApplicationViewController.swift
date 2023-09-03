@@ -108,8 +108,15 @@ class LoadingApplicationViewController: UIViewController {
     }
 
     func setupLayout() {
-        view.backgroundColor = .white
+        
+        if self.traitCollection.userInterfaceStyle == .dark {
+            view.backgroundColor = .black
+        } else {
+            view.backgroundColor = .white
+        }
+        
         view.addSubview(imageView)
+        
     }
 
     private func animateStartOfApplication() {

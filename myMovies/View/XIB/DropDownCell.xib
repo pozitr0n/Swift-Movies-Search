@@ -43,6 +43,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="myImageView" destination="BiQ-LT-ErP" id="3pc-UR-IGT"/>
+                <outlet property="myLabel" destination="jva-fj-oC2" id="oYG-Kq-INm"/>
                 <outlet property="optionLabel" destination="jva-fj-oC2" id="fwk-IJ-M6q"/>
             </connections>
             <point key="canvasLocation" x="25.954198473282442" y="38.732394366197184"/>

@@ -88,6 +88,7 @@ class MainViewController: UIViewController {
         let titleLabel = UILabel()
         titleLabel.frame = CGRect(x: 0, y: 0, width: 250, height: upMenuView.frame.height)
         titleLabel.textColor = UIColor.lightGray
+        
         upMenuView.addSubview(titleLabel)
         titleLabel.textAlignment = .right
         
