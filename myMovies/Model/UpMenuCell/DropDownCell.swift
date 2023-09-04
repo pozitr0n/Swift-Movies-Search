@@ -18,14 +18,13 @@ class UpMenuCell: DropDownCell {
 
         myImageView.contentMode = .scaleAspectFit
         
-        if self.traitCollection.userInterfaceStyle == .dark {
-
-            self.contentView.backgroundColor = .black
-
-            
-        } else {
-            self.contentView.backgroundColor = .white
-        }
+//        if self.traitCollection.userInterfaceStyle == .dark {
+//
+//            self.contentView.backgroundColor = .black
+//            
+//        } else {
+//            self.contentView.backgroundColor = .white
+//        }
         
     }
 

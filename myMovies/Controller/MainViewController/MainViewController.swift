@@ -46,6 +46,14 @@ class MainViewController: UIViewController {
             
         }
         
+        if menu.traitCollection.userInterfaceStyle == .dark {
+            menu.backgroundColor = .black
+            menu.textColor = .white
+        } else {
+            menu.backgroundColor = .white
+            menu.textColor = .black
+        }
+        
         return menu
         
     }()
