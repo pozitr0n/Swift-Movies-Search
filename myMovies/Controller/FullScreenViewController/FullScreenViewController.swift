@@ -26,11 +26,25 @@ class FullScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initializeView()
         getFullMoviePoster()
     }
     
     @IBAction func closeButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func initializeView() {
+       
+        if self.traitCollection.userInterfaceStyle == .dark {
+            
+            self.view.backgroundColor = .black
+            
+            closeButton.tintColor = .white
+            closeButton.backgroundColor = .black
+            
+        }
+        
     }
     
     // Getting full movie poster from parent view controller

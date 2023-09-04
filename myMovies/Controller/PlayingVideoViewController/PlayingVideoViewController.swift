@@ -20,6 +20,18 @@ class PlayingVideoViewController: UIViewController, YTPlayerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if self.traitCollection.userInterfaceStyle == .dark {
+            
+            self.view.backgroundColor = .black
+            
+            movieTitle.textColor = .white
+            movieTitle.backgroundColor = .black
+            
+            picker.tintColor = .white
+            picker.backgroundColor = .black
+            
+        }
+        
         initializeDataSourceDelegates()
         
         guard let titleMovie = titleMovie else {

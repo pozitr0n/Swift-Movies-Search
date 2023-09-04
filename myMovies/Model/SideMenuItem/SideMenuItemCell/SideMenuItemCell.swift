@@ -51,7 +51,12 @@ final class SideMenuItemCell: UITableViewCell {
     //
     private func configureView() {
         
-        contentView.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
+        if self.traitCollection.userInterfaceStyle == .dark {
+            contentView.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
+        } else {
+            contentView.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
+        }
+        
         contentView.addSubview(itemIcon)
         contentView.addSubview(itemLabel)
         

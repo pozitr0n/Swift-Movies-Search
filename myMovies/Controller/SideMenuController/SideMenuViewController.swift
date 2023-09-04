@@ -71,6 +71,7 @@ final class SideMenuViewController: UIViewController {
 
         addSubviews()
         configureTableView()
+        configureOtherViews()
         configureTapGesture()
         
     }
@@ -119,7 +120,12 @@ final class SideMenuViewController: UIViewController {
     //
     private func configureTableView() {
         
-        tableView.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
+        if self.traitCollection.userInterfaceStyle == .dark {
+            tableView.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
+        } else {
+            tableView.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
+        }
+    
         tableView.register(SideMenuItemCell.self, forCellReuseIdentifier: SideMenuItemCell.identifier)
         tableView.dataSource = self
         tableView.delegate = self
@@ -127,6 +133,18 @@ final class SideMenuViewController: UIViewController {
         
     }
 
+    // Method for configuring other views
+    //
+    func configureOtherViews() {
+        
+        if self.traitCollection.userInterfaceStyle == .dark {
+            headerView.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
+        } else {
+            headerView.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
+        }
+        
+    }
+    
     // Method for configuring tap
     //
     private func configureTapGesture() {

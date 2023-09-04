@@ -381,7 +381,12 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
         
         transition.transitionProfile = .show
         transition.start = moviePosterImageView.center
-        transition.roundColor = UIColor.white
+        
+        if self.traitCollection.userInterfaceStyle == .dark {
+            transition.roundColor = UIColor.black
+        } else {
+            transition.roundColor = UIColor.white
+        }
         
         return transition
         
@@ -393,7 +398,12 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
         
         transition.transitionProfile = .cancel
         transition.start = moviePosterImageView.center
-        transition.roundColor = UIColor.white
+        
+        if self.traitCollection.userInterfaceStyle == .dark {
+            transition.roundColor = UIColor.black
+        } else {
+            transition.roundColor = UIColor.white
+        }
         
         return transition
         
