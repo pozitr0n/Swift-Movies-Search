@@ -24,98 +24,42 @@ final class myMoviesUITests: XCTestCase {
 
     func testMoviesApplication() throws {
         
+        XCUIApplication().collectionViews.cells.otherElements.containing(.staticText, identifier:"Spider-Man: Across the Spider-Verse").element.tap()
+        
         let app = XCUIApplication()
         let collectionViewsQuery = app.collectionViews
+        collectionViewsQuery.children(matching: .cell).element(boundBy: 1).children(matching: .other).element/*@START_MENU_TOKEN@*/.press(forDuration: 1.4);/*[[".tap()",".press(forDuration: 1.4);"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        
+        let moviesButton = app.navigationBars["myMovies.MovieDetailsView"].buttons["Movies"]
+        moviesButton.tap()
+        
         let cellsQuery = collectionViewsQuery.cells
-        let spiderManAcrossTheSpiderVerseElement = cellsQuery.otherElements.containing(.staticText, identifier:"Spider-Man: Across the Spider-Verse").element
-        spiderManAcrossTheSpiderVerseElement.tap()
+        cellsQuery.otherElements.containing(.staticText, identifier:"Fast X").element.tap()
+        moviesButton.tap()
+        cellsQuery.otherElements.containing(.staticText, identifier:"Heart of Stone").element.tap()
+    
+        app.windows.children(matching: .other).element.children(matching: .other).element(boundBy: 0).tap()
         
-        let loveButton = app.buttons["love"]
-        loveButton.tap()
-        loveButton.tap()
-        collectionViewsQuery.children(matching: .cell).element(boundBy: 3).children(matching: .other).element.swipeLeft()
+        collectionViewsQuery.children(matching: .cell).element(boundBy: 2).children(matching: .other).element.swipeLeft()
+        app.buttons["go right"].tap()
+        app.navigationBars["myMovies.MoviePicturesView"].buttons["Back"].tap()
+        app.navigationBars["myMovies.MovieDetailsView"].buttons["Movies"].tap()
         
-        let element = collectionViewsQuery.children(matching: .cell).element(boundBy: 0).children(matching: .other).element
-        element.swipeRight()
-        
-        let spiderManAcrossTheSpiderVerseStaticText = app.scrollViews.otherElements.staticTexts["Spider-Man: Across the Spider-Verse"]
-        spiderManAcrossTheSpiderVerseStaticText/*@START_MENU_TOKEN@*/.press(forDuration: 1.0);/*[[".tap()",".press(forDuration: 1.0);"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        spiderManAcrossTheSpiderVerseStaticText.tap()
-        spiderManAcrossTheSpiderVerseStaticText.tap()
-        spiderManAcrossTheSpiderVerseStaticText.swipeUp()
-        spiderManAcrossTheSpiderVerseStaticText.tap()
-        spiderManAcrossTheSpiderVerseStaticText.tap()
-        
-        let goRightButton = app.buttons["go right"]
-        goRightButton.tap()
-        
-        let element2 = cellsQuery.children(matching: .other).element
-        element2.swipeLeft()
-        
-        let element3 = collectionViewsQuery.children(matching: .cell).element(boundBy: 1).children(matching: .other).element
-        element3.swipeLeft()
-        element.swipeRight()
-        element2.tap()
-        element2.swipeLeft()
-        element3.swipeLeft()
-        element3.swipeLeft()
-        element3.swipeLeft()
-        element3.swipeLeft()
-        app.navigationBars["myMovies.FullPictureView"].buttons["Back"].tap()
-        
-        let backButton = app.navigationBars["myMovies.MoviePicturesView"].buttons["Back"]
-        backButton.tap()
-        
-        let mymoviesButton = app.navigationBars["myMovies.MovieDetailsView"].buttons["myMovies"]
-        mymoviesButton.tap()
-        
-        let guardiansOfTheGalaxyVol3Element = cellsQuery.otherElements.containing(.staticText, identifier:"Guardians of the Galaxy Vol. 3").element
-        guardiansOfTheGalaxyVol3Element.tap()
-        
-        let element4 = collectionViewsQuery.children(matching: .cell).element(boundBy: 2).children(matching: .other).element
-        element4.swipeLeft()
-        element.swipeRight()
-        element3.swipeRight()
-        goRightButton.tap()
-        backButton.tap()
-        mymoviesButton.tap()
-        
-        let mymoviesNavigationBar = app.navigationBars["myMovies"]
-        let mainMenuButton = mymoviesNavigationBar.buttons["Main menu"]
+        let mainMenuButton = app.navigationBars["Movies"].buttons["Main menu"]
         mainMenuButton.tap()
         
         let tablesQuery = app.tables
-        let favouriteStaticText = tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Favourite"]/*[[".cells.staticTexts[\"Favourite\"]",".staticTexts[\"Favourite\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        favouriteStaticText.tap()
-        app.navigationBars["Favourite Movies"].buttons["myMovies"].tap()
-        spiderManAcrossTheSpiderVerseElement.tap()
-        loveButton.tap()
-        mymoviesButton.tap()
-        guardiansOfTheGalaxyVol3Element.tap()
-        loveButton.tap()
-        mymoviesButton.tap()
-        cellsQuery.otherElements.containing(.staticText, identifier:"Elemental").element.tap()
-        element4.swipeLeft()
-        loveButton.tap()
-        mymoviesButton.tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["App Information"]/*[[".cells.staticTexts[\"App Information\"]",".staticTexts[\"App Information\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.navigationBars["myMovies.ApplicationInfoView"].buttons["Movies"].tap()
         mainMenuButton.tap()
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Information"]/*[[".cells.staticTexts[\"Information\"]",".staticTexts[\"Information\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.navigationBars["myMovies.ApplicationInfoView"].buttons["myMovies"].tap()
-        mainMenuButton.tap()
-        favouriteStaticText.tap()
-        guardiansOfTheGalaxyVol3Element.tap()
-        loveButton.tap()
-        mainMenuButton.tap()
-        tablesQuery/*@START_MENU_TOKEN@*/.cells.containing(.image, identifier:"love")/*[[".cells.containing(.staticText, identifier:\"Favourite\")",".cells.containing(.image, identifier:\"love\")"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.children(matching: .other).element(boundBy: 0).tap()
-        spiderManAcrossTheSpiderVerseElement.tap()
-        element4.swipeLeft()
-        element3.swipeRight()
-        loveButton.tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Home"]/*[[".cells.staticTexts[\"Home\"]",".staticTexts[\"Home\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
-        let sortingButton = mymoviesNavigationBar.buttons["Sorting"]
-        sortingButton.tap()
-        sortingButton.tap()
-                        
+        let app2 = app
+        app2.navigationBars["Movies"]/*@START_MENU_TOKEN@*/.staticTexts["Popular movies ▽ "]/*[[".staticTexts[\"Movies\"].staticTexts[\"Popular movies ▽ \"]",".staticTexts[\"Popular movies ▽ \"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app2/*@START_MENU_TOKEN@*/.tables.staticTexts["Top Rated"]/*[[".otherElements[\"drop_down\"].tables",".cells.staticTexts[\"Top Rated\"]",".staticTexts[\"Top Rated\"]",".tables"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,0]]@END_MENU_TOKEN@*/.tap()
+        collectionViewsQuery.cells.otherElements.containing(.staticText, identifier:"The Godfather").element.tap()
+        app.buttons["love"].tap()
+        
     }
 
     func testLaunchPerformance() throws {

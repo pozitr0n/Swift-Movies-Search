@@ -39,6 +39,10 @@ class FullPictureViewController: UIViewController {
     //
     func initializeViewParameters() {
         
+        if self.traitCollection.userInterfaceStyle == .dark {
+            self.view.backgroundColor = .black
+        }
+        
         guard let previews = moviePreviews else {
             return
         }

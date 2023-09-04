@@ -17,15 +17,7 @@ class UpMenuCell: DropDownCell {
         super.awakeFromNib()
 
         myImageView.contentMode = .scaleAspectFit
-        
-//        if self.traitCollection.userInterfaceStyle == .dark {
-//
-//            self.contentView.backgroundColor = .black
-//            
-//        } else {
-//            self.contentView.backgroundColor = .white
-//        }
-        
+            
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

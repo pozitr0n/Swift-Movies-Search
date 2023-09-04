@@ -47,7 +47,14 @@ class SmallPopUpUIView: UIView {
         received during the registration
         """
         
-        let themeImage = EKPopUpMessage.ThemeImage(image: EKProperty.ImageContent(image: image, size: CGSize(width: 60, height: 60), tint: .black, contentMode: .scaleAspectFit))
+        let commonColour: EKColor
+        if self.traitCollection.userInterfaceStyle == .dark {
+            commonColour = .white
+        } else {
+            commonColour = .black
+        }
+        
+        let themeImage = EKPopUpMessage.ThemeImage(image: EKProperty.ImageContent(image: image, size: CGSize(width: 60, height: 60), tint: commonColour, contentMode: .scaleAspectFit))
         
         let titleLabel = EKProperty.LabelContent(text: title, style: .init(font: UIFont.systemFont(ofSize: 25),
                                                                            color: .init(red: 34, green: 139, blue: 34),
@@ -57,7 +64,7 @@ class SmallPopUpUIView: UIView {
             text: description,
             style: .init(
                 font: UIFont.systemFont(ofSize: 15),
-                color: .black,
+                color: commonColour,
                 alignment: .center
             )
         )
@@ -67,7 +74,7 @@ class SmallPopUpUIView: UIView {
                 text: "Got it!",
                 style: .init(
                     font: UIFont.systemFont(ofSize: 15),
-                    color: .black
+                    color: commonColour
                 )
             ),
             backgroundColor: .init(UIColor.systemOrange),

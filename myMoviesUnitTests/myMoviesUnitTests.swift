@@ -19,6 +19,7 @@ final class myMoviesUnitTests: XCTestCase {
     let testAbout: String = "An exploratory dive into the deepest depths of the ocean of a daring research team spirals into chaos when a malevolent mining operation threatens their mission and forces them into a high-stakes battle for survival."
     let testMovieYear: Int = 2023
     let testIsLikedByUser: Bool = false
+    let testMovieType: String = "popular"
     
     // data for comparing
     let mockId: Int = 976573
@@ -27,6 +28,7 @@ final class myMoviesUnitTests: XCTestCase {
     let mockAbout: String = "In a city where fire, water, land and air residents live together, a fiery young woman and a go-with-the-flow guy will discover something elemental: how much they have in common."
     let mockMovieYear: Int = 2022
     let mockIsLikedByUser: Bool = true
+    let mockMovieType: String = "now_playing"
     
     override func setUpWithError() throws {
         
@@ -131,6 +133,20 @@ final class myMoviesUnitTests: XCTestCase {
         XCTAssertTrue(mockMovie.changeIsLikedByUserConuter > 0)
         XCTAssertTrue(mockMovie.changeIsLikedByUserCalled)
         XCTAssertTrue(mockMovie.isLikedByUser == mockIsLikedByUser)
+        
+    }
+    
+    func testchangeMovieType() throws {
+        
+        guard let mockMovie = mockMovie else {
+            return
+        }
+        
+        mockMovie.changeMovieType(mockAbout)
+        
+        XCTAssertTrue(mockMovie.changeMovieTypeConuter > 0)
+        XCTAssertTrue(mockMovie.changeMovieTypeCalled)
+        XCTAssertTrue(mockMovie.movieType != mockMovieType)
         
     }
     

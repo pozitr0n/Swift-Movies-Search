@@ -13,6 +13,7 @@ class MoviePicturesViewController: UIViewController {
     @IBOutlet weak var movieNameFull: UILabel!
     @IBOutlet weak var moviePicturesCollectionView: UICollectionView!
     @IBOutlet weak var currentCounter: UILabel!
+    @IBOutlet weak var previewMovieLabel: UILabel!
     
     // Setting the parameters
     let model = Model()
@@ -48,6 +49,25 @@ class MoviePicturesViewController: UIViewController {
         
         movieNameFull.layer.masksToBounds = true
         movieNameFull.layer.cornerRadius = cornerRadius
+        
+        if self.traitCollection.userInterfaceStyle == .dark {
+            
+            self.view.backgroundColor = .black
+            
+            previewMovieLabel.textColor = .white
+            previewMovieLabel.backgroundColor = .black
+            
+            movieNameFull.textColor = .white
+            movieNameFull.backgroundColor = .black
+            
+            moviePicturesCollectionView.backgroundColor = .black
+            
+            currentCounter.textColor = .white
+            currentCounter.backgroundColor = .black
+            currentCounter.layer.borderColor = UIColor.white.cgColor
+            currentCounter.layer.borderWidth = 2.0
+            
+        }
         
         guard let movieNameUnwr = movieName else {
             return

@@ -53,6 +53,10 @@ class MovieObject: Object {
         self.isLikedByUser = isLikedByUser
     }
     
+    func changeMovieType(_ movieType: String) {
+        self.movieType = movieType
+    }
+    
 }
 
 // Main realm database favourite movies

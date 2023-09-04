@@ -702,6 +702,7 @@ switch the switch to the Exit</string>
                         <outlet property="currentCounter" destination="qDB-M0-W2E" id="pYT-X5-gHi"/>
                         <outlet property="movieNameFull" destination="2Er-pb-yFU" id="Y2M-be-YP5"/>
                         <outlet property="moviePicturesCollectionView" destination="z4G-ey-Yp6" id="0zE-gg-Uvk"/>
+                        <outlet property="previewMovieLabel" destination="CLY-UM-w3t" id="bsc-bD-Nhw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mnT-1T-3bh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

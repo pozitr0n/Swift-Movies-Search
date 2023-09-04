@@ -17,6 +17,7 @@ class MovieMock: MovieObject {
     var changeMovieYearCounter: Int = 0
     var changeMovieRatingCounter: Int = 0
     var changeIsLikedByUserConuter: Int = 0
+    var changeMovieTypeConuter: Int = 0
     
     // variables for fixing whether this or that method was called
     var changeIdCalled = false
@@ -26,6 +27,7 @@ class MovieMock: MovieObject {
     var changeMovieYearCalled = false
     var changeMovieRatingCalled = false
     var changeIsLikedByUserCalled = false
+    var changeMovieTypeCalled = false
     
     override func changeId(_ id: Int) {
         
@@ -78,6 +80,15 @@ class MovieMock: MovieObject {
         changeIsLikedByUserCalled = true
         
         self.isLikedByUser = isLikedByUser
+        
+    }
+    
+    override func changeMovieType(_ movieType: String) {
+        
+        changeMovieTypeConuter += 1
+        changeMovieTypeCalled = true
+        
+        self.movieType = movieType
         
     }
     
