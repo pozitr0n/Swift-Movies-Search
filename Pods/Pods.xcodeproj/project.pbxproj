@@ -3410,6 +3410,7 @@
 			baseConfigurationReference = 825818A99187D8AC0608B0B380DBED03 /* SwiftMessages.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SwiftMessages";
+				DEVELOPMENT_TEAM = 3JQPLE5ZEK;
 				IBSC_MODULE = SwiftMessages;
 				INFOPLIST_FILE = "Target Support Files/SwiftMessages/ResourceBundle-SwiftMessages-SwiftMessages-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3628,6 +3629,7 @@
 			baseConfigurationReference = 1CC688CB679A08AF5A0BBBB0607A40DB /* SwiftMessages.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SwiftMessages";
+				DEVELOPMENT_TEAM = 3JQPLE5ZEK;
 				IBSC_MODULE = SwiftMessages;
 				INFOPLIST_FILE = "Target Support Files/SwiftMessages/ResourceBundle-SwiftMessages-SwiftMessages-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
