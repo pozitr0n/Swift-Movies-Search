@@ -83,7 +83,13 @@ extension MyPopUpUIView {
         
         let buttonAttributes = message.button
         actionButton.buttonContent = buttonAttributes
-        actionButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+    
+        var configuration = UIButton.Configuration.filled()
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30)
+        configuration.baseBackgroundColor = UIColor.systemOrange
+        
+        actionButton.configuration = configuration
+        
         actionButton.layer.cornerRadius = height * 0.5
         
     }
