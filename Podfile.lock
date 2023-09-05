@@ -13,7 +13,7 @@ PODS:
   - SwiftMessages (9.0.6):
     - SwiftMessages/App (= 9.0.6)
   - SwiftMessages/App (9.0.6)
-  - youtube-ios-player-helper (0.1.6)
+  - YoutubePlayer-in-WKWebView (0.3.8)
 
 DEPENDENCIES:
   - DropDown
@@ -22,7 +22,7 @@ DEPENDENCIES:
   - SDWebImage
   - SwiftEntryKit
   - SwiftMessages
-  - youtube-ios-player-helper
+  - YoutubePlayer-in-WKWebView
 
 SPEC REPOS:
   trunk:
@@ -33,7 +33,7 @@ SPEC REPOS:
     - SDWebImage
     - SwiftEntryKit
     - SwiftMessages
-    - youtube-ios-player-helper
+    - YoutubePlayer-in-WKWebView
 
 SPEC CHECKSUMS:
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
@@ -43,8 +43,8 @@ SPEC CHECKSUMS:
   SDWebImage: 182830bcddc30cde95fbc60dfe4badc3553d94ba
   SwiftEntryKit: 61b5fa36f34a97dd8013e48a7345bc4c4720be9a
   SwiftMessages: f0c7ef4705a570ad6c5e208b611f4333e660ed92
-  youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
+  YoutubePlayer-in-WKWebView: 4fca3b4f6f09940077bfbae7bddb771f2b43aacd
 
-PODFILE CHECKSUM: 56681439c92f8f80cdb826ae9e89123978c48200
+PODFILE CHECKSUM: 77e9a425df22175e5a89b1c3e9ff40b839b595ff
 
 COCOAPODS: 1.11.3

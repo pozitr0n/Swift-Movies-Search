@@ -6,11 +6,11 @@
 //
 
 import UIKit
-import youtube_ios_player_helper
+import YoutubePlayer_in_WKWebView
 
-class PlayingVideoViewController: UIViewController, YTPlayerViewDelegate {
+class PlayingVideoViewController: UIViewController, WKYTPlayerViewDelegate {
 
-    @IBOutlet var playerView: YTPlayerView!
+    @IBOutlet var playerView: WKYTPlayerView!
     @IBOutlet var picker: UIPickerView!
     @IBOutlet weak var movieTitle: UILabel!
     
@@ -59,7 +59,7 @@ class PlayingVideoViewController: UIViewController, YTPlayerViewDelegate {
         
     }
     
-    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
+    func playerViewDidBecomeReady(_ playerView: WKYTPlayerView) {
         playerView.playVideo()
     }
 
