@@ -1,6 +1,6 @@
 //
 //  SideMenuViewController.swift
-//  FilmsApp
+//  myMovies
 //
 //  Created by Raman Kozar on 19/07/2023.
 //

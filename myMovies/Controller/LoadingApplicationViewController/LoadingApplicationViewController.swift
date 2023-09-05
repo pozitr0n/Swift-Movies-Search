@@ -1,6 +1,6 @@
 //
 //  LoadingApplicationViewController.swift
-//  FilmsApp
+//  myMovies
 //
 //  Created by Raman Kozar on 24/07/2023.
 //

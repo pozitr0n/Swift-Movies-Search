@@ -1,6 +1,6 @@
 //
 //  MovieCollectionViewCell.swift
-//  FilmsApp
+//  myMovies
 //
 //  Created by Raman Kozar on 18/06/2023.
 //

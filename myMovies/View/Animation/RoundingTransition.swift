@@ -1,6 +1,6 @@
 //
 //  RoundingTransition.swift
-//  FilmsApp
+//  myMovies
 //
 //  Created by Raman Kozar on 14/07/2023.
 //

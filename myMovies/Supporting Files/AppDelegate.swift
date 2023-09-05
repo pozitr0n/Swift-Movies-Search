@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  FilmsApp
+//  myMovies
 //
 //  Created by Raman Kozar on 17/06/2023.
 //
