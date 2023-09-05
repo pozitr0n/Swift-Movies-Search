@@ -44,18 +44,12 @@
 // we give you.
 //
 // Currently the following information is reported:
-// - What version of Realm and core is being used, and from which language (obj-c or Swift).
-// - Which platform and version of OS X it's running on (in case Xcode aggressively drops
+// - What version of Realm is being used, and from which language (obj-c or Swift).
+// - What version of OS X it's running on (in case Xcode aggressively drops
 //   support for older versions again, we need to know what we need to support).
 // - The minimum iOS/OS X version that the application is targeting (again, to
 //   help us decide what versions we need to support).
 // - An anonymous MAC address and bundle ID to aggregate the other information on.
-// - The host platform OSX and version.
-// - The XCode version.
-// - Some info about the features been used when opening the realm for the first time.
+// - What version of Swift is being used (if applicable).
 
-#import <Realm/RLMRealm.h>
-#import <Foundation/Foundation.h>
-
-void RLMSendAnalytics(RLMRealmConfiguration *configuration, RLMSchema *schema);
-NSString *RLMHashBase16Data(const void *bytes, size_t length);
+void RLMSendAnalytics();

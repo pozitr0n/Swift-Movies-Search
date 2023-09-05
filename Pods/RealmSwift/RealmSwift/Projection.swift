@@ -18,7 +18,9 @@
 
 import Realm
 import Realm.Private
+#if canImport(Combine)
 import Combine
+#endif
 
 private protocol AnyProjected {
     var projectedKeyPath: AnyKeyPath { get }
@@ -269,29 +271,6 @@ extension ProjectionObservable {
 
      - warning: This method cannot be called during a write transaction, or when
                 the containing Realm is read-only.
-     - warning: For projected properties where the original property has the same root property name,
-                this will trigger a `PropertyChange` for each of the Projected properties even though
-                the change only corresponds to one of them.
-                For the following `Projection` object
-                ```swift
-                class PersonProjection: Projection<Person> {
-                    @Projected(\Person.firstName) var name
-                    @Projected(\Person.address.country) originCountry
-                    @Projected(\Person.address.phone.number) mobile
-                }
-
-                let token = projectedPerson.observe { changes in
-                    if case .change(_, let propertyChanges) = changes {
-                        propertyChanges[0].newValue as? String, "Winterfell" // Will notify the new value
-                        propertyChanges[1].newValue as? String, "555-555-555" // Will notify with the current value, which hasn't change.
-                    }
-                })
-
-                try realm.write {
-                    person.address.country = "Winterfell"
-                }
-                ```
-
      - parameter keyPaths: Only properties contained in the key paths array will trigger
                            the block when they are modified. If `nil`, notifications
                            will be delivered for any projected property change on the object.
@@ -344,27 +323,15 @@ extension ProjectionObservable {
 
             var projectedChanges = [PropertyChange]()
             for i in 0..<newValues.count {
-                let filter: (ProjectionProperty) -> Bool = { prop in
-                    if prop.originPropertyKeyPathString.components(separatedBy: ".").first != names[i] {
-                        return false
-                    }
-                    guard let keyPaths, !keyPaths.isEmpty else {
-                        return true
-                    }
-
-                    // This will allow us to notify `PropertyChange`s associated only to the keyPaths passed by the user, instead of any Property which has the same root as the notified one.
-                    return keyPaths.contains(prop.originPropertyKeyPathString)
-                }
-                for property in schema.filter(filter) {
-                    // If the root is marked as modified this will build a `PropertyChange` for each of the Projection properties with the same original root, even if there is no change on their value.
+                for property in schema.filter({ $0.originPropertyKeyPathString == names[i] }) {
                     var changeOldValue: Any?
                     if oldValues != nil {
                         changeOldValue = unmanagedRoot![keyPath: property.projectedKeyPath]
                     }
-                    let changedNewValue = object[keyPath: property.projectedKeyPath]
+                    let changeNewValue = object[keyPath: property.projectedKeyPath]
                     projectedChanges.append(.init(name: property.label,
                                                   oldValue: changeOldValue,
-                                                  newValue: changedNewValue))
+                                                  newValue: changeNewValue))
                 }
             }
 
@@ -747,6 +714,7 @@ extension Projection: ThreadConfined where Root: ThreadConfined {
     }
 }
 
+#if canImport(Combine)
 // MARK: - RealmSubscribable
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 extension ProjectionObservable {
@@ -769,7 +737,7 @@ extension ProjectionObservable {
         return observe(keyPaths: [PartialKeyPath<Self>](), { _ in _ = subscriber.receive() })
     }
 }
-
+#if !(os(iOS) && (arch(i386) || arch(arm)))
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 extension Projection: ObservableObject, RealmSubscribable where Root: ThreadConfined {
     /// A publisher that emits Void each time the projection changes.
@@ -779,6 +747,9 @@ extension Projection: ObservableObject, RealmSubscribable where Root: ThreadConf
         RealmPublishers.WillChange(self)
     }
 }
+#endif // !(os(iOS) && (arch(i386) || arch(arm)))
+
+#endif // canImport(Combine)
 
 // MARK: Implementation
 
@@ -789,7 +760,7 @@ private struct ProjectionProperty: @unchecked Sendable {
 }
 
 // An adaptor for os_unfair_lock to make it implement NSLocking
-@available(OSX 10.12, watchOS 3.0, iOS 10.0, tvOS 10.0, *)
+@available(OSX 10.12, watchOS 3.0, iOS 10.0, iOSApplicationExtension 10.0, OSXApplicationExtension 10.12, tvOS 10.0, *)
 private final class UnfairLock: NSLocking, Sendable {
     func lock() {
         os_unfair_lock_lock(impl)
@@ -806,11 +777,22 @@ private final class UnfairLock: NSLocking, Sendable {
 
 // We want to use os_unfair_lock when it's available, but fall back to NSLock otherwise
 private func createLock() -> NSLocking {
-    if #available(macOS 10.12, watchOS 3.0, iOS 10.0, tvOS 10.0, *) {
+    if #available(OSX 10.12, watchOS 3.0, iOS 10.0, iOSApplicationExtension 10.0, OSXApplicationExtension 10.12, tvOS 10.0, *) {
         return UnfairLock()
     }
     return NSLock()
 }
+
+// withLock() was added in Xcode 14.1
+#if compiler(<5.7.1)
+extension NSLocking {
+    func withLock<R>(_ body: () throws -> R) rethrows -> R {
+        lock()
+        defer { unlock() }
+        return try body()
+    }
+}
+#endif
 
 // A property wrapper which unsafely disables concurrency checking for a property
 // This is required when a property is guarded by something which concurrency

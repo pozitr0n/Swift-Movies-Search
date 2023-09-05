@@ -16,10 +16,13 @@
  //
  ////////////////////////////////////////////////////////////////////////////
 
-import Combine
 import Foundation
 import Realm
 import Realm.Private
+
+#if !(os(iOS) && (arch(i386) || arch(arm)))
+import Combine
+#endif
 
 /// An enum representing different states for the Subscription Set.
 @frozen public enum SyncSubscriptionState: Equatable {
@@ -449,6 +452,7 @@ extension SyncSubscriptionSet: Sequence {
     }
 }
 
+#if canImport(_Concurrency)
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 extension SyncSubscriptionSet {
     /**
@@ -471,7 +475,9 @@ extension SyncSubscriptionSet {
         fatalError("This API is unavailable, , please use `.update` instead.")
     }
 }
+#endif // swift(>=5.6)
 
+#if !(os(iOS) && (arch(i386) || arch(arm)))
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
 extension SyncSubscriptionSet {
     /**
@@ -488,3 +494,4 @@ extension SyncSubscriptionSet {
         }
     }
 }
+#endif // canImport(Combine)

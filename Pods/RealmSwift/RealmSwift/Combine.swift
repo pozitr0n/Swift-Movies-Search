@@ -16,6 +16,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
+#if !(os(iOS) && (arch(i386) || arch(arm)))
 import Combine
 import Realm
 import Realm.Private
@@ -2666,3 +2667,5 @@ public enum RealmPublishers {
         }
     }
 }
+
+#endif // canImport(Combine)

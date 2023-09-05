@@ -109,7 +109,6 @@ struct LogicError : Exception {
 
 struct RuntimeError : Exception {
     RuntimeError(ErrorCodes::Error code, std::string_view msg);
-    RuntimeError(Status&& status);
     ~RuntimeError() noexcept override;
 };
 
@@ -356,12 +355,13 @@ private:
 
 struct SystemError : RuntimeError {
     SystemError(std::error_code err, std::string_view msg)
-        : RuntimeError(make_status(err, msg, false))
+        : RuntimeError(ErrorCodes::SystemError, msg)
     {
+        const_cast<Status&>(to_status()).set_std_error_code(err);
     }
 
     SystemError(int err_no, std::string_view msg)
-        : RuntimeError(make_status(std::error_code(err_no, std::generic_category()), msg, true))
+        : SystemError(std::error_code(err_no, std::system_category()), msg)
     {
     }
 
@@ -375,12 +375,6 @@ struct SystemError : RuntimeError {
     const std::error_category& get_category() const
     {
         return get_system_error().category();
-    }
-
-private:
-    static Status make_status(std::error_code err, std::string_view msg, bool msg_is_prefix)
-    {
-        return Status(err, msg_is_prefix ? util::format("%1: %2 (%3)", msg, err.message(), err.value()) : msg);
     }
 };
 

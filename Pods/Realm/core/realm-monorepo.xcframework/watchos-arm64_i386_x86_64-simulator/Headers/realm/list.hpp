@@ -72,9 +72,9 @@ protected:
 };
 
 template <class T>
-class Lst final : public CollectionBaseImpl<LstBase> {
+class Lst final : public CollectionBaseImpl<LstBase, Lst<T>> {
 public:
-    using Base = CollectionBaseImpl<LstBase>;
+    using Base = CollectionBaseImpl<LstBase, Lst<T>>;
     using iterator = LstIterator<T>;
     using value_type = T;
 
@@ -84,6 +84,8 @@ public:
     Lst(Lst&&) noexcept;
     Lst& operator=(const Lst& other);
     Lst& operator=(Lst&& other) noexcept;
+
+    using Base::operator==;
 
     iterator begin() const noexcept
     {

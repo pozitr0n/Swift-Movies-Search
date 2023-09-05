@@ -63,8 +63,12 @@ extern IdentityProvider const IdentityProviderApple;
 extern IdentityProvider const IdentityProviderFunction;
 
 // A credential which can be used to log in as a Stitch user
-// using the Server's API Key authentication provider.
-extern IdentityProvider const IdentityProviderAPIKey;
+// using the User API Key authentication provider.
+extern IdentityProvider const IdentityProviderUserAPIKey;
+
+// A credential which can be used to log in as a Stitch user
+// using the Server API Key authentication provider.
+extern IdentityProvider const IdentityProviderServerAPIKey;
 
 enum class AuthProvider {
     ANONYMOUS,
@@ -75,7 +79,8 @@ enum class AuthProvider {
     CUSTOM,
     USERNAME_PASSWORD,
     FUNCTION,
-    API_KEY,
+    USER_API_KEY,
+    SERVER_API_KEY
 };
 
 IdentityProvider provider_type_from_enum(AuthProvider provider);
@@ -113,8 +118,12 @@ struct AppCredentials {
     // The payload is a MongoDB document as json
     static AppCredentials function(const std::string& serialized_payload);
 
-    // Construct and return credentials with the api key.
-    static AppCredentials api_key(std::string api_key);
+    // Construct and return credentials with the user api key.
+    static AppCredentials user_api_key(std::string api_key);
+
+    // Construct and return credentials with the server api key.
+    static AppCredentials server_api_key(std::string api_key);
+
 
     // The provider of the credential
     AuthProvider provider() const;

@@ -300,11 +300,6 @@ public:
             return session.m_db;
         }
 
-        static std::string get_appservices_connection_id(SyncSession& session)
-        {
-            return session.get_appservices_connection_id();
-        }
-
         static util::Future<std::string> send_test_command(SyncSession& session, std::string request)
         {
             return session.send_test_command(std::move(request));
@@ -425,7 +420,6 @@ private:
         REQUIRES(m_state_mutex);
 
     sync::SaltedFileIdent get_file_ident() const;
-    std::string get_appservices_connection_id() const REQUIRES(!m_state_mutex);
 
     util::Future<std::string> send_test_command(std::string body) REQUIRES(!m_state_mutex);
 

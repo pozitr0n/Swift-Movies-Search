@@ -34,14 +34,10 @@ namespace sync {
 //   7 Client takes the 'action' specified in the 'json_error' messages received
 //     from server. Client sends 'json_error' messages to the server.
 //
-//   8 Websocket http errors are now sent as websocket close codes
+//   8 Support for PBS->FLX client migration
+//     Websocket http errors are now sent as websocket close codes
 //     FLX sync BIND message can include JSON data in place of server path string
 //     Updated format for Sec-Websocket-Protocol strings
-//
-//   9 Support for PBS->FLX client migration
-//     Client reset updated to not provide the local schema when creating frozen
-//     realms - this informs the server to not send the schema before sending the
-//     migrate to FLX server action
 //
 //  XX Changes:
 //     - TBD
@@ -50,7 +46,7 @@ constexpr int get_current_protocol_version() noexcept
 {
     // Also update the current protocol version test in flx_sync.cpp when
     // updating this value
-    return 9;
+    return 8;
 }
 
 constexpr std::string_view get_pbs_websocket_protocol_prefix() noexcept
@@ -90,21 +86,6 @@ inline bool is_ssl(ProtocolEnvelope protocol) noexcept
             return true;
     }
     return false;
-}
-
-inline std::string_view to_string(ProtocolEnvelope protocol) noexcept
-{
-    switch (protocol) {
-        case ProtocolEnvelope::realm:
-            return "realm://";
-        case ProtocolEnvelope::realms:
-            return "realms://";
-        case ProtocolEnvelope::ws:
-            return "ws://";
-        case ProtocolEnvelope::wss:
-            return "wss://";
-    }
-    return "";
 }
 
 
@@ -231,20 +212,9 @@ struct CompensatingWriteErrorInfo {
 };
 
 struct ResumptionDelayInfo {
-    // This is the maximum delay between trying to resume a session/connection.
     std::chrono::milliseconds max_resumption_delay_interval = std::chrono::minutes{5};
-    // The initial delay between trying to resume a session/connection.
     std::chrono::milliseconds resumption_delay_interval = std::chrono::seconds{1};
-    // After each failure of the same type, the last delay will be multiplied by this value
-    // until it is greater-than-or-equal to the max_resumption_delay_interval.
     int resumption_delay_backoff_multiplier = 2;
-    // When calculating a new delay interval, a random value betwen zero and the result off
-    // dividing the current delay value by the delay_jitter_divisor will be subtracted from the
-    // delay interval. The default is to subtract up to 25% of the current delay interval.
-    //
-    // This is to reduce the likelyhood of a connection storm if the server goes down and
-    // all clients attempt to reconnect at once.
-    int delay_jitter_divisor = 4;
 };
 
 struct ProtocolErrorInfo {

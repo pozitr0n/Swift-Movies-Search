@@ -29,6 +29,9 @@
 #include <string>
 
 namespace realm {
+template <typename T>
+class BasicRowExpr;
+using RowExpr = BasicRowExpr<Table>;
 class SyncMetadataManager;
 
 // A facade for a metadata Realm object representing app metadata
@@ -180,30 +183,41 @@ private:
     Obj m_obj;
 };
 
+class SyncClientMetadata {
+public:
+    struct Schema {
+        // A UUID that identifies this client.
+        ColKey idx_uuid;
+    };
+};
+
 template <class T>
 class SyncMetadataResults {
 public:
     size_t size() const
     {
-        m_results.get_realm()->refresh();
+        m_realm->refresh();
         return m_results.size();
     }
 
     T get(size_t idx) const
     {
-        m_results.get_realm()->refresh();
+        m_realm->refresh();
         auto row = m_results.get(idx);
-        return T(m_schema, m_results.get_realm(), row);
+        return T(m_schema, m_realm, row);
     }
 
-    SyncMetadataResults(Results results, typename T::Schema schema)
+    SyncMetadataResults(Results results, SharedRealm realm, typename T::Schema schema)
         : m_schema(std::move(schema))
+        , m_realm(std::move(realm))
         , m_results(std::move(results))
     {
     }
 
 private:
     typename T::Schema m_schema;
+    SharedRealm m_realm;
+    // FIXME: remove 'mutable' once `realm::Results` is properly annotated for const
     mutable Results m_results;
 };
 using SyncUserMetadataResults = SyncMetadataResults<SyncUserMetadata>;
@@ -266,6 +280,8 @@ private:
     Realm::Config m_metadata_config;
     SyncUserMetadata::Schema m_user_schema;
     SyncFileActionMetadata::Schema m_file_action_schema;
+    SyncClientMetadata::Schema m_client_schema;
+    SyncClientMetadata::Schema m_current_user_identity_schema;
     SyncAppMetadata::Schema m_app_metadata_schema;
 
     std::shared_ptr<Realm> get_realm() const;

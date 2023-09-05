@@ -69,7 +69,7 @@ RLM_SWIFT_SENDABLE RLM_FINAL // internally thread-safe
 
 /**
  The unique Atlas App Services string identifying this user.
- Note this is different from an identity: A user may have multiple identities but has a single identifier. See RLMUserIdentity.
+ Note this is different from an identitiy: A user may have multiple identities but has a single indentifier. See RLMUserIdentity.
  */
 @property (nonatomic, readonly) NSString *identifier NS_SWIFT_NAME(id);
 
@@ -77,25 +77,18 @@ RLM_SWIFT_SENDABLE RLM_FINAL // internally thread-safe
 @property (nonatomic, readonly) NSArray<RLMUserIdentity *> *identities;
 
 /**
- The user's refresh token used to access App Services.
+ The user's refresh token used to access the Realm Applcation.
 
- By default, refresh tokens expire 60 days after they are issued.
- You can configure this time for your App's refresh tokens to be
- anywhere between 30 minutes and 180 days.
-
- You can configure the refresh token expiration time for all sessions in
- an App from the Admin UI or Admin API.
-*/
+ This is required to make HTTP requests to the Realm App's REST API
+ for functionality not exposed natively. It should be treated as sensitive data.
+ */
 @property (nullable, nonatomic, readonly) NSString *refreshToken;
 
 /**
- The user's access token used to access App Services.
+ The user's refresh token used to access the Realm Application.
 
- This is required to make HTTP requests to Atlas App Services like the Data API or GraphQL.
- It should be treated as sensitive data.
-
- The Realm SDK automatically manages access tokens and refreshes them
- when they expire.
+ This is required to make HTTP requests to Atlas App Services' REST API
+ for functionality not exposed natively. It should be treated as sensitive data.
  */
 @property (nullable, nonatomic, readonly) NSString *accessToken;
 

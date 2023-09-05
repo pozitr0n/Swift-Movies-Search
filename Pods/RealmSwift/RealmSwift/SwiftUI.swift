@@ -18,6 +18,7 @@
 
 import Foundation
 
+#if !(os(iOS) && (arch(i386) || arch(arm)))
 import SwiftUI
 import Combine
 import Realm
@@ -315,12 +316,12 @@ private class ObservableResultsStorage<T>: ObservableStorage<T> where T: RealmSu
     }
 
     private var searchString: String = ""
-    fileprivate func searchText<U: ObjectBase>(_ text: String, on keyPath: KeyPath<U, String>) {
+    fileprivate func searchText<T: ObjectBase>(_ text: String, on keyPath: KeyPath<T, String>) {
         guard text != searchString else { return }
         if text.isEmpty {
             searchFilter = nil
         } else {
-            searchFilter = Query<U>()[dynamicMember: keyPath].contains(text).predicate
+            searchFilter = Query<T>()[dynamicMember: keyPath].contains(text).predicate
         }
         searchString = text
     }
@@ -1623,8 +1624,10 @@ private class ObservableAsyncOpenStorage: ObservableObject {
         }
 
         // Setup timeout if needed
-        if let timeout {
-            app.syncManager.timeoutOptions = SyncTimeoutOptions(connectTimeout: timeout)
+        if let timeout = timeout {
+            let syncTimeoutOptions = SyncTimeoutOptions()
+            syncTimeoutOptions.connectTimeout = timeout
+            app.syncManager.timeoutOptions = syncTimeoutOptions
         }
         return app
     }
@@ -1869,6 +1872,9 @@ extension SwiftUIKVO {
     }
 }
 
+// Adding `_Concurrency` flag is the only way to verify
+// if the BASE SDK contains latest framework updates
+#if canImport(_Concurrency)
 @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *)
 extension View {
     /// Marks this view as searchable, which configures the display of a search field.
@@ -2437,3 +2443,14 @@ extension View {
         }
     }
 }
+#endif
+#else
+@objc(RLMSwiftUIKVO) internal final class SwiftUIKVO: NSObject {
+    @objc(removeObserversFromObject:) public static func removeObservers(object: NSObject) -> Bool {
+        return false
+    }
+
+    @objc(addObserversToObject:) public static func addObservers(object: NSObject) {
+    }
+}
+#endif

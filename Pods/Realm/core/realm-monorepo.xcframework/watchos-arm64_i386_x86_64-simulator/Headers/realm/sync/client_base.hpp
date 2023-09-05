@@ -62,7 +62,7 @@ struct ClientReset {
     realm::ClientResyncMode mode;
     DBRef fresh_copy;
     bool recovery_is_allowed = true;
-    util::UniqueFunction<VersionID()> notify_before_client_reset;
+    util::UniqueFunction<void(VersionID)> notify_before_client_reset;
     util::UniqueFunction<void(VersionID before_version, bool did_recover)> notify_after_client_reset;
 };
 
@@ -156,10 +156,10 @@ struct ClientConfig {
     ReconnectMode reconnect_mode = ReconnectMode::normal;
 
     /// Create a separate connection for each session.
-#if REALM_DISABLE_SYNC_MULTIPLEXING
-    bool one_connection_per_session = true;
-#else
+#if REALM_ENABLE_SYNC_MULTIPLEXING
     bool one_connection_per_session = false;
+#else
+    bool one_connection_per_session = true;
 #endif
 
     /// Do not access the local file system. Sessions will act as if
@@ -235,11 +235,6 @@ struct ClientConfig {
     /// one immediately afterwards, the activation of the upload process
     /// will be delayed unconditionally.
     milliseconds_type fast_reconnect_limit = default_fast_reconnect_limit;
-
-    /// If a connection is disconnected because of an error that isn't a
-    /// sync protocol ERROR message, this parameter will be used to decide how
-    /// long to wait between each re-connect attempt.
-    ResumptionDelayInfo reconnect_backoff_info;
 
     /// Set to true to completely disable delaying of the upload process. In
     /// this mode, the upload process will be activated immediately, and the
@@ -324,19 +319,6 @@ struct SessionErrorInfo : public ProtocolErrorInfo {
 };
 
 enum class ConnectionState { disconnected, connecting, connected };
-
-inline std::ostream& operator<<(std::ostream& os, ConnectionState state)
-{
-    switch (state) {
-        case ConnectionState::disconnected:
-            return os << "Disconnected";
-        case ConnectionState::connecting:
-            return os << "Connecting";
-        case ConnectionState::connected:
-            return os << "Connected";
-    }
-    REALM_TERMINATE("Invalid ConnectionState value");
-}
 
 } // namespace realm::sync
 

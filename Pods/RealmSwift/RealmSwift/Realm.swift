@@ -151,6 +151,7 @@ public typealias AsyncTransactionId = RLMAsyncTransactionId
         }))
     }
 
+    #if !(os(iOS) && (arch(i386) || arch(arm)))
     /**
      Asynchronously open a Realm and deliver it to a block on the given queue.
 
@@ -172,6 +173,7 @@ public typealias AsyncTransactionId = RLMAsyncTransactionId
     public static func asyncOpen(configuration: Realm.Configuration = .defaultConfiguration) -> RealmPublishers.AsyncOpenPublisher {
         return RealmPublishers.AsyncOpenPublisher(configuration: configuration)
     }
+    #endif
 
     /**
      A task object which can be used to observe or cancel an async open.
@@ -1169,6 +1171,7 @@ extension Realm {
 /// The type of a block to run for notification purposes when the data in a Realm is modified.
 public typealias NotificationBlock = (_ notification: Realm.Notification, _ realm: Realm) -> Void
 
+#if canImport(_Concurrency)
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 private func shouldAsyncOpen(_ configuration: Realm.Configuration,
                              _ downloadBeforeOpen: Realm.OpenBehavior) -> Bool {
@@ -1462,19 +1465,11 @@ extension RLMAsyncDownloadTask: TaskWithCancellation {}
 @available(macOS 10.15, tvOS 13.0, iOS 13.0, watchOS 6.0, *)
 internal extension Actor {
     func verifier() -> (@Sendable () -> Void) {
-#if swift(>=5.9)
-        // When possible use the official API for actor checking
-        if #available(macOS 14.0, iOS 17.0, tvOS 17.0, watchOS 10.0, *) {
-            return {
-                self.preconditionIsolated()
-            }
-        }
-#endif
-
         // This exploits a hole in Swift's type system to construct a function
         // which is isolated to the current actor, and then casts away that
         // information. This results in runtime warnings/aborts if it's called
         // from outside the actor when actor data race checking is enabled.
+        // SE-0392 introduces a much better way to perform this check.
         let fn: () -> Void = { _ = self }
         return unsafeBitCast(fn, to: (@Sendable () -> Void).self)
     }
@@ -1494,10 +1489,12 @@ internal extension Actor {
     }
 
     // A helper to invoke a regular isolated sendable function with this actor
-    func invoke<T: Sendable>(_ fn: @Sendable (isolated Self) async throws -> T) async rethrows -> T {
+    func invoke<T>(_ fn: @Sendable (isolated Self) async throws -> T) async rethrows -> T {
         try await fn(self)
     }
 }
+
+#endif // canImport(_Concurrency)
 
 /**
  Objects which can be fetched from the Realm - Object or Projection

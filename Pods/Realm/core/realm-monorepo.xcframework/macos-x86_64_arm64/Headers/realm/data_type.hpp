@@ -21,7 +21,6 @@
 
 #include <stdint.h>
 #include <realm/util/to_string.hpp>
-#include <realm/util/features.h>
 
 namespace realm {
 
@@ -153,9 +152,6 @@ static constexpr DataType type_OldDateTime = DataType{7};
 static_assert(!type_OldTable.is_valid());
 static_assert(!type_OldDateTime.is_valid());
 static constexpr DataType type_TypeOfValue = DataType{18};
-#if REALM_ENABLE_GEOSPATIAL
-static constexpr DataType type_Geospatial = DataType{22};
-#endif
 
 constexpr inline DataType::operator util::Printable() const noexcept
 {
@@ -198,11 +194,6 @@ constexpr inline DataType::operator util::Printable() const noexcept
     if (*this == type_TypeOfValue) {
         return "type_TypeOfValue";
     }
-#if REALM_ENABLE_GEOSPATIAL
-    if (*this == type_Geospatial) {
-        return "type_Geospatial";
-    }
-#endif
     return "type_UNKNOWN";
 }
 

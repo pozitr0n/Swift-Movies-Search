@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 # A script to generate the .jenkins.yml file for the CI pull request job
-XCODE_VERSIONS = %w(14.1 14.2 14.3.1)
+XCODE_VERSIONS = %w(13.4.1 14.1 14.2 14.3)
 
 all = ->(v) { true }
 latest_only = ->(v) { v == XCODE_VERSIONS.last }
@@ -22,10 +22,10 @@ targets = {
   'swiftpm-debug' => all,
   'swiftpm-address' => latest_only,
   'swiftpm-thread' => latest_only,
-  'ios-xcode-spm' => all,
+  'swiftpm-ios' => all,
 
   'ios-static' => oldest_and_latest,
-  'ios' => oldest_and_latest,
+  'ios-dynamic' => oldest_and_latest,
   'watchos' => oldest_and_latest,
   'tvos' => oldest_and_latest,
 
@@ -43,11 +43,10 @@ targets = {
   'xcframework' => latest_only,
 
   'cocoapods-osx' => all,
-  'cocoapods-ios-static' => latest_only,
-  'cocoapods-ios' => latest_only,
-  'cocoapods-watchos' => latest_only,
-  'cocoapods-tvos' => latest_only,
-  'cocoapods-catalyst' => latest_only,
+  'cocoapods-ios' => oldest_and_latest,
+  'cocoapods-ios-dynamic' => oldest_and_latest,
+  'cocoapods-watchos' => oldest_and_latest,
+  # 'cocoapods-catalyst' => oldest_and_latest,
   'swiftui-ios' => latest_only,
   'swiftui-server-osx' => latest_only,
 }

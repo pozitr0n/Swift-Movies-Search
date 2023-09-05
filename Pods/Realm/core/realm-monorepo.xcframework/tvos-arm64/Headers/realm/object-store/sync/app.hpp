@@ -59,25 +59,17 @@ public:
     struct Config {
         // Information about the device where the app is running
         struct DeviceInfo {
+            std::string platform;          // json: platform
             std::string platform_version;  // json: platformVersion
             std::string sdk_version;       // json: sdkVersion
             std::string sdk;               // json: sdk
+            std::string cpu_arch;          // json: cpuArch
             std::string device_name;       // json: deviceName
             std::string device_version;    // json: deviceVersion
             std::string framework_name;    // json: frameworkName
             std::string framework_version; // json: frameworkVersion
-            std::string bundle_id;         // json: bundleId
-
-            DeviceInfo();
-            DeviceInfo(std::string, std::string, std::string, std::string, std::string, std::string, std::string,
-                       std::string);
-
-        private:
-            friend App;
-
-            std::string platform;     // json: platform
-            std::string cpu_arch;     // json: cpuArch
-            std::string core_version; // json: coreVersion
+            // Other parameters provided to server no included here:
+            // * CoreVersion - populated by Sync when the device info is sent
         };
 
         std::string app_id;
@@ -403,17 +395,13 @@ private:
     friend class OnlyForTesting;
 
     Config m_config;
-
-    // mutable to allow locking for reads in const functions
-    // this is a shared pointer to support the App move constructor
-    mutable std::shared_ptr<std::mutex> m_route_mutex = std::make_shared<std::mutex>();
+    mutable std::unique_ptr<std::mutex> m_route_mutex = std::make_unique<std::mutex>();
     std::string m_base_url;
     std::string m_base_route;
     std::string m_app_route;
     std::string m_auth_route;
-    bool m_location_updated = false;
-
     uint64_t m_request_timeout_ms;
+    bool m_location_updated = false;
     std::shared_ptr<SyncManager> m_sync_manager;
     std::shared_ptr<util::Logger> m_logger_ptr;
 
@@ -467,15 +455,15 @@ private:
     void update_metadata_and_resend(Request&& request, util::UniqueFunction<void(const Response&)>&& completion,
                                     const util::Optional<std::string>& new_hostname = util::none);
 
+    void basic_request(std::string&& route, std::string&& body,
+                       util::UniqueFunction<void(util::Optional<AppError>)>&& completion);
     void post(std::string&& route, util::UniqueFunction<void(util::Optional<AppError>)>&& completion,
               const bson::BsonDocument& body);
 
     /// Performs a request to the Stitch server. This request does not contain authentication state.
     /// @param request The request to be performed
     /// @param completion Returns the response from the server
-    /// @param update_location Force the location metadata to be updated prior to sending the request
-    void do_request(Request&& request, util::UniqueFunction<void(const Response&)>&& completion,
-                    bool update_location = false);
+    void do_request(Request&& request, util::UniqueFunction<void(const Response&)>&& completion);
 
     /// Check to see if hte response is a redirect and handle, otherwise pass the response to compleetion
     /// @param request The request to be performed (in case it needs to be sent again)

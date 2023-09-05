@@ -1,11 +1,11 @@
 PODS:
   - DropDown (2.3.13)
   - LIHAlert (2.1.1)
-  - Realm (10.42.1):
-    - Realm/Headers (= 10.42.1)
-  - Realm/Headers (10.42.1)
-  - RealmSwift (10.42.1):
-    - Realm (= 10.42.1)
+  - Realm (10.39.1):
+    - Realm/Headers (= 10.39.1)
+  - Realm/Headers (10.39.1)
+  - RealmSwift (10.39.1):
+    - Realm (= 10.39.1)
   - SDWebImage (5.18.0):
     - SDWebImage/Core (= 5.18.0)
   - SDWebImage/Core (5.18.0)
@@ -13,7 +13,7 @@ PODS:
   - SwiftMessages (9.0.6):
     - SwiftMessages/App (= 9.0.6)
   - SwiftMessages/App (9.0.6)
-  - youtube-ios-player-helper (1.0.4)
+  - youtube-ios-player-helper (0.1.6)
 
 DEPENDENCIES:
   - DropDown
@@ -38,13 +38,13 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   LIHAlert: a027605673986d03b896e4f4a901f393b15840b9
-  Realm: f433b80a05f68575e88364d6fcc6234965ccc5af
-  RealmSwift: 757e1416e2314f7e1543abdb2aa65b311d7b6545
+  Realm: 1f3157edf145f4d9036765ab550c8cb18f62b700
+  RealmSwift: 8a69a1cb788cd5865966f49667b130567e07bceb
   SDWebImage: 182830bcddc30cde95fbc60dfe4badc3553d94ba
   SwiftEntryKit: 61b5fa36f34a97dd8013e48a7345bc4c4720be9a
   SwiftMessages: f0c7ef4705a570ad6c5e208b611f4333e660ed92
-  youtube-ios-player-helper: e9b97535e816db3152179d84d999bc1807ecd689
+  youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 93a3f820d2c0406cc7f714ae2e955c01c6a4e588
+PODFILE CHECKSUM: 56681439c92f8f80cdb826ae9e89123978c48200
 
 COCOAPODS: 1.11.3
