@@ -86,7 +86,7 @@ extension PlayingVideoViewController: UIPickerViewDataSource {
 extension PlayingVideoViewController: UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "Trailer to the movie - \(row + 1)"
+        return "\(row + 1)"
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
