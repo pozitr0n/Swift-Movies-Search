@@ -172,8 +172,9 @@ internal func assumeOnMainActorExecutor<T>(_ operation: @MainActor () throws -> 
 ) rethrows -> T {
     
 /// Raman Kozar - changes 14.09.2023
+/// But after iOS 17 nee to change from 16.4 to 17.0
 #if swift(>=5.9)
-    if #available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *) {
+    if #available(macOS 14.0, iOS 16.4, watchOS 10.0, tvOS 17.0, *) {
         return try MainActor.assumeIsolated(operation)
     }
 #endif
@@ -192,9 +193,10 @@ internal func assumeOnActorExecutor<A: Actor, T>(_ actor: A,
 ) rethrows -> T {
     
     /// Raman Kozar - changes 14.09.2023
+    /// But after iOS 17 nee to change from 16.4 to 17.0
     //try withoutActuallyEscaping(operation) { fn in
     #if swift(>=5.9)
-        if #available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *) {
+    if #available(macOS 14.0, iOS 16.4, watchOS 10.0, tvOS 17.0, *) {
             return try actor.assumeIsolated(operation)
         }
     #endif
