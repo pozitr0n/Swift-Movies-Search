@@ -6,9 +6,9 @@ PODS:
   - Realm/Headers (10.39.1)
   - RealmSwift (10.39.1):
     - Realm (= 10.39.1)
-  - SDWebImage (5.18.0):
-    - SDWebImage/Core (= 5.18.0)
-  - SDWebImage/Core (5.18.0)
+  - SDWebImage (5.18.1):
+    - SDWebImage/Core (= 5.18.1)
+  - SDWebImage/Core (5.18.1)
   - SwiftEntryKit (2.0.0)
   - SwiftMessages (9.0.6):
     - SwiftMessages/App (= 9.0.6)
@@ -40,7 +40,7 @@ SPEC CHECKSUMS:
   LIHAlert: a027605673986d03b896e4f4a901f393b15840b9
   Realm: 1f3157edf145f4d9036765ab550c8cb18f62b700
   RealmSwift: 8a69a1cb788cd5865966f49667b130567e07bceb
-  SDWebImage: 182830bcddc30cde95fbc60dfe4badc3553d94ba
+  SDWebImage: ebdbcebc7933a45226d9313bd0118bc052ad458b
   SwiftEntryKit: 61b5fa36f34a97dd8013e48a7345bc4c4720be9a
   SwiftMessages: f0c7ef4705a570ad6c5e208b611f4333e660ed92
   YoutubePlayer-in-WKWebView: 4fca3b4f6f09940077bfbae7bddb771f2b43aacd
