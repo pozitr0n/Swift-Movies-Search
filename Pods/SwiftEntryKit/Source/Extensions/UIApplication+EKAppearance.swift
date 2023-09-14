@@ -12,5 +12,6 @@ extension UIApplication {
     
     func set(statusBarStyle: EKAttributes.StatusBar) {
         let appearance = statusBarStyle.appearance
+        print(appearance)
     }
 }
