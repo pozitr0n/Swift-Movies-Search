@@ -316,12 +316,14 @@ private class ObservableResultsStorage<T>: ObservableStorage<T> where T: RealmSu
     }
 
     private var searchString: String = ""
-    fileprivate func searchText<T: ObjectBase>(_ text: String, on keyPath: KeyPath<T, String>) {
+    /// Raman Kozar - changes 14.09.2023
+    fileprivate func searchText<U: ObjectBase>(_ text: String, on keyPath: KeyPath<U, String>) {
         guard text != searchString else { return }
         if text.isEmpty {
             searchFilter = nil
         } else {
-            searchFilter = Query<T>()[dynamicMember: keyPath].contains(text).predicate
+            /// Raman Kozar - changes 14.09.2023
+            searchFilter = Query<U>()[dynamicMember: keyPath].contains(text).predicate
         }
         searchString = text
     }
