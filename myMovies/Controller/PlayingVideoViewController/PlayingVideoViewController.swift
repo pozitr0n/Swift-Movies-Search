@@ -14,6 +14,7 @@ class PlayingVideoViewController: UIViewController, WKYTPlayerViewDelegate {
     @IBOutlet var picker: UIPickerView!
     @IBOutlet weak var movieTitle: UILabel!
     
+    // Setting varialbes
     var arrayOfVideosYoutubeID: [String]?
     var titleMovie: String?
     
