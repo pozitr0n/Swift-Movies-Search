@@ -13,6 +13,7 @@ import CoreData
 //
 class Constants {
     
+    // API key for App
     let apiKey: String = {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -32,7 +33,10 @@ class Constants {
         
     }()
     
+    // Base URL for getting data
     static let baseOfTheURL: String = "https://api.themoviedb.org/3/movie/"
+    
+    // Base URL for getting images
     static var imgTMDB_Address = "https://image.tmdb.org/t/p/w500"
     static var imgTMDB_Address_Original = "https://image.tmdb.org/t/p/original"
     
